@@ -77,28 +77,7 @@
 			</div>
 
 			@if (lightboxOpen) {
-				<div class="lightbox" role="dialog" aria-modal="true" [attr.aria-label]="details.images[imageIndex].alt" (click)="closeLightbox()">
-					<button #lightboxClose type="button" class="lightbox-close" aria-label="Fermer l'image" (click)="closeLightbox()">
-						<i class="bi bi-x-lg" aria-hidden="true"></i>
-					</button>
-					<figure (click)="$event.stopPropagation()">
-						<img [src]="details.images[imageIndex].url" [alt]="details.images[imageIndex].alt" />
-						<figcaption>
-							@if (details.images[imageIndex].caption) {
-								{{ details.images[imageIndex].caption }} ·
-							}
-							{{ imageIndex + 1 }} / {{ details.images.length }}
-						</figcaption>
-					</figure>
-					@if (details.images.length > 1) {
-						<button type="button" class="nav prev" aria-label="Image précédente" (click)="$event.stopPropagation(); showImage(imageIndex - 1)">
-							<i class="bi bi-chevron-left" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="nav next" aria-label="Image suivante" (click)="$event.stopPropagation(); showImage(imageIndex + 1)">
-							<i class="bi bi-chevron-right" aria-hidden="true"></i>
-						</button>
-					}
-				</div>
+				<app-image-lightbox [images]="details.images" [index]="imageIndex" (indexChange)="showImage($event)" (closed)="closeLightbox()"></app-image-lightbox>
 			}
 
 			<aside class="about">
