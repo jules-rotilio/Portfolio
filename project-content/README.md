@@ -23,6 +23,6 @@ project-content/
 }
 ```
 
-Tout ce qui est dans `files/` devient **public**. Ne copier ni secrets, ni environnement virtuel, ni caches. Par sécurité, l'API ignore de toute façon `.env*`, `.git`, `venv`, `.venv`, `env`, `__pycache__`, `site-packages`, `node_modules`, `bin`, `obj`, les dossiers d'IDE et les liens symboliques. Les fichiers texte de plus de 64 Ko ou non UTF-8 apparaissent dans l'arborescence sans aperçu.
+Tout ce qui est dans `files/` devient **public**. Ne copier ni secrets, ni environnement virtuel, ni caches. Par sécurité, l'API ignore de toute façon `.env*`, `.git`, `venv`, `.venv`, `env`, `__pycache__`, `site-packages`, `node_modules`, `bin`, `obj`, les dossiers d'IDE et les liens symboliques. Sans `"allowZipDownload": true`, le code n'est pas partagé : l'arborescence reste visible, mais ni le contenu des fichiers ni le .zip ne sont servis. Les fichiers texte de plus de 64 Ko ou non UTF-8 apparaissent dans l'arborescence sans aperçu.
 
 Un projet sans dossier ici renvoie `404` : le site affiche alors ses données fictives (`portfolio-web/public/mock/projects/{id}.json`) s'il en a, sinon les informations de sa carte.

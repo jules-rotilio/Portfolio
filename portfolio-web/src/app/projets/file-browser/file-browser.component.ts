@@ -15,10 +15,13 @@ export class FileBrowserComponent {
   tree: ProjectFileNode[] = [];
   expanded = new Set<string>();
   selected: ProjectFileNode | null = null;
+  /** Faux quand l'API ne partage que l'arborescence (projet sans .zip autorisé). */
+  codeShared = true;
 
   @Input() set files(files: ProjectFileNode[]) {
     this.tree = sortNodes(files ?? []);
     this.expanded.clear();
+    this.codeShared = this.tree.length === 0 || hasReadableFile(this.tree);
     // Comme sur GitHub, le README racine est ouvert par défaut
     this.selected = this.tree.find((n) => n.type === 'file' && !!n.content && /^readme(\.|$)/i.test(n.name)) ?? null;
   }
@@ -63,6 +66,10 @@ export class FileBrowserComponent {
     if (bytes < 1024) return `${bytes} o`;
     return `${(bytes / 1024).toFixed(1).replace('.', ',')} Ko`;
   }
+}
+
+function hasReadableFile(nodes: ProjectFileNode[]): boolean {
+  return nodes.some((n) => !!n.content || !!n.url || hasReadableFile(n.children ?? []));
 }
 
 function extension(name: string): string {

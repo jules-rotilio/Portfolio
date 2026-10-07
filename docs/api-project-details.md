@@ -68,8 +68,8 @@ Le front trie lui-même les fichiers (dossiers d'abord, puis ordre alphabétique
 
 | Méthode | Route | Description |
 |---|---|---|
-| `GET` | `/api/projects/{id}/files/{chemin}` | Fichier source brut. Les images sont affichées, les autres fichiers sont proposés en téléchargement |
+| `GET` | `/api/projects/{id}/files/{chemin}` | Fichier source brut, seulement si `allowZipDownload` vaut `true` (sinon `404`). Les images sont affichées, les autres fichiers sont proposés en téléchargement |
 | `GET` | `/api/projects/{id}/images/{nom}` | Aperçu de l'application |
 | `GET` | `/api/projects/{id}/zip` | Archive .zip de `files/`, seulement si `allowZipDownload` vaut `true` dans `project.json` (sinon `404`) |
 
-Le contenu des fichiers texte (UTF-8, 64 Ko au plus) est inclus dans `files[].content` ; les autres n'ont que leur `url`.
+Le contenu des fichiers texte (UTF-8, 64 Ko au plus) est inclus dans `files[].content` ; les autres n'ont que leur `url`. Pour un projet sans `allowZipDownload`, l'arborescence est renvoyée sans `content` ni `url` : le site indique alors que le code n'est pas partagé.
