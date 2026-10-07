@@ -1,5 +1,5 @@
 {
-  "allowZipDownload": true,
+  "allowZipDownload": false,
   "images": [
     {
       "file": "01-port-check.webp",

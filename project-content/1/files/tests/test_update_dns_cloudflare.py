@@ -23,7 +23,7 @@ CLOUDFLARE_TRACE = (
 )
 
 
-def make_record(content: str, record_type: str = "A", name: str = "rotilio.fr"):
+def make_record(content: str, record_type: str = "A", name: str = "example.com"):
     return SimpleNamespace(
         id="record-id", name=name, type=record_type, content=content, ttl=1
     )
@@ -97,37 +97,37 @@ class GetPublicIPTests(unittest.TestCase):
 class FindDNSRecordTests(unittest.TestCase):
     def test_returns_none_when_missing(self):
         client = make_client()
-        self.assertIsNone(dns.find_dns_record(client, "zone", "rotilio.fr", "A"))
+        self.assertIsNone(dns.find_dns_record(client, "zone", "example.com", "A"))
 
     def test_queries_by_exact_name_and_type(self):
         client = make_client([make_record("1.2.3.4")])
-        dns.find_dns_record(client, "zone", "rotilio.fr", "A")
+        dns.find_dns_record(client, "zone", "example.com", "A")
         kwargs = client.dns.records.list.call_args.kwargs
         self.assertEqual(kwargs["zone_id"], "zone")
-        self.assertEqual(kwargs["name"], {"exact": "rotilio.fr"})
+        self.assertEqual(kwargs["name"], {"exact": "example.com"})
         self.assertEqual(kwargs["type"], "A")
 
     def test_returns_matching_record(self):
         record = make_record("1.2.3.4")
         client = make_client([record])
-        self.assertIs(dns.find_dns_record(client, "zone", "rotilio.fr", "A"), record)
+        self.assertIs(dns.find_dns_record(client, "zone", "example.com", "A"), record)
 
     def test_rejects_record_of_other_type(self):
         client = make_client([make_record("target.example.com", record_type="CNAME")])
         with self.assertRaisesRegex(RuntimeError, "CNAME"):
-            dns.find_dns_record(client, "zone", "rotilio.fr", "A")
+            dns.find_dns_record(client, "zone", "example.com", "A")
 
     def test_rejects_multiple_records(self):
         client = make_client([make_record("1.2.3.4"), make_record("5.6.7.8")])
         with self.assertRaisesRegex(RuntimeError, "Found 2"):
-            dns.find_dns_record(client, "zone", "rotilio.fr", "A")
+            dns.find_dns_record(client, "zone", "example.com", "A")
 
 
 class SyncDNSIPTests(unittest.TestCase):
     def sync(self, client, address="203.0.113.42"):
         out = io.StringIO()
         with redirect_stdout(out):
-            dns.sync_dns_ip(client, "zone", "rotilio.fr", "A", address)
+            dns.sync_dns_ip(client, "zone", "example.com", "A", address)
         return out.getvalue()
 
     def test_does_nothing_and_logs_nothing_when_up_to_date(self):
@@ -142,7 +142,7 @@ class SyncDNSIPTests(unittest.TestCase):
         client.dns.records.edit.assert_called_once_with(
             dns_record_id="record-id",
             zone_id="zone",
-            name="rotilio.fr",
+            name="example.com",
             ttl=1,
             type="A",
             content="203.0.113.42",
@@ -161,7 +161,7 @@ class SyncDNSIPTests(unittest.TestCase):
         output = self.sync(client)
         client.dns.records.create.assert_called_once_with(
             zone_id="zone",
-            name="rotilio.fr",
+            name="example.com",
             ttl=1,
             type="A",
             content="203.0.113.42",
@@ -252,7 +252,7 @@ class DomainConfigTests(unittest.TestCase):
         self.assertFalse(dns.ENABLE_IPV6)
 
     def test_domains(self):
-        self.assertEqual(set(dns.DOMAINS), {"rotilio.fr", "julesrotilio.fr"})
+        self.assertEqual(set(dns.DOMAINS), {"example.com", "example.org"})
 
 
 if __name__ == "__main__":

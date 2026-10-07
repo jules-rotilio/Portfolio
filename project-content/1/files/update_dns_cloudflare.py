@@ -20,8 +20,8 @@ ENABLE_IPV6 = False
 
 # Domain name -> Cloudflare zone ID. The apex record of each domain is kept in sync.
 DOMAINS = {
-    "rotilio.fr": "<your-zone-id>",
-    "julesrotilio.fr": "<your-zone-id>",
+    "example.com": "<your-zone-id>",
+    "example.org": "<your-zone-id>",
 }
 
 AddressFamily = Literal[4, 6]
