@@ -1,0 +1,76 @@
+@if (tree.length) {
+	<div class="file-browser">
+		<nav class="tree" aria-label="Fichiers du projet">
+			<ul role="tree">
+				<ng-container *ngTemplateOutlet="nodes; context: { $implicit: tree, depth: 0 }"></ng-container>
+			</ul>
+		</nav>
+
+		<section class="viewer" aria-live="polite">
+			@if (selected) {
+				<header class="viewer-header">
+					<span class="breadcrumb-path">
+						@for (part of breadcrumb; track $index; let last = $last) {
+							@if (last) {
+								<strong>{{ part }}</strong>
+							} @else {
+								<span>{{ part }}</span><span class="sep">/</span>
+							}
+						}
+					</span>
+					<span class="meta">
+						@if (selected.content) {
+							{{ lines.length }} lignes ·
+						}
+						{{ formatSize(selected.size) }}
+					</span>
+				</header>
+				@if (selected.content) {
+					<div class="code">
+						<table>
+							<tbody>
+								@for (line of lines; track $index) {
+									<tr>
+										<td class="line-number">{{ $index + 1 }}</td>
+										<td class="line"><pre>{{ line }}</pre></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				} @else if (isImage(selected)) {
+					<div class="image-preview"><img [src]="selected.url" [alt]="selected.name" loading="lazy" /></div>
+				} @else {
+					<p class="empty"><i class="bi bi-eye-slash" aria-hidden="true"></i> Aperçu non disponible pour ce fichier.</p>
+				}
+			} @else {
+				<p class="empty"><i class="bi bi-hand-index" aria-hidden="true"></i> Sélectionnez un fichier pour afficher son contenu.</p>
+			}
+		</section>
+	</div>
+} @else {
+	<p class="no-files"><i class="bi bi-folder-x" aria-hidden="true"></i> Les fichiers de ce projet ne sont pas encore disponibles.</p>
+}
+
+<ng-template #nodes let-list let-depth="depth">
+	@for (node of list; track node.path) {
+		<li role="treeitem" [attr.aria-expanded]="node.type === 'directory' ? expanded.has(node.path) : null"
+			[attr.aria-selected]="node === selected">
+			<button type="button" class="node" [class.active]="node === selected" [style.padding-left.rem]="0.5 + depth * 1"
+				(click)="toggle(node)">
+				@if (node.type === 'directory') {
+					<i class="bi chevron" [class.bi-chevron-down]="expanded.has(node.path)" [class.bi-chevron-right]="!expanded.has(node.path)" aria-hidden="true"></i>
+				} @else {
+					<span class="chevron"></span>
+				}
+				<i class="bi {{ icon(node) }}" [class.folder]="node.type === 'directory'" aria-hidden="true"></i>
+				<span class="name">{{ node.name }}</span>
+			</button>
+			@if (node.type === 'directory' && expanded.has(node.path)) {
+				<ul role="group">
+					<ng-container *ngTemplateOutlet="nodes; context: { $implicit: node.children ?? [], depth: depth + 1 }"></ng-container>
+				</ul>
+			}
+		</li>
+	}
+</ng-template>

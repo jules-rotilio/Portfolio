@@ -1,0 +1,31 @@
+{
+  "longDescription": "Ce site est mon portfolio : il présente mon parcours, mes compétences, mes expériences professionnelles et mes réalisations. Il est composé d'un front Angular rendu côté serveur, d'une API ASP.NET Core et d'un reverse proxy nginx, le tout orchestré avec Docker Compose.\n\n- Front : Angular 19 avec SSR et prérendu (@angular/ssr), servi par Express ; Bootstrap 5, SCSS et thème clair/sombre\n- API : ASP.NET Core (.NET 10) qui fournit la liste des projets et envoie les messages du formulaire de contact via MailKit, avec limitation de débit\n- Infra : nginx en point d'entrée (TLS, redirection HTTPS, en-têtes de sécurité, routage par nom d'hôte) et serveur mail auto-hébergé mailcow\n- Tests : xUnit et WebApplicationFactory pour l'API, Karma et Jasmine pour le front\n\nLe formulaire de contact m'envoie un e-mail via mon propre serveur mail. Les messages sont validés côté API (adresse, longueur, absence d'injection d'en-tête) et limités à cinq par heure et par visiteur.",
+  "allowZipDownload": false,
+  "images": [
+    {
+      "file": "01-accueil.webp",
+      "alt": "Page d'accueil",
+      "caption": "Page d'accueil"
+    },
+    {
+      "file": "02-cv.webp",
+      "alt": "CV interactif : introduction, écoles et expériences",
+      "caption": "CV interactif : introduction, écoles et expériences"
+    },
+    {
+      "file": "03-projets.webp",
+      "alt": "Liste des projets fournie par l'API .NET",
+      "caption": "Liste des projets fournie par l'API .NET"
+    },
+    {
+      "file": "04-projets-detail-0.webp",
+      "alt": "Fenêtre de détail d'un projet, présentée comme un dépôt GitHub",
+      "caption": "Fenêtre de détail d'un projet, présentée comme un dépôt GitHub"
+    },
+    {
+      "file": "05-contact.webp",
+      "alt": "Formulaire de contact (envoi via MailKit)",
+      "caption": "Formulaire de contact (envoi via MailKit)"
+    }
+  ]
+}

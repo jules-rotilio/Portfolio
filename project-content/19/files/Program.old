@@ -1,0 +1,164 @@
+﻿using MailKit.Net.Smtp;
+using MimeKit;
+
+namespace TestClient
+{
+	public class SetMail
+	{
+		private string _nom_destinataire;
+		private string _prenom_destinataire;
+		private string _email_destinataire;
+		private string _nom_emmeteur;
+		private string _prenom_emmeteur;
+		private string _email_emmeteur;
+		private string _html;
+		private string _pwd;
+		private string _subject;
+		private string _smtpserver;
+		public SetMail(string nom_destinataire, string prenom_destinataire, string email_destinataire, string nom_emmeteur, string prenom_emmeteur, string email_emmeteur, string html, string pwd, string subject, string smtpserver)
+		{
+
+			_nom_destinataire = nom_destinataire;
+			_prenom_destinataire = prenom_destinataire;
+			_email_destinataire = email_destinataire;
+			_nom_emmeteur = nom_emmeteur;
+			_prenom_emmeteur = prenom_emmeteur;
+			_email_emmeteur = email_emmeteur;
+			_html = html;
+			_pwd = pwd;
+			_subject = subject;
+			_smtpserver = smtpserver;
+		}
+		public string Run()
+		{
+			var message = new MimeMessage();
+			message.From.Add(new MailboxAddress(this._prenom_emmeteur + " " + this._nom_emmeteur, this._email_emmeteur));
+			message.To.Add(new MailboxAddress(this._prenom_destinataire + " " + this._nom_destinataire, this._email_destinataire));
+			message.Subject = this._subject;
+			message.Body = new TextPart("html")
+			{
+				Text = _html
+			};
+			using (SmtpClient client = new SmtpClient())
+			{
+				if (_pwd != "")
+				{
+					//587-465
+					client.Connect(_smtpserver, 465, MailKit.Security.SecureSocketOptions.Auto);
+					client.Authenticate(_email_emmeteur, _pwd);
+				}
+				else
+				{
+					client.Connect(_smtpserver, 25, false);
+				}
+				client.Send(message);
+				client.Disconnect(true);
+			}
+			return "success";
+		}
+	}
+	public class Program
+	{
+		static void Main(string[] args)
+		{
+			string smtpserver = "";
+			string subject = "";
+			string pwd = "";
+			string html = "";
+			string e_e = "";
+			string p_e = "";
+			string n_e = "";
+			string e_d = "";
+			string p_d = "";
+			string n_d = "";
+			static void disp_help()
+			{
+				Console.Error.WriteLine("Program written in C# by Jules ROTILIO.");
+				Console.Error.WriteLine("");
+				Console.Error.WriteLine("Aide :");
+				Console.Error.WriteLine("	Utilisez --nom-d pour renseinger le nom du destinataire");
+				Console.Error.WriteLine("	Utilisez --prenom-d pour renseinger le prenom du destinataire");
+				Console.Error.WriteLine("	Utilisez --email-d pour renseinger l'e-mail du destinataire");
+				Console.Error.WriteLine("	Utilisez --nom-e pour renseinger le nom de l'emmeteur");
+				Console.Error.WriteLine("	Utilisez --prenom-e pour renseinger le prenom de l'emmeteur");
+				Console.Error.WriteLine("	Utilisez --email-e pour renseinger l'e-mail de l'emmeteur");
+				Console.Error.WriteLine("	Utilisez --html pour renseinger l'emplacement du fichier contenant le mail sous forme html");
+				Console.Error.WriteLine("	Utilisez --subject pour renseinger l'emplacement du fichier contenant l'objet de l'e-mail");
+				Console.Error.WriteLine("	Utilisez --pwd pour renseinger votre mdp (en cas d'authentification)");
+				Console.Error.WriteLine("	Utilisez --smtp pour renseinger le serveur SMTP");
+				return;
+			}
+
+			if (args.Length == 0) { disp_help(); return; }
+			for (int i = 0; i < args.Length; i++)
+			{
+				string argument = args[i];
+				if (argument == "--help")
+				{
+					disp_help();
+					return;
+				}
+				try
+				{
+					string nextarg = args[i + 1];
+					switch (argument)
+					{
+						case "--nom-d":
+							if (nextarg.StartsWith("--")) { disp_help(); return; }
+							n_d = nextarg;
+							i++;
+							break;
+						case "--prenom-d":
+							if (nextarg.StartsWith("--")) { disp_help(); return; }
+							p_d = nextarg;
+							i++;
+							break;
+						case "--email-d":
+							if (nextarg.StartsWith("--")) { disp_help(); return; }
+							e_d = nextarg;
+							i++;
+							break;
+						case "--nom-e":
+							if (nextarg.StartsWith("--")) { disp_help(); return; }
+							n_e = nextarg;
+							i++;
+							break;
+						case "--prenom-e":
+							if (nextarg.StartsWith("--")) { disp_help(); return; }
+							p_e = nextarg;
+							i++;
+							break;
+						case "--email-e":
+							if (nextarg.StartsWith("--")) { disp_help(); return; }
+							e_e = nextarg;
+							i++;
+							break;
+						case "--html":
+							if (nextarg.StartsWith("--")) { disp_help(); return; }
+							html = File.ReadAllText(nextarg);
+							i++;
+							break;
+						case "--subject":
+							if (nextarg.StartsWith("--")) { disp_help(); return; }
+							subject = File.ReadAllText(nextarg);
+							i++;
+							break;
+						case "--pwd":
+							if (nextarg.StartsWith("--")) { disp_help(); return; }
+							pwd = nextarg;
+							i++;
+							break;
+						case "--smtp":
+							if (nextarg.StartsWith("--")) { disp_help(); return; }
+							smtpserver = nextarg;
+							i++;
+							break;
+					}
+				}
+				catch (System.IndexOutOfRangeException) { disp_help(); return; }
+			}
+			SetMail mail = new SetMail(n_d, p_d, e_d, n_e, p_e, e_e, html, pwd, subject, smtpserver);
+			mail.Run();
+		}
+	}
+}

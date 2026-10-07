@@ -1,0 +1,424 @@
+[
+	{
+		"ID": 0,
+		"Name": "ASP.NET Angular Portfolio",
+		"Description": "J'ai conçu ce projet pour présenter mon parcours, mes compétences, mes expériences professionnelles et mes réalisations à travers une application web de type portfolio et une API REST. Le site propose un CV interactif et un formulaire de contact, tandis que l'API .NET 10 fournit dynamiquement les données et gère la sérialisation/désérialisation, ainsi que l'envoi de mail.",
+		"Technologies": [
+			"C#",
+			".NET 10",
+			"ASP.NET Core",
+			"REST API",
+			"Angular",
+			"TypeScript",
+			"SCSS",
+			"HTML",
+			"Bootstrap",
+			"Bootstrap Icons"
+		]
+	},
+	{
+		"ID": 1,
+		"Name": "Cloudflare DNS Updater",
+		"Description": "J'ai développé ce script Python pour héberger mes sites et mon serveur mail derrière une connexion à IP dynamique. Toutes les N minutes, il détecte l'adresse IP publique (avec plusieurs sources de secours) et met à jour les enregistrements DNS de mes domaines via l'API Cloudflare, uniquement en cas de changement. Il journalise les modifications et les erreurs, fait tourner son fichier de log et est couvert par des tests unitaires.",
+		"Technologies": [
+			"Python 3",
+			"Cloudflare API",
+			"httpx",
+			"DNS",
+			"Cron",
+			"unittest"
+		]
+	},
+	{
+		"ID": 2,
+		"Name": "Certificats TLS avec Certbot",
+		"Description": "J'utilise Certbot (outil open source de l'EFF) pour obtenir et renouveler automatiquement les certificats Let's Encrypt de mes domaines, via un challenge DNS sur Cloudflare. Un hook de déploiement copie les certificats renouvelés vers les services Docker et recharge le reverse proxy nginx, sans intervention manuelle.",
+		"Technologies": [
+			"Certbot",
+			"Let's Encrypt",
+			"TLS",
+			"Cloudflare DNS",
+			"Shell",
+			"Docker Compose"
+		]
+	},
+	{
+		"ID": 3,
+		"Name": "Serveur mail auto-hébergé avec mailcow",
+		"Description": "Je déploie et j'administre mon propre serveur mail avec mailcow, une suite open source conteneurisée (Postfix, Dovecot, SOGo, Rspamd, ClamAV). Il est placé derrière le même reverse proxy nginx que ce portfolio, qui l'utilise d'ailleurs pour envoyer les messages du formulaire de contact.",
+		"Technologies": [
+			"mailcow",
+			"Docker",
+			"Postfix",
+			"Dovecot",
+			"SOGo",
+			"Rspamd",
+			"nginx",
+			"SMTP",
+			"DNS"
+		]
+	},
+	{
+		"ID": 4,
+		"Name": "PowerShell Toolkit",
+		"Description": "J'ai développé cet ensemble de modules PowerShell pour automatiser mes tâches courantes de développement et de gestion de fichiers multimédias sous Linux. DotNet.Publish publie un projet .NET en incrémentant sa version, puis génère une page de manuel et un paquet .deb ; FileTools exporte une arborescence de code vers un seul fichier Markdown et sait la reconstruire ; VerbTools recherche les verbes PowerShell approuvés. MediaTools, première version de mon application MediaToolkit, convertit et découpe des médias avec FFmpeg, ajoute des tags aux fichiers et détecte les doublons par SHA-256 ou hachage perceptuel.",
+		"Technologies": [
+			"PowerShell 7",
+			".NET CLI",
+			"FFmpeg",
+			"mpv",
+			"fzf",
+			"dpkg-deb",
+			"JSON",
+			"Linux"
+		]
+	},
+	{
+		"ID": 5,
+		"Name": "MediaToolkit",
+		"Description": "J'ai développé cette application de bureau en Python pour explorer, prévisualiser, étiqueter et traiter une bibliothèque de médias (images, vidéos, audio). Elle indexe les fichiers dans un BDD SQLite, propose une recherche par tags (ET / OU / SAUF) et détecte les doublons exacts ou visuellement similaires grâce aux empreintes SHA-256 et perceptuelles. Des workflows FFmpeg enregistrables permettent de découper, redimensionner, convertir et extraire l'audio sans jamais écraser de fichier existant, avec des traitements en arrière-plan annulables. Elle succède au module MediaTools de mon PowerShell Toolkit et est couverte par des tests unitaires.",
+		"Technologies": [
+			"Python 3",
+			"PySide6",
+			"Qt Multimedia",
+			"SQLite",
+			"FFmpeg",
+			"Pillow",
+			"ImageHash",
+			"Send2Trash",
+			"unittest"
+		]
+	},
+	{
+		"ID": 6,
+		"Name": "Reddit Media Downloader",
+		"Description": "J'ai développé cette extension Firefox pour télécharger en un clic les médias d'une publication Reddit : images, galeries et vidéos, dont la vidéo et la piste audio de meilleure qualité récupérées depuis les playlists HLS. Pour protéger la vie privée, les téléchargements passent par un conteneur Firefox temporaire qui ne transmet pas les cookies de session, et seuls des domaines autorisés sont acceptés. Une page de paramètres permet de choisir le dossier de destination, ainsi que le thème sombre ou clair. Le projet est couvert par des tests Node.js, et un script PowerShell automatise la vérification, la signature sur addons.mozilla.org et la publication de chaque version.",
+		"Technologies": [
+			"JavaScript",
+			"WebExtensions API (Manifest V2)",
+			"HTML",
+			"CSS",
+			"Node.js (node:test)",
+			"PowerShell 7",
+			"web-ext",
+			"HLS",
+			"Git"
+		]
+	},
+	{
+		"ID": 7,
+		"Name": "Game Assistant",
+		"Description": "J'ai créé cette application Windows pour contrôler une SoundBoard, automatiser des raccourcis clavier, enregistrer la voix, transcrire l'audio en texte (reconnaissance vocale) via Whisper (serveur Python local) et synthétiser ce texte en voix anglaise. Elle intègre aussi la gestion du volume.",
+		"Technologies": [
+			"C#",
+			".NET 9",
+			"Windows Forms",
+			"NAudio",
+			"System.Speech",
+			"Python 3",
+			"FastAPI",
+			"Whisper (OpenAI)",
+			"Uvicorn"
+		]
+	},
+	{
+		"ID": 8,
+		"Name": "RDP Access Guard",
+		"Description": "J'ai développé ce projet pour sécuriser l'accès RDP d'un serveur Windows via une whitelist/blacklist d'adresses IP. Les tentatives échouées sont surveillées depuis les journaux d'évenement Windows et les IP bloquées automatiquement par le pare-feu.",
+		"Technologies": [
+			"C#",
+			".NET 7",
+			"SQLite",
+			"Event log",
+			"Windows Firewall"
+		]
+	},
+	{
+		"ID": 9,
+		"Name": "Mail Server Port Monitor",
+		"Description": "J'ai conçu ce projet pour surveiller l’accessibilité des ports critiques de mon serveur mail et envoyer une alerte par email si tous les ports testés sont inaccessibles.",
+		"Technologies": [
+			"C#",
+			".NET 9",
+			"SMTP",
+			"Mail",
+			"TCP/IP"
+		]
+	},
+	{
+		"ID": 10,
+		"Name": ".Net AudioStream",
+		"Description": "J'ai développé cette application console pour transmettre et recevoir de l’audio en temps réel via TCP entre deux machines. Elle inclut un client qui capture l’audio du micro et l’envoie sur le réseau, ainsi qu’un serveur qui peut jourer l'audio reçu ou l'enregistrer dans un fichier.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"NAudio",
+			"TCP/IP"
+		]
+	},
+	{
+		"ID": 11,
+		"Name": "Auto Clicker",
+		"Description": "J'ai créé cet autoclicker avec Windows Forms. L’utilisateur peut définir une touche de raccourci pour démarrer/arrêter l’auto-click et régler la fréquence des clicks via l'interface graphique.",
+		"Technologies": [
+			"C#",
+			".NET 7",
+			"Windows Forms",
+			"Windows API",
+			"Hook clavier",
+			"Hook souris"
+		]
+	},
+	{
+		"ID": 12,
+		"Name": "Discord Bot : RSS Flux Monitor",
+		"Description": "J'ai développé ce bot Discord pour surveiller des flux RSS et publier automatiquement les nouveaux articles dans des salons Discord. Il gère la persistance via une BDD SQLite et propose une interface d'interaction dans Discord directement.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"Discord.Net",
+			"SQLite",
+			"REST API",
+			"RSS Feed",
+			"HTTP Client"
+		]
+	},
+	{
+		"ID": 13,
+		"Name": "WebOllama",
+		"Description": "J'ai développé cette interface web ASP.NET Core MVC pour dialoguer avec les modèles Ollama installés en local. Elle permet de choisir le modèle, de joindre des documents, de garder le contexte, de faire générer un plan avant exécution, et affiche la réponse en Markdown avec le temps de génération.",
+		"Technologies": [
+			"C#",
+			".NET 10",
+			"ASP.NET Core MVC",
+			"Razor",
+			"Bootstrap",
+			"OllamaSharp",
+			"Ollama"
+		]
+	},
+	{
+		"ID": 14,
+		"Name": "CSharp Web Runner",
+		"Description": "J'ai développé cette application ASP.NET pour exécuter dynamiquement du code C# côté serveur, avec gestion de l'autorisation (mot de passe) et affichage du résultat. Elle propose aussi des exemples de code et une interface simple pour tester des extraits.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"ASP.NET Core",
+			"Razor Pages",
+			"jQuery",
+			"Bootstrap",
+			"HTML",
+			"CSS"
+		]
+	},
+	{
+		"ID": 15,
+		"Name": "Google Messages",
+		"Description": "J'ai créé cette application Windows pour accéder à Google Messages Web via une interface dédiée, intégrée à la barre de notification système.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"WinForms",
+			"CefSharp"
+		]
+	},
+	{
+		"ID": 16,
+		"Name": "HoneyPot",
+		"Description": "J'ai développé ce petit honeypot pour capturer, analyser et journaliser le trafic réseau sur des interfaces et ports spécifiés, en inscrivant les connexions entrantes dans un fichier de log.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"SharpPcap",
+			"PacketDotNet"
+		]
+	},
+	{
+		"ID": 17,
+		"Name": "Auto Software Updater",
+		"Description": "J'ai conçu cette application console pour vérifier, télécharger et installer automatiquement les dernières versions de logiciels à partir de sources configurables. Elle automatise la comparaison et la mise à jour des versions. Ce projet est devenu inutile face à winget.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"Http Client"
+		]
+	},
+	{
+		"ID": 18,
+		"Name": "KeyCapture Monitor",
+		"Description": "J'ai développé cette application console pour capturer globalement les frappes clavier sur Windows, enregistrer les touches dans un fichier texte et sauvegarder le contenu du presse-papiers lors d'un copier (Ctrl+C). Ce projet me sert de base pour d'autres applications écoutant les frappes.",
+		"Technologies": [
+			"C#",
+			".NET 7",
+			"WinForms",
+			"Windows API"
+		]
+	},
+	{
+		"ID": 19,
+		"Name": "Mail CLI",
+		"Description": "J'ai créé cette application console pour envoyer des emails via SMTP en ligne de commande, avec prise en charge du corps (en texte ou en HTML), des pièces jointes et de l'authentification (sécurisée). L'utilisateur peut configurer chaque champ d'un email via les arguments.",
+		"Technologies": [
+			"C#",
+			".NET 7",
+			"MailKit",
+			"MimeKit",
+			"SMTP",
+			"Mail",
+			"DNS"
+		]
+	},
+	{
+		"ID": 20,
+		"Name": "CSharp Mail Connector",
+		"Description": "J'ai développé ce module PowerShell/C# pour envoyer des e-mails via SMTPS avec MailKit, gérant l'authentification, les formats HTML/texte et les pièces jointes, pour remplacer la commande obsolète de PowerShell.",
+		"Technologies": [
+			"C#",
+			".NET 7",
+			"MailKit",
+			"MimeKit",
+			"SMTP",
+			"Mail",
+			"PowerShell"
+		]
+	},
+	{
+		"ID": 21,
+		"Name": "Memory Overflow Simulator",
+		"Description": "J'ai conçu cette application console pour allouer continuellement de la mémoire en blocs de 1 Mo, provoquant une saturation rapide de la RAM afin de tester la gestion mémoire ou simuler des fuites.",
+		"Technologies": [
+			"C#",
+			".NET 9"
+		]
+	},
+	{
+		"ID": 22,
+		"Name": "Toggle Microphone Mute",
+		"Description": "J'ai développé cette application console Windows pour détecter un microphone spécifique et basculer son état de sourdine, en notifiant l'utilisateur via un message dans la console et via des signaux sonores.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"NAudio",
+			"Windows Core Audio API"
+		]
+	},
+	{
+		"ID": 23,
+		"Name": "Minecraft Server Status",
+		"Description": "J'ai créé cette application console pour interroger un serveur Minecraft et obtenir en temps réel le nombre de joueurs connectés, le statut du serveur et d'autres données utiles.",
+		"Technologies": [
+			"C#",
+			".NET 9",
+			"Minestat"
+		]
+	},
+	{
+		"ID": 24,
+		"Name": "Pong",
+		"Description": "J'ai développé cette application pour répliquer le jeu Pong via Windows Forms, jouable à deux sur le même clavier.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"Windows Forms"
+		]
+	},
+	{
+		"ID": 25,
+		"Name": "DPD Label Generator",
+		"Description": "J'ai développé cette application console .NET pour lire un fichier CSV d'expédition, générer des requêtes SOAP pour créer des expéditions via un service web DPD, puis télécharger et enregistrer les étiquettes au format PNG.",
+		"Technologies": [
+			"C#",
+			".NET 7",
+			"CSV",
+			"Http Client",
+			"SOAP"
+		]
+	},
+	{
+		"ID": 26,
+		"Name": "Audio Session Level Monitor",
+		"Description": "J'ai conçu cette application Windows Forms pour afficher en temps réel le niveau sonore d'une sortie son et d'un micro, avec une indication visuelle du statut mute/actif du micro.",
+		"Technologies": [
+			"C#",
+			".NET 9",
+			"Windows Forms",
+			"NAudio"
+		]
+	},
+	{
+		"ID": 27,
+		"Name": "Spotify Scheduler For Bose",
+		"Description": "J'ai développé cette application pour programmer la lecture de morceaux, playlists ou albums Spotify sur une enceinte Bose SoundTouch à des horaires planifiés, avec gestion du volume, du mode aléatoire et de la durée de lecture. Une interface graphique permet de gérer les alarmes.",
+		"Technologies": [
+			"C#",
+			".NET 9",
+			"WinForms",
+			"Spotify API",
+			"Task Scheduler",
+			"XML",
+			"HTTP Client",
+			"REST API"
+		]
+	},
+	{
+		"ID": 28,
+		"Name": "Sudoku Interactif",
+		"Description": "J'ai créé cette application WPF pour générer, résoudre, vérifier et nettoyer des grilles de Sudoku via une interface graphique. L'utilisateur peut interagir avec la grille, demander une solution automatique ou générer une nouvelle grille.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"WPF",
+			"XAML",
+			"RESX",
+			"Multi Language"
+		]
+	},
+	{
+		"ID": 29,
+		"Name": "Remote Audio Media Server",
+		"Description": "J'ai développé cette application serveur TCP pour contrôler à distance la lecture multimédia, le volume d'une sortie audio et l'état du micro sur un PC Windows via des commandes réseau.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"NAudio",
+			"npsmlib (now playing session manager)",
+			"TCP/IP"
+		]
+	},
+	{
+		"ID": 30,
+		"Name": "Secure P2P Chat",
+		"Description": "J'ai conçu cette application Windows Forms de chat peer-to-peer (P2P) permettant à deux utilisateurs de communiquer directement via TCP, avec configuration manuelle des ports, de la clé et du vecteur d'initialisation du chiffrement AES.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"Windows Forms",
+			"TCP/IP",
+			"Chiffrement AES"
+		]
+	},
+	{
+		"ID": 31,
+		"Name": "Audio Session Orchestrator",
+		"Description": "J'ai développé cette application Windows pour contrôler le volume, le statut (normal ou muted) de différents périphériques audio (micros et haut-parleurs) et mettre en pause la lecture multimédia, principalement pour automatiser des scénarios de jeu, streaming ou de visioconférence.",
+		"Technologies": [
+			"C#",
+			".NET 8",
+			"NAudio",
+			"npsmlib (now playing session manager)"
+		]
+	},
+	{
+		"ID": 32,
+		"Name": "Game Assistant Alpha",
+		"Description": "J'ai écrit ce script Python pour simuler des pressions de touches clavier et jouer des sons comme une Soundboard, principalement pour interagir avec des jeux ou applications de chat vocal. Il permet de transformer la fonction push-to-talk en open-microphone, de répéter une touche ou de jouer des sons via le pavé numérique.",
+		"Technologies": [
+			"Python",
+			"VLC",
+			"subprocess",
+			"ctypes",
+			"Windows API"
+		]
+	}
+]

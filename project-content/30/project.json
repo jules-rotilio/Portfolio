@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": false,
+  "images": [
+    {
+      "file": "01-chat.webp",
+      "alt": "Configuration des ports et de la clé AES, puis conversation chiffrée entre deux pairs",
+      "caption": "Configuration des ports et de la clé AES, puis conversation chiffrée entre deux pairs"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": false,
+  "images": [
+    {
+      "file": "01-capture.webp",
+      "alt": "Sélection de l'interface puis journalisation des connexions entrantes sur les ports surveillés",
+      "caption": "Sélection de l'interface puis journalisation des connexions entrantes sur les ports surveillés"
+    }
+  ]
+}

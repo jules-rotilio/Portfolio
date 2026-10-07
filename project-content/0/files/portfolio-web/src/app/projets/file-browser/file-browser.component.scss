@@ -1,0 +1,163 @@
+:host {
+	display: block;
+}
+
+.file-browser {
+	display: grid;
+	grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+	min-height: 320px;
+	height: 520px;
+}
+
+.tree {
+	overflow: auto;
+	border-right: 1px solid var(--gh-border);
+	padding: 0.5rem 0;
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.node {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	width: 100%;
+	border: 0;
+	background: none;
+	color: inherit;
+	text-align: left;
+	font-size: 0.875rem;
+	padding: 0.2rem 0.5rem;
+	border-radius: 6px;
+	white-space: nowrap;
+
+	&:hover {
+		background: var(--gh-hover);
+	}
+
+	&.active {
+		background: var(--gh-hover);
+		font-weight: 600;
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--mynameiscolor);
+		outline-offset: -2px;
+	}
+}
+
+.chevron {
+	width: 0.9rem;
+	font-size: 0.7rem;
+	flex-shrink: 0;
+}
+
+.folder {
+	color: #54aeff;
+}
+
+.name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.viewer {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	overflow: hidden;
+}
+
+.viewer-header {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-wrap: wrap;
+	padding: 0.5rem 1rem;
+	border-bottom: 1px solid var(--gh-border);
+	font-size: 0.875rem;
+
+	.sep {
+		margin: 0 0.25rem;
+		opacity: 0.6;
+	}
+
+	.meta {
+		opacity: 0.7;
+	}
+}
+
+.code {
+	/* Défilement vertical et horizontal : min-height: 0 empêche le bloc de grandir avec le fichier */
+	overflow: auto;
+	flex: 1;
+	min-height: 0;
+	font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+	font-size: 0.8rem;
+
+	table {
+		border-collapse: collapse;
+	}
+
+	/* Les numéros de ligne restent visibles pendant le défilement horizontal */
+	.line-number {
+		position: sticky;
+		left: 0;
+		z-index: 1;
+		background: var(--background-color);
+		padding: 0 0.75rem;
+		text-align: right;
+		user-select: none;
+		/* Couleur atténuée plutôt qu'opacity : le fond doit rester opaque pour masquer le code qui défile dessous */
+		color: color-mix(in srgb, currentColor 50%, transparent);
+		vertical-align: top;
+	}
+
+	pre {
+		margin: 0;
+		padding-right: 1rem;
+		font: inherit;
+		color: inherit;
+		white-space: pre;
+	}
+}
+
+.image-preview {
+	padding: 1rem;
+	text-align: center;
+	overflow: auto;
+
+	img {
+		max-width: 100%;
+	}
+}
+
+.empty,
+.no-files {
+	margin: 0;
+	padding: 2rem 1rem;
+	text-align: center;
+	opacity: 0.75;
+}
+
+@media (max-width: 767.98px) {
+	.file-browser {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: auto minmax(0, 1fr);
+		height: auto;
+	}
+
+	.tree {
+		max-height: 240px;
+		border-right: 0;
+		border-bottom: 1px solid var(--gh-border);
+	}
+
+	.code {
+		max-height: 360px;
+	}
+}

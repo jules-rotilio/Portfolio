@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ReceiveAudioViaTCP": {
+      "commandName": "Project",
+      "commandLineArgs": "\r\n"
+    }
+  }
+}

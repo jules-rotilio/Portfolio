@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": false,
+  "images": [
+    {
+      "file": "01-memory.webp",
+      "alt": "Allocation continue de blocs de 1 Mo jusqu'à saturation de la RAM",
+      "caption": "Allocation continue de blocs de 1 Mo jusqu'à saturation de la RAM"
+    }
+  ]
+}

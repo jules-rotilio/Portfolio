@@ -1,0 +1,6 @@
+{
+	"LogFilePath": "C:\\22log.txt",
+	"Interface": "Adapter for loopback traffic capture",
+	"Port": 22,
+	"Ports": [ 22, 80, 443 ]
+}

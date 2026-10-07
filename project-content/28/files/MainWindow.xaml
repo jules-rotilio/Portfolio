@@ -1,0 +1,26 @@
+﻿<Window x:Class="SudokuSolverGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SudokuSolverGUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="600">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Orientation="Horizontal" Margin="10">
+			<Button x:Name="SolveButton" Content="Solve" Width="100" Height="30" Click="SolveButton_Click"/>
+			<Button x:Name="GenerateButton" Content="Generate" Width="100" Height="30" Margin="10,0,0,0" Click="GenerateButton_Click"/>
+			<Button x:Name="CheckButton" Content="Check" Width="100" Height="30" Margin="10,0,0,0" Click="CheckButton_Click"/>
+			<Button x:Name="ClearButton" Content="Clear" Width="100" Height="30" Margin="10,0,0,0" Click="ClearButton_Click"/>
+		</StackPanel>
+
+		<UniformGrid x:Name="SudokuGrid" Rows="9" Columns="9" Grid.Row="1" Margin="10"/>
+
+
+	</Grid>
+</Window>
