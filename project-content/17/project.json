@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-update.webp",
+      "alt": "Récupération de la dernière version sur GitHub, téléchargement puis installation silencieuse (msiexec /passive)",
+      "caption": "Récupération de la dernière version sur GitHub, téléchargement puis installation silencieuse (msiexec /passive)"
+    }
+  ]
+}

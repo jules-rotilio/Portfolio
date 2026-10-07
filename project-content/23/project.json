@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-status.webp",
+      "alt": "Interrogation d'un serveur Minecraft : joueurs connectés, MOTD et version",
+      "caption": "Interrogation d'un serveur Minecraft : joueurs connectés, MOTD et version"
+    }
+  ]
+}

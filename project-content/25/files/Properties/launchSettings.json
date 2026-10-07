@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "shipment": {
+      "commandName": "Project",
+      "commandLineArgs": "\"I:\\dotnet projets\\shipment\\PROCESSING\\ProcessingTest1.csv\""
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-run-code.webp",
+      "alt": "Page « Run C# Code » : zone de saisie du code, champ d'autorisation, résultat de l'exécution et exemples",
+      "caption": "Page « Run C# Code » : zone de saisie du code, champ d'autorisation, résultat de l'exécution et exemples"
+    }
+  ]
+}

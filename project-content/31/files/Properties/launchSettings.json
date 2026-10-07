@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ToggleMicrophoneSoundboard": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

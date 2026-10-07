@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SpotifyAlarmClockOnBose": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\user1\\AppData\\Roaming\\SpotifyOnBose\\appsettings-b4a96748-e1b8-461d-a878-d46f4b10bd3c.json"
+    }
+  }
+}

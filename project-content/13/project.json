@@ -1,0 +1,15 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-ask.webp",
+      "alt": "Mode normal : question à un modèle local et réponse rendue en Markdown, avec temps de génération",
+      "caption": "Mode normal : question à un modèle local et réponse rendue en Markdown, avec temps de génération"
+    },
+    {
+      "file": "02-plan.webp",
+      "alt": "Mode plan : le modèle produit un plan structuré en JSON, prêt à être exécuté étape par étape",
+      "caption": "Mode plan : le modèle produit un plan structuré en JSON, prêt à être exécuté étape par étape"
+    }
+  ]
+}

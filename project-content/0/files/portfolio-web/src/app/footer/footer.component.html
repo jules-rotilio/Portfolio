@@ -1,0 +1,10 @@
+<footer class="main-footer">
+  <div class="footer-container">
+    <span>© {{ currentYear }} Jules ROTILIO</span>
+    <label class="theme-switch">
+      <input type="checkbox" (change)="toggleTheme($event)" [checked]="isDark" />
+      <span class="slider"></span>
+      <span class="theme-label">Thème {{ isDark ? 'Sombre' : 'Clair' }} </span>
+    </label>
+  </div>
+</footer>

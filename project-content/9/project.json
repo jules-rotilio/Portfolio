@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": false,
+  "images": [
+    {
+      "file": "01-port-check.webp",
+      "alt": "Trois exécutions : tous les ports OK (masque 1F), un port fermé, puis panne complète avec alerte e-mail",
+      "caption": "Trois exécutions : tous les ports OK (masque 1F), un port fermé, puis panne complète avec alerte e-mail"
+    }
+  ]
+}

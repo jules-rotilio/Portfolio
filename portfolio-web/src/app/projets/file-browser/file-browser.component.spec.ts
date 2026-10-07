@@ -70,6 +70,15 @@ describe('FileBrowserComponent', () => {
     expect(element.querySelector('.viewer .empty')?.textContent).toContain('Aperçu non disponible');
   });
 
+  it('indique quand le code n\'est pas partagé (arborescence seule)', () => {
+    render([{ name: 'Program.cs', path: 'Program.cs', type: 'file', size: 120 }]);
+
+    expect(names()).toEqual(['Program.cs']);
+    expect(element.querySelector('.viewer .empty')?.textContent).toContain('pas partagé');
+    click('Program.cs');
+    expect(element.querySelector('.viewer .empty')?.textContent).toContain('pas partagé');
+  });
+
   it('indique quand le projet n\'a pas encore de fichiers', () => {
     render([]);
 

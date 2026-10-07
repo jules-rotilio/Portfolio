@@ -1,0 +1,20 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-settings-light.webp",
+      "alt": "Page de paramètres (thème clair) : choix du dossier de téléchargement relatif au dossier de Firefox",
+      "caption": "Page de paramètres (thème clair) : choix du dossier de téléchargement relatif au dossier de Firefox"
+    },
+    {
+      "file": "02-settings-dark.webp",
+      "alt": "Page de paramètres (thème sombre) : sélecteur de thème (système / clair / sombre), mémorisé",
+      "caption": "Page de paramètres (thème sombre) : sélecteur de thème (système / clair / sombre), mémorisé"
+    },
+    {
+      "file": "03-injected-button.webp",
+      "alt": "Bouton « Fetch from Reddit & download » ajouté sous une publication Reddit, avec la confirmation du téléchargement",
+      "caption": "Bouton « Fetch from Reddit & download » ajouté sous une publication Reddit, avec la confirmation du téléchargement"
+    }
+  ]
+}

@@ -185,11 +185,16 @@
 	},
 	{
 		"ID": 13,
-		"Name": "Password Combination Generator",
-		"Description": "J'ai conçu ce générateur pour produire toutes les combinaisons possibles d'une chaîne de 1 à X caractères à partir d'un ensemble simplifié, puis les écrire dans un fichier texte. Il est utile pour tester la robustesse de mots de passe ou pour des analyses de sécurité utilisant du bruteforce.",
+		"Name": "WebOllama",
+		"Description": "J'ai développé cette interface web ASP.NET Core MVC pour dialoguer avec les modèles Ollama installés en local. Elle permet de choisir le modèle, de joindre des documents, de garder le contexte, de faire générer un plan avant exécution, et affiche la réponse en Markdown avec le temps de génération.",
 		"Technologies": [
 			"C#",
-			".NET 8"
+			".NET 10",
+			"ASP.NET Core MVC",
+			"Razor",
+			"Bootstrap",
+			"OllamaSharp",
+			"Ollama"
 		]
 	},
 	{

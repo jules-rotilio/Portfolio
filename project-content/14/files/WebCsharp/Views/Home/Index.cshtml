@@ -1,0 +1,119 @@
+﻿@model WebCsharp.Models.CodeViewModel
+
+<div class="container-fluid">
+    <div class="text-center">
+        <h1 class="display-4">Run C# Code</h1>
+    </div>
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-6 d-flex justify-content-center">
+            <div class="flex-grow-1">
+                <h2>Ecris ton code ici:</h2>
+                <form asp-action="RunCode" method="post">
+                    <div class="form-group">
+                        <label asp-for="UserCode"></label>
+                        <textarea class="form-control" asp-for="UserCode" rows="10" cols="50"></textarea>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label asp-for="Authorization"></label>
+                        <input class="form-control" type="password" asp-for="Authorization"
+                            placeholder="Unauthorized" />
+                    </div>
+                    <br>
+                    <input type="submit" value="Exécuter le Code" class="btn btn-primary" />
+                </form>
+                <br>
+                @if (ViewBag.Output != null)
+                {
+                    <h3>Résultat:</h3>
+                    <div class="alert alert-info" role="alert">
+                        @Html.Raw(ViewBag.Output.Replace("\n", "<br>"))
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-6 justify-content-center">
+            <div>
+                <h2>Exemple:</h2>
+                <h3>Récupérer les adresses ip d'une machine</h3>
+                <div class="card">
+                    <div class="card-body">
+
+                        <pre class="mb-0" style="white-space: pre-wrap; word-break: break-all;">
+using System;
+using System.Net.NetworkInformation;
+
+class Program
+{
+    static void Main()
+    {
+        NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();
+
+        foreach (NetworkInterface adapter in adapters)
+        {
+            if (adapter.OperationalStatus == OperationalStatus.Up)
+            {
+                IPInterfaceProperties ipProperties = adapter.GetIPProperties();
+                foreach (UnicastIPAddressInformation ipInfo in ipProperties.UnicastAddresses)
+                {
+                    if (ipInfo.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                    {
+                        Console.WriteLine($"IP Address ({adapter.Name}): {ipInfo.Address}");
+                    }
+                }
+            }
+        }
+    }
+}</pre><i class="bi bi-clipboard fs-2" class="bi bi-clipboard fs-2"
+                            style="position: absolute; top: 5px; right: 5px; cursor: pointer;"
+                            onclick="copyToClipboard(this)"></i>
+                    </div>
+                </div>
+                <h3>Récupérer le nom d'utilisateur</h3>
+                <div class="card">
+                    <div class="card-body">
+
+                        <pre class="mb-0" style="white-space: pre-wrap; word-break: break-all;">
+// First method
+Console.WriteLine(Environment.UserName);
+
+// Second method
+Console.WriteLine(Environment.GetEnvironmentVariable("USERNAME"));
+
+// Third method
+#pragma warning disable CA1416
+Console.WriteLine(System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+#pragma warning restore CA1416</pre>
+                        <i class="bi bi-clipboard fs-2" class="bi bi-clipboard fs-2"
+                            style="position: absolute; top: 5px; right: 5px; cursor: pointer;"
+                            onclick="copyToClipboard(this)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyToClipboard(element) {
+        // Find the <pre> element
+        var pre = element.previousElementSibling;
+        // Create a range and selection to help with copying
+        var range = document.createRange();
+        var selection = window.getSelection();
+        // Clear current selection
+        selection.removeAllRanges();
+        // Select the <pre> content
+        range.selectNodeContents(pre);
+        selection.addRange(range);
+        // Copy the selection to clipboard
+        document.execCommand('copy');
+        // Clear selection after copying
+        selection.removeAllRanges();
+        // Optional: Display a message
+        alert('Code copied to clipboard');
+    }
+</script>

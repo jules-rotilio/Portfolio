@@ -40,9 +40,13 @@
 					</div>
 				} @else if (isImage(selected)) {
 					<div class="image-preview"><img [src]="selected.url" [alt]="selected.name" loading="lazy" /></div>
-				} @else {
+				} @else if (codeShared) {
 					<p class="empty"><i class="bi bi-eye-slash" aria-hidden="true"></i> Aperçu non disponible pour ce fichier.</p>
+				} @else {
+					<p class="empty"><i class="bi bi-lock" aria-hidden="true"></i> Le code de ce projet n'est pas partagé : seule l'arborescence est visible.</p>
 				}
+			} @else if (!codeShared) {
+				<p class="empty"><i class="bi bi-lock" aria-hidden="true"></i> Le code de ce projet n'est pas partagé : seule l'arborescence est visible.</p>
 			} @else {
 				<p class="empty"><i class="bi bi-hand-index" aria-hidden="true"></i> Sélectionnez un fichier pour afficher son contenu.</p>
 			}

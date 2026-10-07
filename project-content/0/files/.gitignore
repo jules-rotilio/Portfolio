@@ -1,0 +1,19 @@
+# Secrets : ne doivent jamais être commités (voir aussi .dockerignore)
+certs/
+**/.env
+*.pem
+*.key
+*.pfx
+
+# Dépendances et sorties de build
+**/node_modules/
+**/bin/
+**/obj/
+**/dist/
+**/.angular/
+**/TestResults/
+
+# Fichiers propres à l'IDE / à l'utilisateur
+**/.vs/
+**/.vscode/
+*.user
