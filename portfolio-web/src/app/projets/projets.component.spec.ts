@@ -22,6 +22,8 @@ describe('ProjetsComponent', () => {
       providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
     }).compileComponents();
 
+    // Écran d'ordinateur par défaut, quelle que soit la taille de la fenêtre de test
+    spyOn(window, 'matchMedia').and.returnValue({ matches: false } as MediaQueryList);
     fixture = TestBed.createComponent(ProjetsComponent);
     http = TestBed.inject(HttpTestingController);
     router = TestBed.inject(Router);
@@ -102,6 +104,25 @@ describe('ProjetsComponent', () => {
     await settle();
     expect(router.url).toBe('/');
     expect(element.querySelector('app-project-details')).toBeNull();
+  });
+
+  it('sur téléphone, affiche un petit message au lieu de la fiche détaillée', async () => {
+    (window.matchMedia as jasmine.Spy).and.returnValue({ matches: true } as MediaQueryList);
+    fixture.componentInstance.updateIsMobile();
+    http.expectOne(API_URL).flush([project(0), project(4)]);
+    fixture.detectChanges();
+
+    (element.querySelectorAll('.card-title a')[1] as HTMLElement).click();
+    await settle();
+    expect(router.url).toBe('/?projet=4');
+    expect(element.querySelector('app-project-details')).toBeNull();
+    expect(element.querySelector('.mobile-notice h2')?.textContent).toContain('Projet 4');
+    expect(element.querySelector('.mobile-notice p')?.textContent).toContain('ordinateur');
+
+    (element.querySelector('.mobile-notice button') as HTMLElement).click();
+    await settle();
+    expect(router.url).toBe('/');
+    expect(element.querySelector('.mobile-notice')).toBeNull();
   });
 
   it('n\'ouvre rien pour un ID inconnu', async () => {

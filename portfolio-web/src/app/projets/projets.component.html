@@ -25,8 +25,23 @@
 </div>
 
 @if (openProject; as project) {
-	<!-- Chargée à la demande : la fenêtre ne pèse pas sur le premier affichage de la page -->
-	@defer (on immediate) {
-		<app-project-details [project]="project" (closed)="close()"></app-project-details>
+	@if (isMobile) {
+		<!-- Sur téléphone, la fiche détaillée n'est pas lisible : petit message à la place -->
+		<div class="mobile-notice">
+			<div class="mobile-notice-backdrop" (click)="close()"></div>
+			<div class="mobile-notice-box" role="alertdialog" aria-modal="true" aria-labelledby="mobile-notice-title" aria-describedby="mobile-notice-text">
+				<h2 id="mobile-notice-title"><i class="bi bi-display" aria-hidden="true"></i> {{ project.name }}</h2>
+				<p id="mobile-notice-text">
+					La fiche détaillée (code source, aperçus de l'application) est conçue pour un grand écran.
+					Ouvrez cette page depuis un navigateur d'ordinateur pour la consulter.
+				</p>
+				<button #noticeClose type="button" class="btn btn-primary" (click)="close()">J'ai compris</button>
+			</div>
+		</div>
+	} @else {
+		<!-- Chargée à la demande : la fenêtre ne pèse pas sur le premier affichage de la page -->
+		@defer (on immediate) {
+			<app-project-details [project]="project" (closed)="close()"></app-project-details>
+		}
 	}
 }

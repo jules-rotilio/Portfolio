@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { ProjectFileNode } from '../../models/project';
 
@@ -13,25 +13,35 @@ const IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'ico'];
 })
 export class FileBrowserComponent {
   tree: ProjectFileNode[] = [];
-  expanded = new Set<string>();
+  expandedDirs = new Set<string>();
   selected: ProjectFileNode | null = null;
+  /** Vrai quand le code est affiché dans une grande fenêtre, au-dessus de la fiche du projet. */
+  expanded = false;
+  @ViewChild('expandButton') expandButton?: ElementRef<HTMLButtonElement>;
   /** Faux quand l'API ne partage que l'arborescence (projet sans .zip autorisé). */
   codeShared = true;
 
   @Input() set files(files: ProjectFileNode[]) {
     this.tree = sortNodes(files ?? []);
-    this.expanded.clear();
+    this.expandedDirs.clear();
+    this.expanded = false;
     this.codeShared = this.tree.length === 0 || hasReadableFile(this.tree);
     // Comme sur GitHub, le README racine est ouvert par défaut
     this.selected = this.tree.find((n) => n.type === 'file' && !!n.content && /^readme(\.|$)/i.test(n.name)) ?? null;
   }
 
+  setExpanded(expanded: boolean): void {
+    this.expanded = expanded;
+    // Le bouton change de place avec la fenêtre : on lui rend le focus pour le clavier
+    setTimeout(() => this.expandButton?.nativeElement.focus());
+  }
+
   toggle(node: ProjectFileNode): void {
     if (node.type === 'directory') {
-      if (this.expanded.has(node.path)) {
-        this.expanded.delete(node.path);
+      if (this.expandedDirs.has(node.path)) {
+        this.expandedDirs.delete(node.path);
       } else {
-        this.expanded.add(node.path);
+        this.expandedDirs.add(node.path);
       }
     } else {
       this.selected = node;
@@ -52,7 +62,7 @@ export class FileBrowserComponent {
 
   icon(node: ProjectFileNode): string {
     if (node.type === 'directory') {
-      return this.expanded.has(node.path) ? 'bi-folder2-open' : 'bi-folder-fill';
+      return this.expandedDirs.has(node.path) ? 'bi-folder2-open' : 'bi-folder-fill';
     }
     const ext = extension(node.name);
     if (IMAGE_EXTENSIONS.includes(ext)) return 'bi-file-earmark-image';

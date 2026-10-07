@@ -66,3 +66,47 @@
 	font-weight: 500;
 	padding: 0.4em 0.65em;
 }
+
+/* Message affiché à la place de la fiche détaillée sur téléphone */
+.mobile-notice {
+	position: fixed;
+	inset: 0;
+	z-index: 1055;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.mobile-notice-backdrop {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.65);
+}
+
+.mobile-notice-box {
+	position: relative;
+	max-width: 22rem;
+	padding: 1.25rem;
+	border: 1px solid color-mix(in srgb, var(--mynameiscolor) 45%, transparent);
+	border-radius: 12px;
+	background: var(--background-color);
+	color: var(--maincolor);
+	box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+	text-align: center;
+
+	h2 {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: var(--mynameiscolor);
+
+		i {
+			margin-right: 0.35rem;
+		}
+	}
+
+	p {
+		font-size: 0.925rem;
+		line-height: 1.5;
+	}
+}
