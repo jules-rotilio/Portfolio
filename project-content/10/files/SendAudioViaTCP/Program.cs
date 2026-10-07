@@ -12,7 +12,7 @@ class Program
             DeviceNumber = 0,
         };
 
-        using TcpClient client = new TcpClient("192.168.1.29", 5000);
+        using TcpClient client = new TcpClient("192.0.2.20", 5000);
         Console.WriteLine("Connected to the receiver.");
         using NetworkStream stream = client.GetStream();
 

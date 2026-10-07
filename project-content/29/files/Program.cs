@@ -154,7 +154,7 @@ class TcpServer
         try
         {
             Int32 port = 5000;
-            IPAddress localAddr = IPAddress.Parse("192.168.1.4");
+            IPAddress localAddr = IPAddress.Parse("192.0.2.10");
 
             server = new TcpListener(localAddr, port);
 

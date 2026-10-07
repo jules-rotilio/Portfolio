@@ -65,7 +65,7 @@ function New-DebPackage {
         [string]$Version = "1.0.0",
         [ValidateSet("amd64", "arm64", "armhf")]
         [string]$Architecture = "amd64",
-        [string]$Maintainer = "Jules ROTILIO <jules@rotilio.fr>",
+        [string]$Maintainer = "Jules ROTILIO <you@example.com>",
         [string]$Description = "Command-line tool",
         [string]$Section = "utils",
         [string]$Priority = "optional",
