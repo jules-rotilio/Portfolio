@@ -107,11 +107,13 @@
 	.line-number {
 		position: sticky;
 		left: 0;
+		z-index: 1;
 		background: var(--background-color);
 		padding: 0 0.75rem;
 		text-align: right;
 		user-select: none;
-		opacity: 0.5;
+		/* Couleur atténuée plutôt qu'opacity : le fond doit rester opaque pour masquer le code qui défile dessous */
+		color: color-mix(in srgb, currentColor 50%, transparent);
 		vertical-align: top;
 	}
 
