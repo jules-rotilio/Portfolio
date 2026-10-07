@@ -1,5 +1,9 @@
 @if (tree.length) {
-	<div class="file-browser">
+	@if (expanded) {
+		<div class="expanded-backdrop" (click)="expanded = false"></div>
+	}
+	<div class="file-browser" [class.expanded]="expanded" [attr.role]="expanded ? 'dialog' : null"
+		[attr.aria-modal]="expanded || null" [attr.aria-label]="expanded ? 'Code du projet en grand' : null">
 		<nav class="tree" aria-label="Fichiers du projet">
 			<ul role="tree">
 				<ng-container *ngTemplateOutlet="nodes; context: { $implicit: tree, depth: 0 }"></ng-container>
@@ -7,6 +11,11 @@
 		</nav>
 
 		<section class="viewer" aria-live="polite">
+			<button #expandButton type="button" class="btn-expand" (click)="setExpanded(!expanded)"
+				[attr.aria-label]="expanded ? 'Réduire la fenêtre du code' : 'Agrandir la fenêtre du code'"
+				[attr.title]="expanded ? 'Réduire (Échap)' : 'Agrandir'">
+				<i class="bi" [class.bi-arrows-angle-contract]="expanded" [class.bi-arrows-angle-expand]="!expanded" aria-hidden="true"></i>
+			</button>
 			@if (selected) {
 				<header class="viewer-header">
 					<span class="breadcrumb-path">
@@ -58,19 +67,19 @@
 
 <ng-template #nodes let-list let-depth="depth">
 	@for (node of list; track node.path) {
-		<li role="treeitem" [attr.aria-expanded]="node.type === 'directory' ? expanded.has(node.path) : null"
+		<li role="treeitem" [attr.aria-expanded]="node.type === 'directory' ? expandedDirs.has(node.path) : null"
 			[attr.aria-selected]="node === selected">
 			<button type="button" class="node" [class.active]="node === selected" [style.padding-left.rem]="0.5 + depth * 1"
 				(click)="toggle(node)">
 				@if (node.type === 'directory') {
-					<i class="bi chevron" [class.bi-chevron-down]="expanded.has(node.path)" [class.bi-chevron-right]="!expanded.has(node.path)" aria-hidden="true"></i>
+					<i class="bi chevron" [class.bi-chevron-down]="expandedDirs.has(node.path)" [class.bi-chevron-right]="!expandedDirs.has(node.path)" aria-hidden="true"></i>
 				} @else {
 					<span class="chevron"></span>
 				}
 				<i class="bi {{ icon(node) }}" [class.folder]="node.type === 'directory'" aria-hidden="true"></i>
 				<span class="name">{{ node.name }}</span>
 			</button>
-			@if (node.type === 'directory' && expanded.has(node.path)) {
+			@if (node.type === 'directory' && expandedDirs.has(node.path)) {
 				<ul role="group">
 					<ng-container *ngTemplateOutlet="nodes; context: { $implicit: node.children ?? [], depth: depth + 1 }"></ng-container>
 				</ul>
