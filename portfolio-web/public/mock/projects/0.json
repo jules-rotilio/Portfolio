@@ -1,0 +1,769 @@
+{
+ "id": 0,
+ "longDescription": "Ce site est mon portfolio : il présente mon parcours, mes compétences, mes expériences professionnelles et mes réalisations. Il est composé d'un front Angular rendu côté serveur, d'une API ASP.NET Core et d'un reverse proxy nginx, le tout orchestré avec Docker Compose.\n\n- Front : Angular 19 avec SSR et prérendu (@angular/ssr), servi par Express ; Bootstrap 5, SCSS et thème clair/sombre\n- API : ASP.NET Core (.NET 10) qui fournit la liste des projets et envoie les messages du formulaire de contact via MailKit, avec limitation de débit\n- Infra : nginx en point d'entrée (TLS, redirection HTTPS, en-têtes de sécurité, routage par nom d'hôte) et serveur mail auto-hébergé mailcow\n- Tests : xUnit et WebApplicationFactory pour l'API, Karma et Jasmine pour le front\n\nLe formulaire de contact m'envoie un e-mail via mon propre serveur mail. Les messages sont validés côté API (adresse, longueur, absence d'injection d'en-tête) et limités à cinq par heure et par visiteur.",
+ "images": [
+  {
+   "url": "/projects/0/accueil-clair.jpg",
+   "alt": "Page d'accueil du portfolio, thème clair",
+   "caption": "Accueil (thème clair)"
+  },
+  {
+   "url": "/projects/0/accueil-sombre.jpg",
+   "alt": "Page d'accueil du portfolio, thème sombre",
+   "caption": "Accueil (thème sombre)"
+  },
+  {
+   "url": "/projects/0/cv.jpg",
+   "alt": "Page CV du portfolio",
+   "caption": "CV interactif"
+  },
+  {
+   "url": "/projects/0/projets.jpg",
+   "alt": "Page des projets du portfolio, thème sombre",
+   "caption": "Liste des projets"
+  }
+ ],
+ "zipUrl": null,
+ "repoUrl": null,
+ "files": [
+  {
+   "name": ".dockerignore",
+   "path": ".dockerignore",
+   "type": "file",
+   "size": 239
+  },
+  {
+   "name": ".gitignore",
+   "path": ".gitignore",
+   "type": "file",
+   "size": 288
+  },
+  {
+   "name": "Portfolio.Api.Tests",
+   "path": "Portfolio.Api.Tests",
+   "type": "directory",
+   "children": [
+    {
+     "name": "ApiTests.cs",
+     "path": "Portfolio.Api.Tests/ApiTests.cs",
+     "type": "file",
+     "size": 9477
+    },
+    {
+     "name": "Portfolio.Api.Tests.csproj",
+     "path": "Portfolio.Api.Tests/Portfolio.Api.Tests.csproj",
+     "type": "file",
+     "size": 803
+    }
+   ]
+  },
+  {
+   "name": "Portfolio.Api",
+   "path": "Portfolio.Api",
+   "type": "directory",
+   "children": [
+    {
+     "name": "Controllers",
+     "path": "Portfolio.Api/Controllers",
+     "type": "directory",
+     "children": [
+      {
+       "name": "ProjectsController.cs",
+       "path": "Portfolio.Api/Controllers/ProjectsController.cs",
+       "type": "file",
+       "size": 1628
+      }
+     ]
+    },
+    {
+     "name": "Dockerfile",
+     "path": "Portfolio.Api/Dockerfile",
+     "type": "file",
+     "size": 400
+    },
+    {
+     "name": "Models",
+     "path": "Portfolio.Api/Models",
+     "type": "directory",
+     "children": [
+      {
+       "name": "Class.cs",
+       "path": "Portfolio.Api/Models/Class.cs",
+       "type": "file",
+       "size": 800
+      }
+     ]
+    },
+    {
+     "name": "Portfolio.Api.csproj",
+     "path": "Portfolio.Api/Portfolio.Api.csproj",
+     "type": "file",
+     "size": 399
+    },
+    {
+     "name": "Portfolio.Api.http",
+     "path": "Portfolio.Api/Portfolio.Api.http",
+     "type": "file",
+     "size": 139
+    },
+    {
+     "name": "Portfolio.Api.sln",
+     "path": "Portfolio.Api/Portfolio.Api.sln",
+     "type": "file",
+     "size": 1120
+    },
+    {
+     "name": "Program.cs",
+     "path": "Portfolio.Api/Program.cs",
+     "type": "file",
+     "size": 2338
+    },
+    {
+     "name": "Projects.json",
+     "path": "Portfolio.Api/Projects.json",
+     "type": "file",
+     "size": 15450
+    },
+    {
+     "name": "Properties",
+     "path": "Portfolio.Api/Properties",
+     "type": "directory",
+     "children": [
+      {
+       "name": "launchSettings.json",
+       "path": "Portfolio.Api/Properties/launchSettings.json",
+       "type": "file",
+       "size": 647
+      }
+     ]
+    },
+    {
+     "name": "Services",
+     "path": "Portfolio.Api/Services",
+     "type": "directory",
+     "children": [
+      {
+       "name": "ContactMailer.cs",
+       "path": "Portfolio.Api/Services/ContactMailer.cs",
+       "type": "file",
+       "size": 2533
+      }
+     ]
+    },
+    {
+     "name": "appsettings.Development.json",
+     "path": "Portfolio.Api/appsettings.Development.json",
+     "type": "file",
+     "size": 127
+    },
+    {
+     "name": "appsettings.json",
+     "path": "Portfolio.Api/appsettings.json",
+     "type": "file",
+     "size": 151
+    }
+   ]
+  },
+  {
+   "name": "PortfolioSolution.sln",
+   "path": "PortfolioSolution.sln",
+   "type": "file",
+   "size": 2978
+  },
+  {
+   "name": "README.md",
+   "path": "README.md",
+   "type": "file",
+   "size": 6267
+  },
+  {
+   "name": "docker-compose.yml",
+   "path": "docker-compose.yml",
+   "type": "file",
+   "size": 1488
+  },
+  {
+   "name": "docs",
+   "path": "docs",
+   "type": "directory",
+   "children": [
+    {
+     "name": "api-project-details.md",
+     "path": "docs/api-project-details.md",
+     "type": "file",
+     "size": 3883
+    }
+   ]
+  },
+  {
+   "name": "nginx",
+   "path": "nginx",
+   "type": "directory",
+   "children": [
+    {
+     "name": "nginx.conf",
+     "path": "nginx/nginx.conf",
+     "type": "file",
+     "size": 6277
+    }
+   ]
+  },
+  {
+   "name": "portfolio-web",
+   "path": "portfolio-web",
+   "type": "directory",
+   "children": [
+    {
+     "name": ".editorconfig",
+     "path": "portfolio-web/.editorconfig",
+     "type": "file",
+     "size": 331
+    },
+    {
+     "name": ".gitignore",
+     "path": "portfolio-web/.gitignore",
+     "type": "file",
+     "size": 629
+    },
+    {
+     "name": "Dockerfile",
+     "path": "portfolio-web/Dockerfile",
+     "type": "file",
+     "size": 590
+    },
+    {
+     "name": "README.md",
+     "path": "portfolio-web/README.md",
+     "type": "file",
+     "size": 1535
+    },
+    {
+     "name": "angular.json",
+     "path": "portfolio-web/angular.json",
+     "type": "file",
+     "size": 4593
+    },
+    {
+     "name": "karma.conf.js",
+     "path": "portfolio-web/karma.conf.js",
+     "type": "file",
+     "size": 1223
+    },
+    {
+     "name": "nginx.conf",
+     "path": "portfolio-web/nginx.conf",
+     "type": "file",
+     "size": 374
+    },
+    {
+     "name": "package.json",
+     "path": "portfolio-web/package.json",
+     "type": "file",
+     "size": 1453
+    },
+    {
+     "name": "portfolio-web.esproj",
+     "path": "portfolio-web/portfolio-web.esproj",
+     "type": "file",
+     "size": 541
+    },
+    {
+     "name": "public",
+     "path": "portfolio-web/public",
+     "type": "directory",
+     "children": [
+      {
+       "name": "favicon.ico",
+       "path": "portfolio-web/public/favicon.ico",
+       "type": "file",
+       "size": 15086
+      },
+      {
+       "name": "projects",
+       "path": "portfolio-web/public/projects",
+       "type": "directory",
+       "children": [
+        {
+         "name": "0",
+         "path": "portfolio-web/public/projects/0",
+         "type": "directory",
+         "children": [
+          {
+           "name": "accueil-clair.jpg",
+           "path": "portfolio-web/public/projects/0/accueil-clair.jpg",
+           "type": "file",
+           "size": 81734
+          },
+          {
+           "name": "accueil-sombre.jpg",
+           "path": "portfolio-web/public/projects/0/accueil-sombre.jpg",
+           "type": "file",
+           "size": 77301
+          },
+          {
+           "name": "cv.jpg",
+           "path": "portfolio-web/public/projects/0/cv.jpg",
+           "type": "file",
+           "size": 100244
+          },
+          {
+           "name": "projets.jpg",
+           "path": "portfolio-web/public/projects/0/projets.jpg",
+           "type": "file",
+           "size": 140688
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "src",
+     "path": "portfolio-web/src",
+     "type": "directory",
+     "children": [
+      {
+       "name": "app",
+       "path": "portfolio-web/src/app",
+       "type": "directory",
+       "children": [
+        {
+         "name": "app.component.html",
+         "path": "portfolio-web/src/app/app.component.html",
+         "type": "file",
+         "size": 1242,
+         "content": "<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->\n<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->\n<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->\n<!-- * * * * * * * to get started with your project! * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n\n<app-header></app-header>\n<main class=\"main\">\n  <div class=\"content\">\n    <router-outlet />\n  </div>\n</main>\n<app-footer></app-footer>\n\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->\n<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n\n"
+        },
+        {
+         "name": "app.component.scss",
+         "path": "portfolio-web/src/app/app.component.scss",
+         "type": "file",
+         "size": 0,
+         "content": ""
+        },
+        {
+         "name": "app.component.spec.ts",
+         "path": "portfolio-web/src/app/app.component.spec.ts",
+         "type": "file",
+         "size": 782,
+         "content": "import { TestBed } from '@angular/core/testing';\nimport { provideRouter } from '@angular/router';\nimport { AppComponent } from './app.component';\n\ndescribe('AppComponent', () => {\n  beforeEach(async () => {\n    await TestBed.configureTestingModule({\n      imports: [AppComponent],\n      providers: [provideRouter([])],\n    }).compileComponents();\n  });\n\n  it('affiche l\\'en-tête, le contenu et le pied de page', () => {\n    const fixture = TestBed.createComponent(AppComponent);\n    fixture.detectChanges();\n    const compiled = fixture.nativeElement as HTMLElement;\n\n    expect(compiled.querySelector('app-header')).not.toBeNull();\n    expect(compiled.querySelector('main router-outlet')).not.toBeNull();\n    expect(compiled.querySelector('app-footer')).not.toBeNull();\n  });\n});\n"
+        },
+        {
+         "name": "app.component.ts",
+         "path": "portfolio-web/src/app/app.component.ts",
+         "type": "file",
+         "size": 479,
+         "content": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { HeaderComponent } from './header/header.component';\nimport { FooterComponent } from './footer/footer.component';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [RouterOutlet, HeaderComponent, FooterComponent],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss'\n})\nexport class AppComponent {\n  title = 'portfolio-web';\n}"
+        },
+        {
+         "name": "app.config.server.ts",
+         "path": "portfolio-web/src/app/app.config.server.ts",
+         "type": "file",
+         "size": 362,
+         "content": "import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';\nimport { provideServerRendering } from '@angular/platform-server';\nimport { appConfig } from './app.config';\n\nconst serverConfig: ApplicationConfig = {\n  providers: [\n    provideServerRendering(),\n  ]\n};\n\nexport const config = mergeApplicationConfig(appConfig, serverConfig);\n"
+        },
+        {
+         "name": "app.config.ts",
+         "path": "portfolio-web/src/app/app.config.ts",
+         "type": "file",
+         "size": 582,
+         "content": "import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';\nimport { provideRouter } from '@angular/router';\nimport { provideHttpClient, withFetch } from '@angular/common/http';\nimport { routes } from './app.routes';\nimport {\n  provideClientHydration,\n  withEventReplay,\n} from '@angular/platform-browser';\n\nexport const appConfig: ApplicationConfig = {\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideRouter(routes),\n    provideClientHydration(withEventReplay()),\n    provideHttpClient(withFetch()),\n  ],\n};\n"
+        },
+        {
+         "name": "app.routes.ts",
+         "path": "portfolio-web/src/app/app.routes.ts",
+         "type": "file",
+         "size": 593,
+         "content": "import { Routes } from '@angular/router';\nimport { HomeComponent } from './home/home.component';\nimport { CVComponent } from './cv/cv.component';\nimport { ProjetsComponent } from './projets/projets.component';\nimport { ContactComponent } from './contact/contact.component';\n\nexport const routes: Routes = [\n  { path: '', component: HomeComponent },\n  { path: 'cv', component: CVComponent },\n  { path: 'projets', component: ProjetsComponent },\n  { path: 'contact', component: ContactComponent },\n  { path: '**', redirectTo: '' }, // Redirige les routes inconnues vers l'accueil\n];\n"
+        },
+        {
+         "name": "contact",
+         "path": "portfolio-web/src/app/contact",
+         "type": "directory",
+         "children": [
+          {
+           "name": "contact.component.html",
+           "path": "portfolio-web/src/app/contact/contact.component.html",
+           "type": "file",
+           "size": 2649,
+           "content": "<div class=\"container\">\n\t<div class=\"row g-4 g-lg-5\">\n\t\t<div class=\"col-lg-7\">\n\t\t\t<h2 class=\"section-title\"><i class=\"bi bi-envelope-at-fill me-2\"></i>Contactez-moi</h2>\n\t\t\t<form (ngSubmit)=\"send()\" #contactForm=\"ngForm\" class=\"card p-3 p-sm-4 shadow-sm mb-4\">\n\t\t\t\t<div class=\"mb-3\">\n\t\t\t\t\t<label for=\"from\" class=\"form-label\">Votre email</label>\n\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t<span class=\"input-group-text\"><i class=\"bi bi-person-fill\"></i></span>\n\t\t\t\t\t\t<input id=\"from\" name=\"from\" type=\"email\" class=\"form-control\" [(ngModel)]=\"form.from\" required email\n\t\t\t\t\t\t\tmaxlength=\"254\"\n\t\t\t\t\t\t\tplaceholder=\"Votre adresse email\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"mb-3\">\n\t\t\t\t\t<label for=\"subject\" class=\"form-label\">Sujet</label>\n\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t<span class=\"input-group-text\"><i class=\"bi bi-chat-left-text-fill\"></i></span>\n\t\t\t\t\t\t<input id=\"subject\" name=\"subject\" type=\"text\" class=\"form-control\" [(ngModel)]=\"form.subject\"\n\t\t\t\t\t\t\trequired maxlength=\"150\" placeholder=\"Sujet du message\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"mb-3\">\n\t\t\t\t\t<label for=\"body\" class=\"form-label\">Message</label>\n\t\t\t\t\t<textarea id=\"body\" name=\"body\" class=\"form-control\" rows=\"5\" [(ngModel)]=\"form.body\" required\n\t\t\t\t\t\tmaxlength=\"5000\"\n\t\t\t\t\t\tplaceholder=\"Votre message\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<button type=\"submit\" class=\"btn btn-primary w-100\" [disabled]=\"contactForm.invalid || sending\">\n\t\t\t\t\t<i class=\"bi bi-send-fill me-2\"></i>{{ sending ? 'Envoi en cours…' : 'Envoyer' }}\n\t\t\t\t</button>\n\t\t\t</form>\n\n\t\t\t<div *ngIf=\"success\" class=\"alert alert-success d-flex align-items-center\" role=\"alert\">\n\t\t\t\t<i class=\"bi bi-check-circle-fill me-2\"></i>Message envoyé !\n\t\t\t</div>\n\t\t\t<div *ngIf=\"error\" class=\"alert alert-danger d-flex align-items-center\" role=\"alert\">\n\t\t\t\t<i class=\"bi bi-exclamation-triangle-fill me-2\"></i>{{ error }}\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"col-lg-5\">\n\t\t\t<h2 class=\"section-title\"><i class=\"bi bi-link-45deg me-2\"></i>Mes liens professionnels</h2>\n\t\t\t<ul class=\"list-group list-group-flush\">\n\t\t\t\t<li class=\"list-group-item\">\n\t\t\t\t\t<a href=\"https://www.linkedin.com/in/jules-rotilio/\" target=\"_blank\" rel=\"noopener\" class=\"text-decoration-none\">\n\t\t\t\t\t\t<i class=\"bi bi-linkedin me-2 text-primary\"></i>Jules ROTILIO via LinkedIn\n\t\t\t\t\t</a>\n\t\t\t\t</li>\n\t\t\t\t<li class=\"list-group-item\">\n\t\t\t\t\t<a href=\"mailto:jules@rotilio.fr\" class=\"text-decoration-none\">\n\t\t\t\t\t\t<i class=\"bi bi-envelope-fill me-2 text-danger\"></i>Jules ROTILIO via Email\n\t\t\t\t\t</a>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<p class=\"mt-3\">\n\t\t\t\t<i class=\"bi bi-briefcase-fill me-2\"></i>Également présent sur France Travail, HelloWork et Indeed.\n\t\t\t</p>\n\t\t</div>\n\t</div>\n</div>\n"
+          },
+          {
+           "name": "contact.component.scss",
+           "path": "portfolio-web/src/app/contact/contact.component.scss",
+           "type": "file",
+           "size": 921,
+           "content": ":host {\n\tdisplay: block;\n}\n\n.card {\n\tbackground-color: var(--cardcolor) !important;\n}\n\nlabel,\np {\n\tcolor: var(--maincolor);\n}\n\n.input-group-text,\n.form-control {\n\tbackground-color: var(--bs-card-cap-bg);\n\tcolor: var(--maincolor);\n}\n\n.form-control::placeholder {\n\tcolor: var(--maincolor);\n\topacity: 0.6;\n}\n\n.btn-primary {\n\t--bs-btn-color: var(--on-accent);\n\t--bs-btn-disabled-color: var(--on-accent);\n\t--bs-btn-hover-color: #fff;\n\t--bs-btn-active-color: #fff;\n\t--bs-btn-bg: var(--mynameiscolor);\n\t--bs-btn-border-color: var(--mynameiscolor);\n\t--bs-btn-hover-bg: #792a53;\n\t--bs-btn-hover-border-color: #792a53;\n\t--bs-btn-active-bg: #792a53;\n\t--bs-btn-active-border-color: #792a53;\n\t--bs-btn-disabled-bg: var(--mynameiscolor);\n\t--bs-btn-disabled-border-color: var(--mynameiscolor);\n}\n\n.list-group-item {\n\tbackground-color: var(--background-color);\n\tcolor: var(--maincolor) !important;\n\tpadding-left: 0;\n\tpadding-right: 0;\n}\n"
+          },
+          {
+           "name": "contact.component.spec.ts",
+           "path": "portfolio-web/src/app/contact/contact.component.spec.ts",
+           "type": "file",
+           "size": 4991,
+           "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\nimport { provideHttpClient } from '@angular/common/http';\nimport { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';\nimport { ContactComponent } from './contact.component';\n\nconst API_URL = 'https://api.julesrotilio.fr/api/send-email';\n\ndescribe('ContactComponent', () => {\n  let fixture: ComponentFixture<ContactComponent>;\n  let component: ContactComponent;\n  let http: HttpTestingController;\n  let element: HTMLElement;\n\n  beforeEach(async () => {\n    await TestBed.configureTestingModule({\n      imports: [ContactComponent],\n      providers: [provideHttpClient(), provideHttpClientTesting()],\n    }).compileComponents();\n\n    fixture = TestBed.createComponent(ContactComponent);\n    component = fixture.componentInstance;\n    http = TestBed.inject(HttpTestingController);\n    element = fixture.nativeElement;\n    fixture.detectChanges();\n  });\n\n  afterEach(() => http.verify());\n\n  const submitButton = () => element.querySelector('button[type=\"submit\"]') as HTMLButtonElement;\n  const alertText = (kind: 'success' | 'danger') => element.querySelector(`.alert-${kind}`)?.textContent?.trim();\n\n  async function fillForm(from = 'visiteur@example.com', subject = 'Bonjour', body = 'Un message') {\n    component.form = { from, subject, body };\n    fixture.detectChanges();\n    await fixture.whenStable(); // laisse ngModel mettre à jour la validité du formulaire\n    fixture.detectChanges();\n  }\n\n  function sendAndRespond(body: object | string, status = 200) {\n    submitButton().click();\n    fixture.detectChanges();\n    const req = http.expectOne(API_URL);\n    if (status === 200) {\n      req.flush(body);\n    } else if (status === 0) {\n      req.error(new ProgressEvent('error'), { status: 0 });\n    } else {\n      req.flush(body, { status, statusText: 'Erreur' });\n    }\n    fixture.detectChanges();\n  }\n\n  it('désactive le bouton tant que le formulaire est incomplet', async () => {\n    await fillForm('visiteur@example.com', 'Bonjour', '');\n    expect(submitButton().disabled).toBeTrue();\n  });\n\n  it('désactive le bouton si l\\'adresse email est invalide', async () => {\n    await fillForm('pas-un-email');\n    expect(submitButton().disabled).toBeTrue();\n  });\n\n  it('applique les mêmes limites de longueur que l\\'API', () => {\n    expect(element.querySelector('#from')?.getAttribute('maxlength')).toBe('254');\n    expect(element.querySelector('#subject')?.getAttribute('maxlength')).toBe('150');\n    expect(element.querySelector('#body')?.getAttribute('maxlength')).toBe('5000');\n  });\n\n  it('bloque un double envoi pendant que la requête est en cours', async () => {\n    await fillForm();\n    submitButton().click();\n    fixture.detectChanges();\n\n    expect(submitButton().disabled).toBeTrue();\n    expect(submitButton().textContent).toContain('Envoi en cours');\n    http.expectOne(API_URL).flush({ success: true });\n  });\n\n  it('confirme l\\'envoi et vide le formulaire', async () => {\n    await fillForm();\n    sendAndRespond({ success: true, message: 'Email envoyé.' });\n\n    expect(alertText('success')).toContain('Message envoyé');\n    expect(component.form).toEqual({ from: '', subject: '', body: '' });\n    expect(submitButton().textContent).toContain('Envoyer');\n  });\n\n  it('affiche le message de l\\'API quand la limite d\\'envoi est atteinte', async () => {\n    await fillForm();\n    sendAndRespond({ success: false, message: 'Trop de messages envoyés. Réessayez dans une heure.' }, 429);\n\n    expect(alertText('danger')).toBe('Trop de messages envoyés. Réessayez dans une heure.');\n    expect(component.form.body).toBe('Un message'); // le visiteur ne perd pas son message\n  });\n\n  it('affiche un message clair si l\\'API refuse les données (400)', async () => {\n    await fillForm();\n    sendAndRespond({ title: 'One or more validation errors occurred.' }, 400);\n\n    expect(alertText('danger')).toBe('Vérifiez votre adresse email et le contenu du message.');\n  });\n\n  it('affiche un message clair si le serveur est injoignable', async () => {\n    await fillForm();\n    sendAndRespond('', 0);\n\n    expect(alertText('danger')).toBe('Impossible de joindre le serveur. Vérifiez votre connexion.');\n  });\n\n  it('efface l\\'ancienne erreur lors d\\'un nouvel envoi réussi', async () => {\n    await fillForm();\n    sendAndRespond({ success: false, message: 'Erreur' }, 500);\n    expect(alertText('danger')).toBeTruthy();\n\n    sendAndRespond({ success: true });\n    expect(alertText('danger')).toBeUndefined();\n    expect(alertText('success')).toContain('Message envoyé');\n  });\n\n  it('ne propose pas de liens vers des sites d\\'emploi sans profil', () => {\n    const hrefs = Array.from(element.querySelectorAll('a')).map((a) => a.getAttribute('href') ?? '');\n    expect(hrefs.some((h) => /indeed|hellowork|francetravail/.test(h))).toBeFalse();\n    expect(element.textContent).toContain('Également présent sur France Travail, HelloWork et Indeed.');\n  });\n});\n"
+          },
+          {
+           "name": "contact.component.ts",
+           "path": "portfolio-web/src/app/contact/contact.component.ts",
+           "type": "file",
+           "size": 1558,
+           "content": "import { Component } from '@angular/core';\nimport { HttpErrorResponse } from '@angular/common/http';\nimport { ContactService } from '../services/contact.service';\nimport { FormsModule } from '@angular/forms';\nimport { NgIf } from '@angular/common';\n\n@Component({\n  selector: 'app-contact',\n  standalone: true,\n  imports: [FormsModule, NgIf],\n  templateUrl: './contact.component.html',\n  styleUrl: './contact.component.scss'\n})\nexport class ContactComponent {\n  form = { from: '', subject: '', body: '' };\n  success = false;\n  sending = false;\n  error = '';\n\n  constructor(private contactService: ContactService) {}\n\n  send() {\n    this.success = false;\n    this.error = '';\n    this.sending = true;\n    this.contactService.sendEmail(this.form).subscribe({\n      next: () => {\n        this.sending = false;\n        this.success = true;\n        this.form = { from: '', subject: '', body: '' };\n      },\n      error: (err: HttpErrorResponse) => {\n        this.sending = false;\n        this.error = this.errorMessage(err);\n      }\n    });\n  }\n\n  private errorMessage(err: HttpErrorResponse): string {\n    // L'API renvoie { success, message } pour les erreurs 429 et 500\n    if (typeof err.error?.message === 'string') {\n      return err.error.message;\n    }\n    if (err.status === 400) {\n      return 'Vérifiez votre adresse email et le contenu du message.';\n    }\n    if (err.status === 0) {\n      return 'Impossible de joindre le serveur. Vérifiez votre connexion.';\n    }\n    return 'Une erreur est survenue lors de l\\'envoi. Réessayez plus tard.';\n  }\n}\n"
+          }
+         ]
+        },
+        {
+         "name": "cv",
+         "path": "portfolio-web/src/app/cv",
+         "type": "directory",
+         "children": [
+          {
+           "name": "cv.component.html",
+           "path": "portfolio-web/src/app/cv/cv.component.html",
+           "type": "file",
+           "size": 8021,
+           "content": "<div class=\"container\">\n\t<section class=\"mb-5 border-bottom pb-4\">\n\t\t<h2 class=\"section-title\">Introduction</h2>\n\t\t<p class=\"lead\">\n\t\t\tJeune diplomé, et professionnel à en devenir, je suis passionné par la programmation, j'ai acquis une solide\n\t\t\texpérience en développement, cybersécurité et réseaux à travers mes études, mes stages, mes alternances et\n\t\t\tmes nombreux projets personnels.\n\t\t\t<br /> <br />\n\t\t\tCurieux et polyvalent, je maîtrise des technologies Web, Backend, Bureau, et DevOps ainsi que des outils\n\t\t\tmodernes de développement. Je suis aussi capable d'utiliser des outils de pentesting et de sécurité pour\n\t\t\tassurer la sécurité des applications crées et des systèmes utilisés.\n\t\t</p>\n\t</section>\n\n\t<section class=\"mb-5 border-bottom\">\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-12\">\n\t\t\t\t<h2 class=\"section-title\">Écoles</h2>\n\t\t\t\t<ul class=\"list-group list-group-flush\">\n\t\t\t\t\t<li class=\"list-group-item\">2024 & 2025 : Renforcement de compétences de développement, <b>ORT</b> à <b>Lyon</b>.</li>\n\t\t\t\t\t<li class=\"list-group-item\">2023 : Renforcement de compétences de développement, <b>SUPINFO</b>, <b>Lyon</b>.</li>\n\t\t\t\t\t<li class=\"list-group-item\">2022 : Licence Professionnelle - ASSR <b>Cybersécurité</b>,\n\t\t\t\t\t\t<b>Auxerre</b>.\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class=\"list-group-item\">2020 & 2021 : DUT - <b>Réseaux et Télécommunications</b>,\n\t\t\t\t\t\t<b>Auxerre</b>.\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class=\"list-group-item\">2019 : Bac Scientifique - Sciences de l'ingénieur, <b>Joigny</b>.</li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n\n\t<section class=\"mb-5 border-bottom pb-4\">\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-12\">\n\t\t\t\t<h2 class=\"section-title\">Expériences professionnelles</h2>\n\t\t\t\t<ul class=\"list-group list-group-flush\">\n\t\t\t\t\t<li class=\"list-group-item my-2\">\n\t\t\t\t\t\t<strong>2024 - 2025 : Habitat et Humanisme</strong> – <em>Alternance, Caluire-et-Cuire</em>\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li>Projet de fusion de deux applications : développement d'un script <b>Python</b> pour la\n\t\t\t\t\t\t\t\trécupération des données.</li>\n\t\t\t\t\t\t\t<li>Mise en place d'une base de données <b>PostgreSQL</b> pour le stockage des données.</li>\n\t\t\t\t\t\t\t<li>Développement d'une interface web <b>PHP</b> pour la vérification manuelle de la fusion\n\t\t\t\t\t\t\t\tdes\n\t\t\t\t\t\t\t\tdonnées.</li>\n\t\t\t\t\t\t\t<li>Création de formulaires <b>PowerApps</b> et automatisations <b>PowerAutomate</b>.</li>\n\t\t\t\t\t\t\t<li>Développement d'un script <b>C#</b> puis <b>PowerShell</b> : <b>compression</b>,\n\t\t\t\t\t\t\t\tcréation de fichiers <b>zip</b>,\n\t\t\t\t\t\t\t\tenvoi par <b>email</b>, upload via l'<b>API SharePoint</b>.</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class=\"list-group-item my-2\">\n\t\t\t\t\t\t<strong>2023 : Winciel</strong> – <em>Stage, Lyon</em>\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li>Développement d'un script <b>Bash</b> de déploiement de l'ERP sur les serveurs Linux\n\t\t\t\t\t\t\t\tclients.\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>Développement d'une interface en <b>C#</b> pour générer des étiquettes de transport sur\n\t\t\t\t\t\t\t\tune\n\t\t\t\t\t\t\t\tplateforme de logistique.</li>\n\t\t\t\t\t\t\t<li>Développement d'une solution de <b>protection</b> des serveurs en <b>PowerShell</b> et\n\t\t\t\t\t\t\t\t<b>SQL</b> pour\n\t\t\t\t\t\t\t\t<b>bloquer les adresses IP des potentiels hackers.</b>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class=\"list-group-item my-2\">\n\t\t\t\t\t\t<strong>2021 - 2022 : Conseil Départemental de l'Yonne</strong> – <em>Alternance, Perrigny</em>\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li><b>Veille des vulnérabilités</b> via les publications de l'<b>ANSSI</b> et <b>journaux\n\t\t\t\t\t\t\t\t\taméricains</b> sur la\n\t\t\t\t\t\t\t\tsécurité informatique.</li>\n\t\t\t\t\t\t\t<li>Redécouverte d'un environnement informatique utilisant <b>Active Directory</b> :\n\t\t\t\t\t\t\t\tconsultation et\n\t\t\t\t\t\t\t\tmodification des informations des ordinateurs et utilisateurs.</li>\n\t\t\t\t\t\t\t<li>Développement d'un programme pour <b>changer de réseau</b> entre le réseau du Conseil\n\t\t\t\t\t\t\t\tDépartemental et le réseau des\n\t\t\t\t\t\t\t\tcollèges, facilitant le développement et le support téléphonique.</li>\n\t\t\t\t\t\t\t<li>Développement d'un script <b>PowerShell</b> pour <b>prévenir via mail</b> les\n\t\t\t\t\t\t\t\tutilisateurs AD de l'<b>expiration</b>\n\t\t\t\t\t\t\t\tde leur <b>mot de passe</b>.</li>\n\t\t\t\t\t\t\t<li>Gestion d'une <b>solution d'emailing</b> de <b>prévention de phishing</b>.</li>\n\t\t\t\t\t\t\t<li><b>Pentesting</b> avec des <b>outils de découverte de vulnérabilités</b> et <b>patch de\n\t\t\t\t\t\t\t\t\tserveurs vulnérables</b>.</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class=\"list-group-item\">\n\t\t\t\t\t\t<strong>2021 : Centre hospitalier d'Auxerre</strong> – <em>Stage, avril-juin, Auxerre</em>\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li>Support téléphonique.</li>\n\t\t\t\t\t\t\t<li>Préparation de PC puis ajout automatique dans un domaine AD via SCCM.</li>\n\t\t\t\t\t\t\t<li>Écriture d'un script <b>PowerShell</b> de vérification des différents points de\n\t\t\t\t\t\t\t\tl'installation.\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>Découverte du logiciel GLPI de gestion de tickets.</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n\n\t<section>\n\t\t<h2 class=\"section-title\">Compétences</h2>\n\t\t<div class=\"row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4\">\n\t\t\t<div class=\"col\">\n\t\t\t\t<div class=\"card h-100 shadow-sm\">\n\t\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t\t<h3 class=\"card-title\">Langages de programmation</h3>\n\t\t\t\t\t\t<ul class=\"list-group list-group-flush\">\n\t\t\t\t\t\t\t<li class=\"list-group-item\">\n\t\t\t\t\t\t\t\tC#\n\t\t\t\t\t\t\t\t<span class=\"skill-detail\">.NET Core, ASP.NET Core</span>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">PHP</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">HTML, CSS</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">JavaScript, TypeScript</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">\n\t\t\t\t\t\t\t\tSQL\n\t\t\t\t\t\t\t\t<span class=\"skill-detail\">PostgreSQL, MySQL, MariaDB</span>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Python</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">PowerShell</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Bash</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Dockerfile</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">C++</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"col\">\n\t\t\t\t<div class=\"card h-100 shadow-sm\">\n\t\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t\t<h3 class=\"card-title\">Autres compétences et connaissances</h3>\n\t\t\t\t\t\t<ul class=\"list-group list-group-flush\">\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Entity Framework</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">REST APIs</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Angular</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">.NET WinForms</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">ASP.NET MVC</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">ASP.NET Web API</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Zend Framework MVC</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Flux RSS</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Certificats</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">DNS</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"col\">\n\t\t\t\t<div class=\"card h-100 shadow-sm\">\n\t\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t\t<h3 class=\"card-title\">Outils utilisés</h3>\n\t\t\t\t\t\t<ul class=\"list-group list-group-flush\">\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Visual Studio, Visual Studio Code</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Git, GitHub, GitLab</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">MS Copilot, Github Copilot, Claude</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Docker</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Postman</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Jira, Trello</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Figma</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Burp Suite, Nmap</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Suite Microsoft Office + MS Visio</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Linux (Ubuntu, Debian, Kali)</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Windows (Desktop, et Server)</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"col\">\n\t\t\t\t<div class=\"card h-100 shadow-sm\">\n\t\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t\t<h3 class=\"card-title\">Langues parlées</h3>\n\t\t\t\t\t\t<ul class=\"list-group list-group-flush\">\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Français (natif)</li>\n\t\t\t\t\t\t\t<li class=\"list-group-item\">Anglais (courant et technique)</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n</div>"
+          },
+          {
+           "name": "cv.component.scss",
+           "path": "portfolio-web/src/app/cv/cv.component.scss",
+           "type": "file",
+           "size": 953,
+           "content": ":host {\n\tdisplay: block;\n}\n\nsection {\n\tmargin-bottom: 2.5rem;\n}\n\n.lead {\n\tmax-width: 75ch;\n\tfont-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);\n\tline-height: 1.7;\n\tcolor: var(--maincolor);\n}\n\n.list-group-item {\n\tbackground-color: transparent;\n\tcolor: var(--maincolor);\n\tline-height: 1.6;\n}\n\n/* Expériences : la liste à puces garde une marge lisible sur mobile */\n.list-group-item ul {\n\tpadding-left: 1.25rem;\n\tmargin: 0.5rem 0 0;\n}\n\n.list-group-item ul li + li {\n\tmargin-top: 0.25rem;\n}\n\n.card {\n\tbackground-color: var(--cardcolor) !important;\n}\n\n.card-title {\n\tcolor: var(--mynameiscolor);\n\tfont-size: 1.15rem;\n\tfont-weight: 600;\n\tmargin-bottom: 0.5rem;\n}\n\n.card .list-group-item {\n\tpadding-left: 0;\n\tpadding-right: 0;\n}\n\n/* Précisions sous une compétence (frameworks, SGBD...) : texte discret plutôt que des badges */\n.skill-detail {\n\tdisplay: block;\n\tfont-size: 0.875rem;\n\tcolor: var(--subheading-color);\n\tline-height: 1.4;\n\tmargin-top: 0.15rem;\n}\n"
+          },
+          {
+           "name": "cv.component.spec.ts",
+           "path": "portfolio-web/src/app/cv/cv.component.spec.ts",
+           "type": "file",
+           "size": 587,
+           "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\n\nimport { CVComponent } from './cv.component';\n\ndescribe('CVComponent', () => {\n  let component: CVComponent;\n  let fixture: ComponentFixture<CVComponent>;\n\n  beforeEach(async () => {\n    await TestBed.configureTestingModule({\n      imports: [CVComponent]\n    })\n    .compileComponents();\n\n    fixture = TestBed.createComponent(CVComponent);\n    component = fixture.componentInstance;\n    fixture.detectChanges();\n  });\n\n  it('should create', () => {\n    expect(component).toBeTruthy();\n  });\n});\n"
+          },
+          {
+           "name": "cv.component.ts",
+           "path": "portfolio-web/src/app/cv/cv.component.ts",
+           "type": "file",
+           "size": 210,
+           "content": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-cv',\n  imports: [],\n  templateUrl: './cv.component.html',\n  styleUrl: './cv.component.scss'\n})\nexport class CVComponent {\n\n}\n"
+          }
+         ]
+        },
+        {
+         "name": "footer",
+         "path": "portfolio-web/src/app/footer",
+         "type": "directory",
+         "children": [
+          {
+           "name": "footer.component.html",
+           "path": "portfolio-web/src/app/footer/footer.component.html",
+           "type": "file",
+           "size": 385,
+           "content": "<footer class=\"main-footer\">\n  <div class=\"footer-container\">\n    <span>© {{ currentYear }} Jules ROTILIO</span>\n    <label class=\"theme-switch\">\n      <input type=\"checkbox\" (change)=\"toggleTheme($event)\" [checked]=\"isDark\" />\n      <span class=\"slider\"></span>\n      <span class=\"theme-label\">Thème {{ isDark ? 'Sombre' : 'Clair' }} </span>\n    </label>\n  </div>\n</footer>"
+          },
+          {
+           "name": "footer.component.scss",
+           "path": "portfolio-web/src/app/footer/footer.component.scss",
+           "type": "file",
+           "size": 1408,
+           "content": ".main-footer {\n  background: #30135f;\n  color: white;\n  padding: 1rem clamp(1rem, 4vw, 2rem);\n  text-align: center;\n  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);\n\n  .footer-container {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 0.75rem 2rem;\n    flex-wrap: wrap;\n  }\n\n  .theme-switch {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    cursor: pointer;\n\n    /* Caché visuellement mais toujours accessible au clavier et aux lecteurs d'écran */\n    input[type=\"checkbox\"] {\n      position: absolute;\n      opacity: 0;\n      width: 1px;\n      height: 1px;\n    }\n\n    input[type=\"checkbox\"]:focus-visible + .slider {\n      outline: 2px solid #fff;\n      outline-offset: 2px;\n    }\n\n    .slider {\n      width: 40px;\n      height: 20px;\n      background: #888;\n      border-radius: 10px;\n      position: relative;\n      transition: background 0.3s;\n    }\n\n    .slider::before {\n      content: '';\n      position: absolute;\n      left: 2px;\n      top: 2px;\n      width: 16px;\n      height: 16px;\n      background: #fff;\n      border-radius: 50%;\n      transition: transform 0.3s;\n    }\n\n    input[type=\"checkbox\"]:checked+.slider {\n      background: #222;\n    }\n\n    input[type=\"checkbox\"]:checked+.slider::before {\n      transform: translateX(20px);\n      background: #f357a8;\n    }\n\n    .theme-label {\n      font-size: 0.9rem;\n      color: #fff;\n    }\n  }\n}"
+          },
+          {
+           "name": "footer.component.spec.ts",
+           "path": "portfolio-web/src/app/footer/footer.component.spec.ts",
+           "type": "file",
+           "size": 2009,
+           "content": "import { TestBed } from '@angular/core/testing';\nimport { FooterComponent } from './footer.component';\n\ndescribe('FooterComponent', () => {\n  beforeEach(async () => {\n    localStorage.removeItem('theme');\n    await TestBed.configureTestingModule({ imports: [FooterComponent] }).compileComponents();\n  });\n\n  afterEach(() => {\n    localStorage.removeItem('theme');\n    document.body.classList.remove('dark-theme', 'white-theme');\n  });\n\n  function toggle(checked: boolean) {\n    const fixture = TestBed.createComponent(FooterComponent);\n    fixture.detectChanges();\n    const input = (fixture.nativeElement as HTMLElement).querySelector('input[type=\"checkbox\"]') as HTMLInputElement;\n    input.checked = checked;\n    input.dispatchEvent(new Event('change'));\n    fixture.detectChanges();\n    return fixture;\n  }\n\n  it('passe en thème sombre et mémorise le choix', () => {\n    const fixture = toggle(true);\n\n    expect(document.body.classList).toContain('dark-theme');\n    expect(document.body.classList).not.toContain('white-theme');\n    expect(localStorage.getItem('theme')).toBe('dark');\n    expect((fixture.nativeElement as HTMLElement).textContent).toContain('Thème Sombre');\n  });\n\n  it('repasse en thème clair et mémorise le choix', () => {\n    toggle(false);\n\n    expect(document.body.classList).toContain('white-theme');\n    expect(document.body.classList).not.toContain('dark-theme');\n    expect(localStorage.getItem('theme')).toBe('white');\n  });\n\n  it('réapplique le thème mémorisé au chargement', () => {\n    localStorage.setItem('theme', 'dark');\n    const fixture = TestBed.createComponent(FooterComponent);\n\n    expect(fixture.componentInstance.isDark).toBeTrue();\n    expect(document.body.classList).toContain('dark-theme');\n  });\n\n  it('affiche l\\'année en cours', () => {\n    const fixture = TestBed.createComponent(FooterComponent);\n    fixture.detectChanges();\n\n    expect((fixture.nativeElement as HTMLElement).textContent).toContain(`© ${new Date().getFullYear()}`);\n  });\n});\n"
+          },
+          {
+           "name": "footer.component.ts",
+           "path": "portfolio-web/src/app/footer/footer.component.ts",
+           "type": "file",
+           "size": 1063,
+           "content": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-footer',\n  templateUrl: './footer.component.html',\n  styleUrl: './footer.component.scss'\n})\nexport class FooterComponent {\n  isDark = false;\n  currentYear = new Date().getFullYear();\n\n  constructor() {\n    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {\n      const saved = localStorage.getItem('theme');\n      this.isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);\n    }\n    this.applyTheme();\n  }\n\n  toggleTheme(event: Event) {\n    this.isDark = (event.target as HTMLInputElement).checked;\n    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {\n      localStorage.setItem('theme', this.isDark ? 'dark' : 'white');\n    }\n    this.applyTheme();\n  }\n\n  applyTheme() {\n    if (typeof document !== 'undefined') {\n      document.body.classList.toggle('dark-theme', this.isDark);\n      document.body.classList.toggle('white-theme', !this.isDark);\n    }\n  }\n}"
+          }
+         ]
+        },
+        {
+         "name": "header",
+         "path": "portfolio-web/src/app/header",
+         "type": "directory",
+         "children": [
+          {
+           "name": "header.component.html",
+           "path": "portfolio-web/src/app/header/header.component.html",
+           "type": "file",
+           "size": 866,
+           "content": "<header class=\"main-header\">\n  <div class=\"container\">\n    <span class=\"logo\">Jules ROTILIO</span>\n    <nav>\n      <ul class=\"nav nav-pills\">\n        <li class=\"nav-item\">\n          <a routerLink=\"/\" routerLinkActive=\"a-active\" [routerLinkActiveOptions]=\"{ exact: true }\"\n            class=\"nav-link\">\n            Accueil\n          </a>\n        </li>\n        <li class=\"nav-item\">\n          <a routerLink=\"/cv\" routerLinkActive=\"a-active\" class=\"nav-link\">\n            CV\n          </a>\n        </li>\n        <li class=\"nav-item\">\n          <a routerLink=\"/projets\" routerLinkActive=\"a-active\" class=\"nav-link\">\n            Mes Projets\n          </a>\n        </li>\n        <li class=\"nav-item\">\n          <a routerLink=\"/contact\" routerLinkActive=\"a-active\" class=\"nav-link\">\n            Contact\n          </a>\n        </li>\n      </ul>\n    </nav>\n  </div>\n</header>"
+          },
+          {
+           "name": "header.component.scss",
+           "path": "portfolio-web/src/app/header/header.component.scss",
+           "type": "file",
+           "size": 1743,
+           "content": ":host {\n  display: block;\n  position: sticky;\n  top: 0;\n  z-index: 1000;\n  background: linear-gradient(45deg, #30135f 0%, #792a53 50%, #30135f 100%);\n  color: white;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n}\n\n/* Même largeur et mêmes marges que le contenu des pages */\n.container {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 1rem;\n  max-width: 1140px;\n  margin: 0 auto;\n  padding: 0.9rem clamp(1rem, 4vw, 2rem);\n}\n\n.logo {\n  font-family: Roboto, sans-serif;\n  font-weight: bold;\n  font-size: 1.5rem;\n  letter-spacing: 1px;\n  white-space: nowrap;\n}\n\n.nav {\n  display: flex;\n  flex-wrap: nowrap;\n  gap: 0.5rem;\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n.nav-link {\n  position: relative;\n  padding: 0.4rem 0.75rem;\n  color: white;\n  text-decoration: none;\n  white-space: nowrap;\n\n  /* Soulignement animé au survol */\n  &::after {\n    content: '';\n    position: absolute;\n    left: 0.75rem;\n    right: 0.75rem;\n    bottom: 0;\n    height: 2px;\n    background: white;\n    transform: scaleX(0);\n    transition: transform 0.25s ease;\n  }\n\n  &:hover,\n  &:focus-visible {\n    color: rgba(255, 255, 255, 0.85);\n  }\n\n  &:hover::after,\n  &.a-active::after {\n    transform: scaleX(1);\n  }\n}\n\n.a-active {\n  color: white !important;\n  font-weight: 600;\n}\n\n/* Mobile : nom sur une ligne, liens sur une seule ligne en dessous */\n@media (max-width: 767.98px) {\n  .container {\n    flex-direction: column;\n    gap: 0.4rem;\n    padding-top: 0.6rem;\n    padding-bottom: 0.4rem;\n  }\n\n  .logo {\n    font-size: 1.25rem;\n  }\n\n  .nav {\n    gap: 0;\n    justify-content: center;\n  }\n\n  .nav-link {\n    padding: 0.4rem 0.6rem;\n    font-size: 0.95rem;\n\n    &::after {\n      left: 0.6rem;\n      right: 0.6rem;\n    }\n  }\n}\n"
+          },
+          {
+           "name": "header.component.spec.ts",
+           "path": "portfolio-web/src/app/header/header.component.spec.ts",
+           "type": "file",
+           "size": 792,
+           "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\nimport { provideRouter } from '@angular/router';\nimport { HeaderComponent } from './header.component';\n\ndescribe('HeaderComponent', () => {\n  let fixture: ComponentFixture<HeaderComponent>;\n\n  beforeEach(async () => {\n    await TestBed.configureTestingModule({\n      imports: [HeaderComponent],\n      providers: [provideRouter([])],\n    }).compileComponents();\n\n    fixture = TestBed.createComponent(HeaderComponent);\n    fixture.detectChanges();\n  });\n\n  it('propose un lien vers chaque page du site', () => {\n    const links = Array.from((fixture.nativeElement as HTMLElement).querySelectorAll('nav a'))\n      .map((a) => a.getAttribute('href'));\n\n    expect(links).toEqual(['/', '/cv', '/projets', '/contact']);\n  });\n});\n"
+          },
+          {
+           "name": "header.component.ts",
+           "path": "portfolio-web/src/app/header/header.component.ts",
+           "type": "file",
+           "size": 316,
+           "content": "import { Component } from '@angular/core';\nimport { RouterLink, RouterLinkActive } from '@angular/router';\n\n@Component({\n  selector: 'app-header',\n  imports: [RouterLink, RouterLinkActive],\n  templateUrl: './header.component.html',\n  styleUrl: './header.component.scss',\n})\nexport class HeaderComponent {}\n"
+          }
+         ]
+        },
+        {
+         "name": "home",
+         "path": "portfolio-web/src/app/home",
+         "type": "directory",
+         "children": [
+          {
+           "name": "home.component.html",
+           "path": "portfolio-web/src/app/home/home.component.html",
+           "type": "file",
+           "size": 754,
+           "content": "<section class=\"hero\">\n\t<p class=\"name\">Bonjour, mon nom est</p>\n\n\t<h1 class=\"big-heading\">Jules ROTILIO.</h1>\n\t<h2 class=\"big-heading subtitle\">Je crée des applications.</h2>\n\n\t<p class=\"description\">\n\t\tJe suis un développeur backend, desktop et web.<br/>\n\t\tJ'adore les automatisations, et créer des applications.<br/>\n\t\tQuelles que soient les besoins d'un instant ou les idées qui me traversent l'esprit,\n\t\tje suis tout à fait capable de les transformer en solutions numériques.<br/>\n\t\tCar avant d'être mon métier, c'est ma passion.\n\t</p>\n\n\t<div class=\"actions\">\n\t\t<a routerLink=\"/projets\" class=\"btn btn-primary btn-lg\">Voir mes projets</a>\n\t\t<a routerLink=\"/contact\" class=\"btn btn-outline-primary btn-lg\">Me contacter</a>\n\t</div>\n</section>\n"
+          },
+          {
+           "name": "home.component.scss",
+           "path": "portfolio-web/src/app/home/home.component.scss",
+           "type": "file",
+           "size": 1856,
+           "content": ":host {\n\tdisplay: block;\n\n\t--font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;\n}\n\n/* Centré verticalement sur grand écran, sans espace vide inutile sur mobile */\n.hero {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\tgap: 1.25rem;\n\tmin-height: min(70vh, 640px);\n}\n\n.name {\n\tcolor: var(--mynameiscolor);\n\tfont-family: var(--font-mono);\n\tfont-weight: 700;\n\tfont-size: clamp(1rem, 0.8rem + 1vw, 1.5rem);\n}\n\n.big-heading {\n\tmargin: 0;\n\tfont-weight: 600;\n\tline-height: 1.1;\n\tfont-size: clamp(2.5rem, 1.5rem + 5vw, 5rem);\n}\n\n.subtitle {\n\tcolor: var(--subheading-color);\n}\n\n/* ~65 caractères par ligne : la longueur la plus confortable à lire */\n.description {\n\tmax-width: 65ch;\n\tmargin-top: 0.75rem;\n\tfont-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);\n\tline-height: 1.6;\n\tcolor: var(--maincolor);\n}\n\n.actions {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tgap: 0.75rem;\n\tmargin-top: 1rem;\n}\n\n/* Boutons aux couleurs du site */\n.btn-primary {\n\t--bs-btn-color: var(--on-accent);\n\t--bs-btn-disabled-color: var(--on-accent);\n\t--bs-btn-hover-color: #fff;\n\t--bs-btn-active-color: #fff;\n\t--bs-btn-bg: var(--mynameiscolor);\n\t--bs-btn-border-color: var(--mynameiscolor);\n\t--bs-btn-hover-bg: #792a53;\n\t--bs-btn-hover-border-color: #792a53;\n\t--bs-btn-active-bg: #792a53;\n\t--bs-btn-active-border-color: #792a53;\n}\n\n.btn-outline-primary {\n\t--bs-btn-color: var(--mynameiscolor);\n\t--bs-btn-border-color: var(--mynameiscolor);\n\t--bs-btn-hover-color: var(--on-accent);\n\t--bs-btn-active-color: var(--on-accent);\n\t--bs-btn-hover-bg: var(--mynameiscolor);\n\t--bs-btn-hover-border-color: var(--mynameiscolor);\n\t--bs-btn-active-bg: var(--mynameiscolor);\n\t--bs-btn-active-border-color: var(--mynameiscolor);\n}\n\n/* Mobile : boutons pleine largeur, plus faciles à toucher */\n@media (max-width: 575.98px) {\n\t.actions .btn {\n\t\tflex: 1 1 100%;\n\t}\n}\n"
+          },
+          {
+           "name": "home.component.spec.ts",
+           "path": "portfolio-web/src/app/home/home.component.spec.ts",
+           "type": "file",
+           "size": 769,
+           "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\nimport { provideRouter } from '@angular/router';\nimport { HomeComponent } from './home.component';\n\ndescribe('HomeComponent', () => {\n  let fixture: ComponentFixture<HomeComponent>;\n\n  beforeEach(async () => {\n    await TestBed.configureTestingModule({\n      imports: [HomeComponent],\n      providers: [provideRouter([])],\n    }).compileComponents();\n\n    fixture = TestBed.createComponent(HomeComponent);\n    fixture.detectChanges();\n  });\n\n  it('mène vers les projets et le contact', () => {\n    const links = Array.from((fixture.nativeElement as HTMLElement).querySelectorAll('.actions a'))\n      .map((a) => a.getAttribute('href'));\n\n    expect(links).toEqual(['/projets', '/contact']);\n  });\n});\n"
+          },
+          {
+           "name": "home.component.ts",
+           "path": "portfolio-web/src/app/home/home.component.ts",
+           "type": "file",
+           "size": 263,
+           "content": "import { Component } from '@angular/core';\nimport { RouterLink } from '@angular/router';\n\n@Component({\n  selector: 'app-home',\n  imports: [RouterLink],\n  templateUrl: './home.component.html',\n  styleUrl: './home.component.scss'\n})\nexport class HomeComponent {\n\n}\n"
+          }
+         ]
+        },
+        {
+         "name": "models",
+         "path": "portfolio-web/src/app/models",
+         "type": "directory",
+         "children": [
+          {
+           "name": "project.ts",
+           "path": "portfolio-web/src/app/models/project.ts",
+           "type": "file",
+           "size": 1489,
+           "content": "/** Projet tel que renvoyé par GET /api/projects (carte de la page « Mes projets »). */\nexport interface Project {\n  id: number;\n  name: string;\n  /** Description courte, affichée sur la carte. */\n  description: string;\n  technologies: string[];\n}\n\n/**\n * Détail d'un projet, affiché dans la fenêtre du projet.\n * Contrat prévu pour GET /api/projects/{id} (voir docs/api-project-details.md).\n */\nexport interface ProjectDetails extends Project {\n  /** Description longue : paragraphes séparés par une ligne vide, lignes « - » pour les listes. */\n  longDescription: string;\n  /** Aperçus de l'application, générés à l'avance. */\n  images: ProjectImage[];\n  /** Arborescence des fichiers sources. */\n  files: ProjectFileNode[];\n  /** Lien de téléchargement de l'archive .zip, renseigné seulement si le projet l'autorise explicitement. */\n  zipUrl?: string | null;\n  /** Lien vers le dépôt public, s'il existe. */\n  repoUrl?: string | null;\n}\n\nexport interface ProjectImage {\n  url: string;\n  alt: string;\n  caption?: string;\n}\n\nexport interface ProjectFileNode {\n  name: string;\n  /** Chemin depuis la racine du projet, séparé par « / ». */\n  path: string;\n  type: 'file' | 'directory';\n  /** Taille en octets (fichiers). */\n  size?: number;\n  /** Contenu texte du fichier ; absent pour les fichiers binaires ou trop volumineux. */\n  content?: string | null;\n  /** URL du fichier brut (images, binaires). */\n  url?: string | null;\n  children?: ProjectFileNode[];\n}\n"
+          }
+         ]
+        },
+        {
+         "name": "projets",
+         "path": "portfolio-web/src/app/projets",
+         "type": "directory",
+         "children": [
+          {
+           "name": "file-browser",
+           "path": "portfolio-web/src/app/projets/file-browser",
+           "type": "directory",
+           "children": [
+            {
+             "name": "file-browser.component.html",
+             "path": "portfolio-web/src/app/projets/file-browser/file-browser.component.html",
+             "type": "file",
+             "size": 2719,
+             "content": "@if (tree.length) {\n\t<div class=\"file-browser\">\n\t\t<nav class=\"tree\" aria-label=\"Fichiers du projet\">\n\t\t\t<ul role=\"tree\">\n\t\t\t\t<ng-container *ngTemplateOutlet=\"nodes; context: { $implicit: tree, depth: 0 }\"></ng-container>\n\t\t\t</ul>\n\t\t</nav>\n\n\t\t<section class=\"viewer\" aria-live=\"polite\">\n\t\t\t@if (selected) {\n\t\t\t\t<header class=\"viewer-header\">\n\t\t\t\t\t<span class=\"breadcrumb-path\">\n\t\t\t\t\t\t@for (part of breadcrumb; track $index; let last = $last) {\n\t\t\t\t\t\t\t@if (last) {\n\t\t\t\t\t\t\t\t<strong>{{ part }}</strong>\n\t\t\t\t\t\t\t} @else {\n\t\t\t\t\t\t\t\t<span>{{ part }}</span><span class=\"sep\">/</span>\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t</span>\n\t\t\t\t\t<span class=\"meta\">\n\t\t\t\t\t\t@if (selected.content) {\n\t\t\t\t\t\t\t{{ lines.length }} lignes ·\n\t\t\t\t\t\t}\n\t\t\t\t\t\t{{ formatSize(selected.size) }}\n\t\t\t\t\t</span>\n\t\t\t\t</header>\n\t\t\t\t@if (selected.content) {\n\t\t\t\t\t<div class=\"code\">\n\t\t\t\t\t\t<table>\n\t\t\t\t\t\t\t<tbody>\n\t\t\t\t\t\t\t\t@for (line of lines; track $index) {\n\t\t\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t\t\t<td class=\"line-number\">{{ $index + 1 }}</td>\n\t\t\t\t\t\t\t\t\t\t<td class=\"line\"><pre>{{ line }}</pre></td>\n\t\t\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t</tbody>\n\t\t\t\t\t\t</table>\n\t\t\t\t\t</div>\n\t\t\t\t} @else if (isImage(selected)) {\n\t\t\t\t\t<div class=\"image-preview\"><img [src]=\"selected.url\" [alt]=\"selected.name\" loading=\"lazy\" /></div>\n\t\t\t\t} @else {\n\t\t\t\t\t<p class=\"empty\"><i class=\"bi bi-eye-slash\" aria-hidden=\"true\"></i> Aperçu non disponible pour ce fichier.</p>\n\t\t\t\t}\n\t\t\t} @else {\n\t\t\t\t<p class=\"empty\"><i class=\"bi bi-hand-index\" aria-hidden=\"true\"></i> Sélectionnez un fichier pour afficher son contenu.</p>\n\t\t\t}\n\t\t</section>\n\t</div>\n} @else {\n\t<p class=\"no-files\"><i class=\"bi bi-folder-x\" aria-hidden=\"true\"></i> Les fichiers de ce projet ne sont pas encore disponibles.</p>\n}\n\n<ng-template #nodes let-list let-depth=\"depth\">\n\t@for (node of list; track node.path) {\n\t\t<li role=\"treeitem\" [attr.aria-expanded]=\"node.type === 'directory' ? expanded.has(node.path) : null\"\n\t\t\t[attr.aria-selected]=\"node === selected\">\n\t\t\t<button type=\"button\" class=\"node\" [class.active]=\"node === selected\" [style.padding-left.rem]=\"0.5 + depth * 1\"\n\t\t\t\t(click)=\"toggle(node)\">\n\t\t\t\t@if (node.type === 'directory') {\n\t\t\t\t\t<i class=\"bi chevron\" [class.bi-chevron-down]=\"expanded.has(node.path)\" [class.bi-chevron-right]=\"!expanded.has(node.path)\" aria-hidden=\"true\"></i>\n\t\t\t\t} @else {\n\t\t\t\t\t<span class=\"chevron\"></span>\n\t\t\t\t}\n\t\t\t\t<i class=\"bi {{ icon(node) }}\" [class.folder]=\"node.type === 'directory'\" aria-hidden=\"true\"></i>\n\t\t\t\t<span class=\"name\">{{ node.name }}</span>\n\t\t\t</button>\n\t\t\t@if (node.type === 'directory' && expanded.has(node.path)) {\n\t\t\t\t<ul role=\"group\">\n\t\t\t\t\t<ng-container *ngTemplateOutlet=\"nodes; context: { $implicit: node.children ?? [], depth: depth + 1 }\"></ng-container>\n\t\t\t\t</ul>\n\t\t\t}\n\t\t</li>\n\t}\n</ng-template>\n"
+            },
+            {
+             "name": "file-browser.component.scss",
+             "path": "portfolio-web/src/app/projets/file-browser/file-browser.component.scss",
+             "type": "file",
+             "size": 2087,
+             "content": ":host {\n\tdisplay: block;\n}\n\n.file-browser {\n\tdisplay: grid;\n\tgrid-template-columns: minmax(180px, 260px) 1fr;\n\tmin-height: 320px;\n\tmax-height: 520px;\n}\n\n.tree {\n\toverflow: auto;\n\tborder-right: 1px solid var(--gh-border);\n\tpadding: 0.5rem 0;\n\n\tul {\n\t\tlist-style: none;\n\t\tmargin: 0;\n\t\tpadding: 0;\n\t}\n}\n\n.node {\n\tdisplay: flex;\n\talign-items: center;\n\tgap: 0.35rem;\n\twidth: 100%;\n\tborder: 0;\n\tbackground: none;\n\tcolor: inherit;\n\ttext-align: left;\n\tfont-size: 0.875rem;\n\tpadding: 0.2rem 0.5rem;\n\tborder-radius: 6px;\n\twhite-space: nowrap;\n\n\t&:hover {\n\t\tbackground: var(--gh-hover);\n\t}\n\n\t&.active {\n\t\tbackground: var(--gh-hover);\n\t\tfont-weight: 600;\n\t}\n\n\t&:focus-visible {\n\t\toutline: 2px solid var(--mynameiscolor);\n\t\toutline-offset: -2px;\n\t}\n}\n\n.chevron {\n\twidth: 0.9rem;\n\tfont-size: 0.7rem;\n\tflex-shrink: 0;\n}\n\n.folder {\n\tcolor: #54aeff;\n}\n\n.name {\n\toverflow: hidden;\n\ttext-overflow: ellipsis;\n}\n\n.viewer {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmin-width: 0;\n\toverflow: hidden;\n}\n\n.viewer-header {\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tgap: 1rem;\n\tflex-wrap: wrap;\n\tpadding: 0.5rem 1rem;\n\tborder-bottom: 1px solid var(--gh-border);\n\tfont-size: 0.875rem;\n\n\t.sep {\n\t\tmargin: 0 0.25rem;\n\t\topacity: 0.6;\n\t}\n\n\t.meta {\n\t\topacity: 0.7;\n\t}\n}\n\n.code {\n\toverflow: auto;\n\tflex: 1;\n\tfont-family: ui-monospace, SFMono-Regular, Consolas, \"Liberation Mono\", monospace;\n\tfont-size: 0.8rem;\n\n\ttable {\n\t\tborder-collapse: collapse;\n\t}\n\n\t.line-number {\n\t\tpadding: 0 0.75rem;\n\t\ttext-align: right;\n\t\tuser-select: none;\n\t\topacity: 0.5;\n\t\tvertical-align: top;\n\t}\n\n\tpre {\n\t\tmargin: 0;\n\t\tpadding-right: 1rem;\n\t\tfont: inherit;\n\t\tcolor: inherit;\n\t\twhite-space: pre;\n\t}\n}\n\n.image-preview {\n\tpadding: 1rem;\n\ttext-align: center;\n\toverflow: auto;\n\n\timg {\n\t\tmax-width: 100%;\n\t}\n}\n\n.empty,\n.no-files {\n\tmargin: 0;\n\tpadding: 2rem 1rem;\n\ttext-align: center;\n\topacity: 0.75;\n}\n\n@media (max-width: 767.98px) {\n\t.file-browser {\n\t\tgrid-template-columns: 1fr;\n\t\tmax-height: none;\n\t}\n\n\t.tree {\n\t\tmax-height: 240px;\n\t\tborder-right: 0;\n\t\tborder-bottom: 1px solid var(--gh-border);\n\t}\n\n\t.code {\n\t\tmax-height: 360px;\n\t}\n}\n"
+            },
+            {
+             "name": "file-browser.component.spec.ts",
+             "path": "portfolio-web/src/app/projets/file-browser/file-browser.component.spec.ts",
+             "type": "file",
+             "size": 3041,
+             "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\nimport { FileBrowserComponent } from './file-browser.component';\nimport { ProjectFileNode } from '../../models/project';\n\nconst FILES: ProjectFileNode[] = [\n  { name: 'README.md', path: 'README.md', type: 'file', size: 12, content: '# Titre\\nTexte\\n' },\n  {\n    name: 'src', path: 'src', type: 'directory', children: [\n      { name: 'main.ts', path: 'src/main.ts', type: 'file', size: 30, content: 'console.log(1);\\nconsole.log(2);' },\n      { name: 'logo.png', path: 'src/logo.png', type: 'file', size: 2048, url: '/logo.png' },\n      { name: 'data.bin', path: 'src/data.bin', type: 'file', size: 10 },\n    ],\n  },\n];\n\ndescribe('FileBrowserComponent', () => {\n  let fixture: ComponentFixture<FileBrowserComponent>;\n  let element: HTMLElement;\n\n  function render(files: ProjectFileNode[]) {\n    fixture.componentRef.setInput('files', files);\n    fixture.detectChanges();\n  }\n\n  function names(): string[] {\n    return Array.from(element.querySelectorAll('.tree .name')).map((n) => n.textContent!.trim());\n  }\n\n  function click(name: string) {\n    const button = Array.from(element.querySelectorAll<HTMLButtonElement>('.tree .node')).find((b) => b.textContent!.trim() === name);\n    button!.click();\n    fixture.detectChanges();\n  }\n\n  beforeEach(async () => {\n    await TestBed.configureTestingModule({ imports: [FileBrowserComponent] }).compileComponents();\n    fixture = TestBed.createComponent(FileBrowserComponent);\n    element = fixture.nativeElement;\n  });\n\n  it('affiche les dossiers en premier et ouvre le README par défaut', () => {\n    render(FILES);\n\n    expect(names()).toEqual(['src', 'README.md']);\n    expect(element.querySelector('.viewer-header strong')?.textContent).toBe('README.md');\n    expect(Array.from(element.querySelectorAll('.line pre')).map((l) => l.textContent)).toEqual(['# Titre', 'Texte']);\n  });\n\n  it('déplie un dossier et affiche le fichier choisi avec ses numéros de ligne', () => {\n    render(FILES);\n    click('src');\n    expect(names()).toEqual(['src', 'data.bin', 'logo.png', 'main.ts', 'README.md']);\n\n    click('main.ts');\n    expect(element.querySelector('.breadcrumb-path')?.textContent?.replace(/\\s/g, '')).toBe('src/main.ts');\n    expect(Array.from(element.querySelectorAll('.line-number')).map((n) => n.textContent)).toEqual(['1', '2']);\n\n    click('src');\n    expect(names()).toEqual(['src', 'README.md']);\n  });\n\n  it('affiche les images et signale les fichiers sans aperçu', () => {\n    render(FILES);\n    click('src');\n\n    click('logo.png');\n    expect(element.querySelector('.image-preview img')?.getAttribute('src')).toBe('/logo.png');\n\n    click('data.bin');\n    expect(element.querySelector('.viewer .empty')?.textContent).toContain('Aperçu non disponible');\n  });\n\n  it('indique quand le projet n\\'a pas encore de fichiers', () => {\n    render([]);\n\n    expect(element.querySelector('.tree')).toBeNull();\n    expect(element.querySelector('.no-files')?.textContent).toContain('pas encore disponibles');\n  });\n});\n"
+            },
+            {
+             "name": "file-browser.component.ts",
+             "path": "portfolio-web/src/app/projets/file-browser/file-browser.component.ts",
+             "type": "file",
+             "size": 2712,
+             "content": "import { Component, Input } from '@angular/core';\nimport { NgTemplateOutlet } from '@angular/common';\nimport { ProjectFileNode } from '../../models/project';\n\nconst IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'ico'];\n\n/** Explorateur de fichiers façon GitHub : arborescence dépliable à gauche, contenu du fichier à droite. */\n@Component({\n  selector: 'app-file-browser',\n  imports: [NgTemplateOutlet],\n  templateUrl: './file-browser.component.html',\n  styleUrl: './file-browser.component.scss'\n})\nexport class FileBrowserComponent {\n  tree: ProjectFileNode[] = [];\n  expanded = new Set<string>();\n  selected: ProjectFileNode | null = null;\n\n  @Input() set files(files: ProjectFileNode[]) {\n    this.tree = sortNodes(files ?? []);\n    this.expanded.clear();\n    // Comme sur GitHub, le README racine est ouvert par défaut\n    this.selected = this.tree.find((n) => n.type === 'file' && !!n.content && /^readme(\\.|$)/i.test(n.name)) ?? null;\n  }\n\n  toggle(node: ProjectFileNode): void {\n    if (node.type === 'directory') {\n      if (this.expanded.has(node.path)) {\n        this.expanded.delete(node.path);\n      } else {\n        this.expanded.add(node.path);\n      }\n    } else {\n      this.selected = node;\n    }\n  }\n\n  get breadcrumb(): string[] {\n    return this.selected ? this.selected.path.split('/') : [];\n  }\n\n  get lines(): string[] {\n    return this.selected?.content?.replace(/\\n$/, '').split('\\n') ?? [];\n  }\n\n  isImage(node: ProjectFileNode): boolean {\n    return !!node.url && IMAGE_EXTENSIONS.includes(extension(node.name));\n  }\n\n  icon(node: ProjectFileNode): string {\n    if (node.type === 'directory') {\n      return this.expanded.has(node.path) ? 'bi-folder2-open' : 'bi-folder-fill';\n    }\n    const ext = extension(node.name);\n    if (IMAGE_EXTENSIONS.includes(ext)) return 'bi-file-earmark-image';\n    if (ext === 'md') return 'bi-file-earmark-text';\n    if (['json', 'yml', 'yaml', 'xml', 'csproj', 'sln', 'conf'].includes(ext)) return 'bi-file-earmark-code';\n    return 'bi-file-earmark';\n  }\n\n  formatSize(bytes?: number): string {\n    if (bytes == null) return '';\n    if (bytes < 1024) return `${bytes} o`;\n    return `${(bytes / 1024).toFixed(1).replace('.', ',')} Ko`;\n  }\n}\n\nfunction extension(name: string): string {\n  const dot = name.lastIndexOf('.');\n  return dot > 0 ? name.slice(dot + 1).toLowerCase() : '';\n}\n\n/** Dossiers d'abord, puis ordre alphabétique, comme sur GitHub. */\nfunction sortNodes(nodes: ProjectFileNode[]): ProjectFileNode[] {\n  return [...nodes]\n    .map((n) => (n.children ? { ...n, children: sortNodes(n.children) } : n))\n    .sort((a, b) => (a.type === b.type ? a.name.localeCompare(b.name) : a.type === 'directory' ? -1 : 1));\n}\n"
+            }
+           ]
+          },
+          {
+           "name": "project-details",
+           "path": "portfolio-web/src/app/projets/project-details",
+           "type": "directory",
+           "children": [
+            {
+             "name": "project-details.component.html",
+             "path": "portfolio-web/src/app/projets/project-details/project-details.component.html",
+             "type": "file",
+             "size": 3552,
+             "content": "<div class=\"backdrop\" (click)=\"close()\"></div>\n<div class=\"dialog\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"project-details-title\">\n\t<header class=\"repo-header\">\n\t\t<h2 id=\"project-details-title\" class=\"repo-title\">\n\t\t\t<i class=\"bi bi-journal-code\" aria-hidden=\"true\"></i>\n\t\t\t<span class=\"owner\">jules-rotilio</span><span class=\"sep\">/</span><strong>{{ project.name }}</strong>\n\t\t</h2>\n\t\t<button #closeButton type=\"button\" class=\"btn-close-gh\" aria-label=\"Fermer\" (click)=\"close()\">\n\t\t\t<i class=\"bi bi-x-lg\" aria-hidden=\"true\"></i>\n\t\t</button>\n\t</header>\n\n\t<div class=\"repo-body\">\n\t\t@if (details) {\n\t\t\t<div class=\"main\">\n\t\t\t\t<div class=\"toolbar\">\n\t\t\t\t\t<span class=\"file-count\"><i class=\"bi bi-files\" aria-hidden=\"true\"></i> Fichiers sources</span>\n\t\t\t\t\t@if (details.zipUrl) {\n\t\t\t\t\t\t<a class=\"btn btn-code\" [href]=\"details.zipUrl\" download>\n\t\t\t\t\t\t\t<i class=\"bi bi-file-earmark-zip\" aria-hidden=\"true\"></i> Télécharger le .zip\n\t\t\t\t\t\t</a>\n\t\t\t\t\t}\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"box\">\n\t\t\t\t\t<app-file-browser [files]=\"details.files\"></app-file-browser>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"box readme\">\n\t\t\t\t\t<h3 class=\"box-title\"><i class=\"bi bi-book\" aria-hidden=\"true\"></i> README</h3>\n\t\t\t\t\t<div class=\"box-content\">\n\t\t\t\t\t\t@for (block of description; track $index) {\n\t\t\t\t\t\t\t@if (block.type === 'paragraph') {\n\t\t\t\t\t\t\t\t<p>{{ block.text }}</p>\n\t\t\t\t\t\t\t} @else {\n\t\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t\t@for (item of block.items; track $index) {\n\t\t\t\t\t\t\t\t\t\t<li>{{ item }}</li>\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\n\t\t\t\t\t\t@if (details.images.length) {\n\t\t\t\t\t\t\t<h4>Aperçus</h4>\n\t\t\t\t\t\t\t<figure class=\"gallery\">\n\t\t\t\t\t\t\t\t<div class=\"stage\">\n\t\t\t\t\t\t\t\t\t<img [src]=\"details.images[imageIndex].url\" [alt]=\"details.images[imageIndex].alt\" />\n\t\t\t\t\t\t\t\t\t@if (details.images.length > 1) {\n\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"nav prev\" aria-label=\"Image précédente\" (click)=\"showImage(imageIndex - 1)\">\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"bi bi-chevron-left\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"nav next\" aria-label=\"Image suivante\" (click)=\"showImage(imageIndex + 1)\">\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"bi bi-chevron-right\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t@if (details.images[imageIndex].caption) {\n\t\t\t\t\t\t\t\t\t<figcaption>{{ details.images[imageIndex].caption }}</figcaption>\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t@if (details.images.length > 1) {\n\t\t\t\t\t\t\t\t\t<div class=\"thumbnails\">\n\t\t\t\t\t\t\t\t\t\t@for (image of details.images; track image.url) {\n\t\t\t\t\t\t\t\t\t\t\t<button type=\"button\" [class.active]=\"$index === imageIndex\" [attr.aria-label]=\"image.alt\"\n\t\t\t\t\t\t\t\t\t\t\t\t[attr.aria-current]=\"$index === imageIndex\" (click)=\"showImage($index)\">\n\t\t\t\t\t\t\t\t\t\t\t\t<img [src]=\"image.url\" alt=\"\" loading=\"lazy\" />\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t</figure>\n\t\t\t\t\t\t}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t<aside class=\"about\">\n\t\t\t\t<h3>À propos</h3>\n\t\t\t\t<!-- Sans description longue, le texte est déjà dans le README : on ne le répète pas -->\n\t\t\t\t@if (details.longDescription !== details.description) {\n\t\t\t\t\t<p>{{ details.description }}</p>\n\t\t\t\t}\n\t\t\t\t@if (details.repoUrl) {\n\t\t\t\t\t<p><a [href]=\"details.repoUrl\" target=\"_blank\" rel=\"noopener\"><i class=\"bi bi-github\" aria-hidden=\"true\"></i> Voir le dépôt</a></p>\n\t\t\t\t}\n\t\t\t\t<ul class=\"topics\">\n\t\t\t\t\t@for (tech of details.technologies; track tech) {\n\t\t\t\t\t\t<li>{{ tech }}</li>\n\t\t\t\t\t}\n\t\t\t\t</ul>\n\t\t\t</aside>\n\t\t} @else {\n\t\t\t<div class=\"loading\" role=\"status\">\n\t\t\t\t<span class=\"spinner-border spinner-border-sm\" aria-hidden=\"true\"></span> Chargement du projet…\n\t\t\t</div>\n\t\t}\n\t</div>\n</div>\n"
+            },
+            {
+             "name": "project-details.component.scss",
+             "path": "portfolio-web/src/app/projets/project-details/project-details.component.scss",
+             "type": "file",
+             "size": 4071,
+             "content": ":host {\n\tposition: fixed;\n\tinset: 0;\n\tz-index: 1055;\n\tdisplay: flex;\n\talign-items: flex-start;\n\tjustify-content: center;\n\tpadding: clamp(0.5rem, 3vw, 2rem) clamp(0.5rem, 3vw, 1rem);\n\toverflow-y: auto;\n\n\t/* Couleurs « GitHub » qui suivent le thème clair/sombre du site */\n\t--gh-border: #d0d7de;\n\t--gh-hover: rgba(175, 184, 193, 0.2);\n\t--gh-subtle: #f6f8fa;\n}\n\n:host-context(body.dark-theme) {\n\t--gh-border: #3a3450;\n\t--gh-hover: rgba(177, 186, 196, 0.12);\n\t--gh-subtle: #231f33;\n}\n\n.backdrop {\n\tposition: fixed;\n\tinset: 0;\n\tbackground: rgba(0, 0, 0, 0.55);\n}\n\n.dialog {\n\tposition: relative;\n\twidth: 100%;\n\tmax-width: 1200px;\n\tbackground: var(--background-color);\n\tcolor: var(--maincolor);\n\tborder: 1px solid var(--gh-border);\n\tborder-radius: 12px;\n\tbox-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);\n}\n\n.repo-header {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: space-between;\n\tgap: 1rem;\n\tpadding: 1rem 1.25rem;\n\tbackground: var(--gh-subtle);\n\tborder-bottom: 1px solid var(--gh-border);\n\tborder-radius: 12px 12px 0 0;\n}\n\n.repo-title {\n\tmargin: 0;\n\tfont-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);\n\tfont-weight: 400;\n\toverflow-wrap: anywhere;\n\n\ti {\n\t\tmargin-right: 0.4rem;\n\t\topacity: 0.7;\n\t}\n\n\t.sep {\n\t\tmargin: 0 0.3rem;\n\t}\n\n\tstrong {\n\t\tcolor: var(--mynameiscolor);\n\t\tfont-weight: 600;\n\t}\n}\n\n.btn-close-gh {\n\tflex-shrink: 0;\n\tborder: 1px solid var(--gh-border);\n\tborder-radius: 6px;\n\tbackground: none;\n\tcolor: inherit;\n\tpadding: 0.25rem 0.55rem;\n\n\t&:hover {\n\t\tbackground: var(--gh-hover);\n\t}\n}\n\n.repo-body {\n\tdisplay: grid;\n\tgrid-template-columns: minmax(0, 1fr) 280px;\n\tgap: 1.5rem;\n\tpadding: 1.25rem;\n}\n\n.toolbar {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: space-between;\n\tgap: 0.75rem;\n\tflex-wrap: wrap;\n\tmargin-bottom: 0.75rem;\n\tfont-size: 0.875rem;\n}\n\n.btn-code {\n\tbackground: #1f883d;\n\tcolor: #fff;\n\tfont-size: 0.875rem;\n\tfont-weight: 600;\n\n\t&:hover {\n\t\tbackground: #1a7f37;\n\t\tcolor: #fff;\n\t}\n}\n\n.box {\n\tborder: 1px solid var(--gh-border);\n\tborder-radius: 6px;\n\tmargin-bottom: 1rem;\n\toverflow: hidden;\n}\n\n.box-title {\n\tmargin: 0;\n\tpadding: 0.6rem 1rem;\n\tfont-size: 0.875rem;\n\tfont-weight: 600;\n\tborder-bottom: 1px solid var(--gh-border);\n\tbackground: var(--gh-subtle);\n}\n\n.box-content {\n\tpadding: 1rem 1.5rem;\n\tline-height: 1.6;\n\n\th4 {\n\t\tfont-size: 1.1rem;\n\t\tpadding-bottom: 0.3rem;\n\t\tmargin-top: 1.5rem;\n\t\tborder-bottom: 1px solid var(--gh-border);\n\t}\n}\n\n.gallery {\n\tmargin: 0;\n\n\t.stage {\n\t\tposition: relative;\n\t\tborder: 1px solid var(--gh-border);\n\t\tborder-radius: 6px;\n\t\toverflow: hidden;\n\t\tbackground: var(--gh-subtle);\n\n\t\timg {\n\t\t\tdisplay: block;\n\t\t\twidth: 100%;\n\t\t\taspect-ratio: 16 / 10;\n\t\t\tobject-fit: contain;\n\t\t}\n\t}\n\n\t.nav {\n\t\tposition: absolute;\n\t\tdisplay: flex;\n\t\talign-items: center;\n\t\tjustify-content: center;\n\t\ttop: 50%;\n\t\ttransform: translateY(-50%);\n\t\tborder: 0;\n\t\tborder-radius: 50%;\n\t\twidth: 2.25rem;\n\t\theight: 2.25rem;\n\t\tbackground: rgba(0, 0, 0, 0.55);\n\t\tcolor: #fff;\n\n\t\t&.prev { left: 0.5rem; }\n\t\t&.next { right: 0.5rem; }\n\t}\n\n\tfigcaption {\n\t\tmargin-top: 0.4rem;\n\t\tfont-size: 0.875rem;\n\t\ttext-align: center;\n\t\topacity: 0.75;\n\t}\n}\n\n.thumbnails {\n\tdisplay: flex;\n\tgap: 0.5rem;\n\tmargin-top: 0.75rem;\n\toverflow-x: auto;\n\n\tbutton {\n\t\tflex: 0 0 auto;\n\t\tpadding: 0;\n\t\tborder: 2px solid transparent;\n\t\tborder-radius: 6px;\n\t\tbackground: none;\n\t\topacity: 0.65;\n\n\t\t&.active {\n\t\t\tborder-color: var(--mynameiscolor);\n\t\t\topacity: 1;\n\t\t}\n\t}\n\n\timg {\n\t\tdisplay: block;\n\t\twidth: 96px;\n\t\theight: 60px;\n\t\tobject-fit: cover;\n\t\tborder-radius: 4px;\n\t}\n}\n\n.about {\n\tfont-size: 0.925rem;\n\n\th3 {\n\t\tfont-size: 1rem;\n\t\tfont-weight: 600;\n\t}\n}\n\n.topics {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tgap: 0.35rem;\n\tlist-style: none;\n\tpadding: 0;\n\n\tli {\n\t\tpadding: 0.15rem 0.6rem;\n\t\tborder-radius: 2rem;\n\t\tfont-size: 0.75rem;\n\t\tfont-weight: 500;\n\t\tcolor: var(--mynameiscolor);\n\t\tbackground: var(--gh-hover);\n\t}\n}\n\n.loading {\n\tgrid-column: 1 / -1;\n\tpadding: 3rem;\n\ttext-align: center;\n}\n\n@media (max-width: 991.98px) {\n\t.repo-body {\n\t\tgrid-template-columns: 1fr;\n\t}\n\n\t/* Sur mobile, « À propos » passe au-dessus, comme sur GitHub */\n\t.about {\n\t\torder: -1;\n\t}\n}\n"
+            },
+            {
+             "name": "project-details.component.spec.ts",
+             "path": "portfolio-web/src/app/projets/project-details/project-details.component.spec.ts",
+             "type": "file",
+             "size": 4539,
+             "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\nimport { provideHttpClient } from '@angular/common/http';\nimport { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';\nimport { parseDescription, ProjectDetailsComponent } from './project-details.component';\n\nconst CARD = { id: 2, name: 'Mon projet', description: 'Description courte', technologies: ['Angular', 'C#'] };\n\ndescribe('ProjectDetailsComponent', () => {\n  let fixture: ComponentFixture<ProjectDetailsComponent>;\n  let http: HttpTestingController;\n  let element: HTMLElement;\n\n  function open(details: object | null) {\n    fixture.componentRef.setInput('project', CARD);\n    fixture.detectChanges();\n    const req = http.expectOne('/mock/projects/2.json');\n    if (details) {\n      req.flush(details);\n    } else {\n      req.flush('', { status: 404, statusText: 'Not Found' });\n    }\n    fixture.detectChanges();\n  }\n\n  beforeEach(async () => {\n    await TestBed.configureTestingModule({\n      imports: [ProjectDetailsComponent],\n      providers: [provideHttpClient(), provideHttpClientTesting()],\n    }).compileComponents();\n    fixture = TestBed.createComponent(ProjectDetailsComponent);\n    http = TestBed.inject(HttpTestingController);\n    element = fixture.nativeElement;\n  });\n\n  afterEach(() => {\n    http.verify();\n    fixture.destroy();\n  });\n\n  it('présente le projet comme un dépôt : titre, technologies, description longue', () => {\n    open({ id: 2, longDescription: 'Premier paragraphe.\\n\\n- Point A\\n- Point B' });\n\n    expect(element.querySelector('h2')?.textContent).toContain('Mon projet');\n    expect(Array.from(element.querySelectorAll('.topics li')).map((t) => t.textContent)).toEqual(['Angular', 'C#']);\n    expect(element.querySelector('.about p')?.textContent).toBe('Description courte');\n    expect(element.querySelector('.readme p')?.textContent).toBe('Premier paragraphe.');\n    expect(Array.from(element.querySelectorAll('.readme li')).map((l) => l.textContent)).toEqual(['Point A', 'Point B']);\n    expect(document.body.classList).toContain('modal-open');\n  });\n\n  it('n\\'affiche le bouton .zip que si le projet l\\'autorise', () => {\n    open({ id: 2, zipUrl: '/downloads/mon-projet.zip' });\n    expect(element.querySelector('a[download]')?.getAttribute('href')).toBe('/downloads/mon-projet.zip');\n  });\n\n  it('sans détail, reprend la carte sans bouton .zip ni aperçus', () => {\n    open(null);\n\n    expect(element.querySelector('a[download]')).toBeNull();\n    expect(element.querySelector('.gallery')).toBeNull();\n    expect(element.querySelector('.readme p')?.textContent).toBe('Description courte');\n    // La description courte n'est pas répétée dans « À propos »\n    expect(element.querySelector('.about p')).toBeNull();\n  });\n\n  it('fait défiler les aperçus avec les flèches et les miniatures', () => {\n    open({\n      id: 2,\n      images: [\n        { url: '/a.jpg', alt: 'A', caption: 'Écran A' },\n        { url: '/b.jpg', alt: 'B' },\n      ],\n    });\n    const current = () => element.querySelector('.stage img')?.getAttribute('src');\n\n    expect(current()).toBe('/a.jpg');\n    expect(element.querySelector('figcaption')?.textContent).toBe('Écran A');\n\n    (element.querySelector('.nav.next') as HTMLElement).click();\n    fixture.detectChanges();\n    expect(current()).toBe('/b.jpg');\n\n    (element.querySelector('.nav.next') as HTMLElement).click(); // revient au début\n    fixture.detectChanges();\n    expect(current()).toBe('/a.jpg');\n\n    (element.querySelectorAll('.thumbnails button')[1] as HTMLElement).click();\n    fixture.detectChanges();\n    expect(current()).toBe('/b.jpg');\n  });\n\n  it('se ferme avec Échap, le bouton ou un clic à côté, et libère le défilement de la page', () => {\n    open(null);\n    const closed = spyOn(fixture.componentInstance.closed, 'emit');\n\n    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));\n    (element.querySelector('button[aria-label=\"Fermer\"]') as HTMLElement).click();\n    (element.querySelector('.backdrop') as HTMLElement).click();\n    expect(closed).toHaveBeenCalledTimes(3);\n\n    fixture.destroy();\n    expect(document.body.classList).not.toContain('modal-open');\n  });\n});\n\ndescribe('parseDescription', () => {\n  it('sépare paragraphes et listes', () => {\n    expect(parseDescription('Ligne 1\\nsuite\\n\\n- a\\n- b\\n\\n\\nFin')).toEqual([\n      { type: 'paragraph', text: 'Ligne 1 suite' },\n      { type: 'list', items: ['a', 'b'] },\n      { type: 'paragraph', text: 'Fin' },\n    ]);\n  });\n});\n"
+            },
+            {
+             "name": "project-details.component.ts",
+             "path": "portfolio-web/src/app/projets/project-details/project-details.component.ts",
+             "type": "file",
+             "size": 2937,
+             "content": "import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Inject, Input, OnChanges, OnDestroy, Output, ViewChild } from '@angular/core';\nimport { DOCUMENT } from '@angular/common';\nimport { Subscription } from 'rxjs';\nimport { Project, ProjectDetails } from '../../models/project';\nimport { ProjectsService } from '../../services/projects.service';\nimport { FileBrowserComponent } from '../file-browser/file-browser.component';\n\nexport type DescriptionBlock = { type: 'paragraph'; text: string } | { type: 'list'; items: string[] };\n\n/** Fenêtre de détail d'un projet, présentée comme une page de dépôt GitHub. */\n@Component({\n  selector: 'app-project-details',\n  imports: [FileBrowserComponent],\n  templateUrl: './project-details.component.html',\n  styleUrl: './project-details.component.scss'\n})\nexport class ProjectDetailsComponent implements OnChanges, AfterViewInit, OnDestroy {\n  @Input({ required: true }) project!: Project;\n  @Output() closed = new EventEmitter<void>();\n  @ViewChild('closeButton') closeButton?: ElementRef<HTMLButtonElement>;\n\n  details: ProjectDetails | null = null;\n  description: DescriptionBlock[] = [];\n  imageIndex = 0;\n  private subscription?: Subscription;\n  private previousFocus: Element | null;\n\n  constructor(private projectsService: ProjectsService, @Inject(DOCUMENT) private document: Document) {\n    this.previousFocus = document.activeElement;\n    // Classe Bootstrap : bloque le défilement de la page derrière la fenêtre\n    document.body.classList.add('modal-open');\n  }\n\n  ngOnChanges(): void {\n    this.subscription?.unsubscribe();\n    this.details = null;\n    this.imageIndex = 0;\n    this.subscription = this.projectsService.getProjectDetails(this.project).subscribe((details) => {\n      this.details = details;\n      this.description = parseDescription(details.longDescription);\n    });\n  }\n\n  ngAfterViewInit(): void {\n    this.closeButton?.nativeElement.focus();\n  }\n\n  ngOnDestroy(): void {\n    this.subscription?.unsubscribe();\n    this.document.body.classList.remove('modal-open');\n    (this.previousFocus as HTMLElement | null)?.focus?.();\n  }\n\n  @HostListener('document:keydown.escape')\n  close(): void {\n    this.closed.emit();\n  }\n\n  showImage(index: number): void {\n    const count = this.details?.images.length ?? 0;\n    if (count) {\n      this.imageIndex = (index + count) % count;\n    }\n  }\n}\n\n/** Paragraphes séparés par une ligne vide ; les lignes commençant par « - » forment une liste. */\nexport function parseDescription(text: string): DescriptionBlock[] {\n  return text\n    .split(/\\r?\\n\\s*\\r?\\n/)\n    .map((block) => block.trim())\n    .filter(Boolean)\n    .map((block): DescriptionBlock => {\n      const lines = block.split(/\\r?\\n/).map((l) => l.trim());\n      return lines.every((l) => l.startsWith('- '))\n        ? { type: 'list', items: lines.map((l) => l.slice(2)) }\n        : { type: 'paragraph', text: lines.join(' ') };\n    });\n}\n"
+            }
+           ]
+          },
+          {
+           "name": "projets.component.html",
+           "path": "portfolio-web/src/app/projets/projets.component.html",
+           "type": "file",
+           "size": 1115,
+           "content": "<div class=\"container\">\n\t<h2 class=\"section-title\">Mes projets</h2>\n\t<div>\n\t\t<div class=\"row\" *ngFor=\"let row of projectRows\">\n\t\t\t<div class=\"col-lg-6 mb-4\" *ngFor=\"let project of row\">\n\t\t\t\t<div class=\"card h-100\">\n\t\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t\t<h3 class=\"card-title\">\n\t\t\t\t\t\t\t<a class=\"stretched-link\" [href]=\"'/projets?projet=' + project.id\" (click)=\"$event.preventDefault(); open(project)\">{{ project.name }}</a>\n\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t<p class=\"card-text\">{{ project.description }}</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t\t<ul class=\"list-inline mb-0\">\n\t\t\t\t\t\t\t<li class=\"list-inline-item badge bg-secondary\" *ngFor=\"let tech of project.technologies\">\n\t\t\t\t\t\t\t\t{{ tech }}\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t<span class=\"see-more\">Voir le projet <i class=\"bi bi-arrow-right\" aria-hidden=\"true\"></i></span>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n@if (openProject; as project) {\n\t<!-- Chargée à la demande : la fenêtre ne pèse pas sur le premier affichage de la page -->\n\t@defer (on immediate) {\n\t\t<app-project-details [project]=\"project\" (closed)=\"close()\"></app-project-details>\n\t}\n}\n"
+          },
+          {
+           "name": "projets.component.scss",
+           "path": "portfolio-web/src/app/projets/projets.component.scss",
+           "type": "file",
+           "size": 1180,
+           "content": ":host {\n\tdisplay: block;\n}\n\n.card {\n\tbackground-color: var(--cardcolor) !important;\n\ttransition: transform 0.15s ease, box-shadow 0.15s ease;\n\n\t/* Toute la carte est cliquable (stretched-link sur le titre) */\n\t&:hover,\n\t&:focus-within {\n\t\ttransform: translateY(-2px);\n\t\tbox-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.12);\n\t}\n}\n\n.card-title a {\n\tcolor: inherit;\n\ttext-decoration: none;\n\n\t&:focus-visible {\n\t\toutline: none;\n\t}\n}\n\n.card:focus-within {\n\toutline: 2px solid var(--mynameiscolor);\n\toutline-offset: 2px;\n}\n\n.see-more {\n\tdisplay: block;\n\tmargin-top: 0.6rem;\n\tfont-size: 0.85rem;\n\tfont-weight: 600;\n\tcolor: var(--mynameiscolor);\n}\n\n.card-title {\n\tcolor: var(--mynameiscolor);\n\tfont-size: clamp(1.2rem, 1rem + 0.6vw, 1.5rem);\n\tfont-weight: 600;\n\tmargin-bottom: 0.75rem;\n}\n\n.card-text {\n\tcolor: var(--maincolor);\n\tline-height: 1.6;\n}\n\n.card-footer {\n\tbackground-color: var(--bs-card-cap-bg) !important;\n\tpadding: 0.75rem 1rem;\n}\n\n/* Badges un peu plus grands que ceux de Bootstrap, avec un espacement régulier */\n.list-inline {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tgap: 0.4rem;\n}\n\n.badge {\n\tmargin: 0 !important;\n\tfont-size: 0.8rem;\n\tfont-weight: 500;\n\tpadding: 0.4em 0.65em;\n}\n"
+          },
+          {
+           "name": "projets.component.spec.ts",
+           "path": "portfolio-web/src/app/projets/projets.component.spec.ts",
+           "type": "file",
+           "size": 4555,
+           "content": "import { ComponentFixture, DeferBlockState, TestBed } from '@angular/core/testing';\nimport { provideHttpClient } from '@angular/common/http';\nimport { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';\nimport { provideRouter, Router } from '@angular/router';\nimport { ProjetsComponent } from './projets.component';\n\nconst API_URL = 'https://api.julesrotilio.fr/api/projects';\n\nfunction project(id: number, technologies: string[] = ['C#']) {\n  return { id, name: `Projet ${id}`, description: `Description ${id}`, technologies };\n}\n\ndescribe('ProjetsComponent', () => {\n  let fixture: ComponentFixture<ProjetsComponent>;\n  let http: HttpTestingController;\n  let element: HTMLElement;\n  let router: Router;\n\n  beforeEach(async () => {\n    await TestBed.configureTestingModule({\n      imports: [ProjetsComponent],\n      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],\n    }).compileComponents();\n\n    fixture = TestBed.createComponent(ProjetsComponent);\n    http = TestBed.inject(HttpTestingController);\n    router = TestBed.inject(Router);\n    element = fixture.nativeElement;\n    fixture.detectChanges(); // ngOnInit -> requête HTTP\n  });\n\n  afterEach(() => http.verify());\n\n  it('affiche une carte par projet, avec ses technologies', () => {\n    http.expectOne(API_URL).flush([project(0, ['C#', '.NET 10', 'Angular']), project(1)]);\n    fixture.detectChanges();\n\n    const titles = Array.from(element.querySelectorAll('.card-title')).map((t) => t.textContent?.trim());\n    expect(titles).toEqual(['Projet 0', 'Projet 1']);\n\n    const badges = Array.from(element.querySelectorAll('.card')[0].querySelectorAll('.badge')).map((b) => b.textContent?.trim());\n    expect(badges).toEqual(['C#', '.NET 10', 'Angular']);\n  });\n\n  it('range les projets par lignes de deux (dernière ligne incomplète)', () => {\n    http.expectOne(API_URL).flush([project(0), project(1), project(2)]);\n    fixture.detectChanges();\n\n    const rows = element.querySelectorAll('.row');\n    expect(rows.length).toBe(2);\n    expect(rows[0].querySelectorAll('.card').length).toBe(2);\n    expect(rows[1].querySelectorAll('.card').length).toBe(1);\n  });\n\n  it('n\\'affiche aucune carte si l\\'API est en erreur', () => {\n    spyOn(console, 'error'); // l'erreur est journalisée, on évite le bruit dans la sortie des tests\n    http.expectOne(API_URL).flush('KO', { status: 500, statusText: 'Server Error' });\n    fixture.detectChanges();\n\n    expect(element.querySelectorAll('.card').length).toBe(0);\n  });\n\n  // ---------- Fenêtre de détail ----------\n\n  // La fenêtre est chargée à la demande (@defer) : on attend la fin de la navigation et du chargement\n  async function settle() {\n    await fixture.whenStable();\n    fixture.detectChanges();\n    for (const block of await fixture.getDeferBlocks()) {\n      await block.render(DeferBlockState.Complete);\n    }\n    fixture.detectChanges();\n  }\n\n  it('ouvre la fenêtre du projet indiqué par ?projet=ID, même si l\\'URL arrive avant la liste', async () => {\n    await router.navigateByUrl('/?projet=1');\n    http.expectOne(API_URL).flush([project(0), project(1)]);\n    await settle();\n\n    // Pas encore de détail côté API : la fenêtre reprend les informations de la carte\n    http.expectOne('/mock/projects/1.json').flush('', { status: 404, statusText: 'Not Found' });\n    await settle();\n\n    const dialog = element.querySelector('app-project-details [role=\"dialog\"]');\n    expect(dialog?.querySelector('h2')?.textContent).toContain('Projet 1');\n    expect(dialog?.querySelector('.readme')?.textContent).toContain('Description 1');\n  });\n\n  it('cliquer sur une carte ajoute ?projet=ID à l\\'URL, fermer le retire', async () => {\n    http.expectOne(API_URL).flush([project(0), project(4)]);\n    fixture.detectChanges();\n\n    (element.querySelectorAll('.card-title a')[1] as HTMLElement).click();\n    await settle();\n    expect(router.url).toBe('/?projet=4');\n    http.expectOne('/mock/projects/4.json').flush('', { status: 404, statusText: 'Not Found' });\n    await settle();\n\n    (element.querySelector('app-project-details button[aria-label=\"Fermer\"]') as HTMLElement).click();\n    await settle();\n    expect(router.url).toBe('/');\n    expect(element.querySelector('app-project-details')).toBeNull();\n  });\n\n  it('n\\'ouvre rien pour un ID inconnu', async () => {\n    await router.navigateByUrl('/?projet=99');\n    http.expectOne(API_URL).flush([project(0)]);\n    await settle();\n\n    expect(element.querySelector('app-project-details')).toBeNull();\n  });\n});\n"
+          },
+          {
+           "name": "projets.component.ts",
+           "path": "portfolio-web/src/app/projets/projets.component.ts",
+           "type": "file",
+           "size": 2274,
+           "content": "import { Component, DestroyRef, Inject, OnInit, PLATFORM_ID } from '@angular/core';\nimport { isPlatformBrowser, NgFor } from '@angular/common';\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\nimport { ActivatedRoute, Router } from '@angular/router';\nimport { ProjectsService } from '../services/projects.service';\nimport { Project } from '../models/project';\nimport { ProjectDetailsComponent } from './project-details/project-details.component';\n\n@Component({\n  selector: 'app-projets',\n  imports: [NgFor, ProjectDetailsComponent],\n  templateUrl: './projets.component.html',\n  styleUrl: './projets.component.scss'\n})\nexport class ProjetsComponent implements OnInit {\n  projects: Project[] = [];\n  projectRows: Project[][] = [];\n  /** ID du projet ouvert dans la fenêtre de détail, d'après le paramètre ?projet=ID de l'URL. */\n  selectedId: number | null = null;\n\n  constructor(\n    private projectsService: ProjectsService,\n    private route: ActivatedRoute,\n    private router: Router,\n    private destroyRef: DestroyRef,\n    @Inject(PLATFORM_ID) private platformId: object\n  ) {}\n\n  ngOnInit(): void {\n    this.projectsService.getProjects().subscribe({\n      next: (data) => {\n        this.projects = data;\n        this.projectRows = [];\n        for (let i = 0; i < this.projects.length; i += 2) {\n          this.projectRows.push(this.projects.slice(i, i + 2));\n        }\n      },\n      error: (err) => console.error(err)\n    });\n\n    // La fenêtre n'est ouverte que dans le navigateur (pas de rendu côté serveur)\n    if (isPlatformBrowser(this.platformId)) {\n      this.route.queryParamMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {\n        const id = params.get('projet');\n        this.selectedId = id === null ? null : Number(id);\n      });\n    }\n  }\n\n  /** Le lien peut arriver avant la liste des projets : la fenêtre s'ouvre dès que le projet est connu. */\n  get openProject(): Project | null {\n    return this.projects.find((p) => p.id === this.selectedId) ?? null;\n  }\n\n  open(project: Project): void {\n    this.router.navigate([], { relativeTo: this.route, queryParams: { projet: project.id } });\n  }\n\n  close(): void {\n    this.router.navigate([], { relativeTo: this.route, queryParams: { projet: null } });\n  }\n}\n"
+          }
+         ]
+        },
+        {
+         "name": "services",
+         "path": "portfolio-web/src/app/services",
+         "type": "directory",
+         "children": [
+          {
+           "name": "contact.service.spec.ts",
+           "path": "portfolio-web/src/app/services/contact.service.spec.ts",
+           "type": "file",
+           "size": 956,
+           "content": "import { TestBed } from '@angular/core/testing';\nimport { provideHttpClient } from '@angular/common/http';\nimport { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';\nimport { ContactService } from './contact.service';\n\ndescribe('ContactService', () => {\n  let http: HttpTestingController;\n\n  beforeEach(() => {\n    TestBed.configureTestingModule({\n      providers: [provideHttpClient(), provideHttpClientTesting()],\n    });\n    http = TestBed.inject(HttpTestingController);\n  });\n\n  afterEach(() => http.verify());\n\n  it('envoie le formulaire en POST à l\\'API', () => {\n    const form = { from: 'a@b.fr', subject: 'Sujet', body: 'Message' };\n    TestBed.inject(ContactService).sendEmail(form).subscribe();\n\n    const req = http.expectOne('https://api.julesrotilio.fr/api/send-email');\n    expect(req.request.method).toBe('POST');\n    expect(req.request.body).toEqual(form);\n    req.flush({ success: true });\n  });\n});\n"
+          },
+          {
+           "name": "contact.service.ts",
+           "path": "portfolio-web/src/app/services/contact.service.ts",
+           "type": "file",
+           "size": 445,
+           "content": "import { Injectable } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable } from 'rxjs';\n\n@Injectable({ providedIn: 'root' })\nexport class ContactService {\n  private apiUrl = 'https://api.julesrotilio.fr/api/send-email';\n\n  constructor(private http: HttpClient) {}\n\n  sendEmail(form: { from: string; subject: string; body: string }): Observable<any> {\n    return this.http.post(this.apiUrl, form);\n  }\n}\n"
+          },
+          {
+           "name": "projects.service.spec.ts",
+           "path": "portfolio-web/src/app/services/projects.service.spec.ts",
+           "type": "file",
+           "size": 2522,
+           "content": "import { TestBed } from '@angular/core/testing';\nimport { provideHttpClient } from '@angular/common/http';\nimport { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';\nimport { ProjectsService } from './projects.service';\nimport { ProjectDetails } from '../models/project';\n\ndescribe('ProjectsService', () => {\n  let service: ProjectsService;\n  let http: HttpTestingController;\n\n  beforeEach(() => {\n    TestBed.configureTestingModule({\n      providers: [provideHttpClient(), provideHttpClientTesting()],\n    });\n    service = TestBed.inject(ProjectsService);\n    http = TestBed.inject(HttpTestingController);\n  });\n\n  afterEach(() => http.verify());\n\n  it('récupère les projets depuis l\\'API', () => {\n    let result: unknown;\n    service.getProjects().subscribe((data) => (result = data));\n\n    const req = http.expectOne('https://api.julesrotilio.fr/api/projects');\n    expect(req.request.method).toBe('GET');\n    req.flush([{ id: 0, name: 'Projet' }]);\n\n    expect(result).toEqual([{ id: 0, name: 'Projet' }]);\n  });\n});\n\ndescribe('ProjectsService : détail d\\'un projet', () => {\n  const card = { id: 3, name: 'Projet', description: 'Courte', technologies: ['C#'] };\n  let service: ProjectsService;\n  let http: HttpTestingController;\n\n  beforeEach(() => {\n    TestBed.configureTestingModule({\n      providers: [provideHttpClient(), provideHttpClientTesting()],\n    });\n    service = TestBed.inject(ProjectsService);\n    http = TestBed.inject(HttpTestingController);\n  });\n\n  afterEach(() => http.verify());\n\n  it('complète les informations de la carte avec le détail reçu', () => {\n    let result: ProjectDetails | undefined;\n    service.getProjectDetails(card).subscribe((d) => (result = d));\n\n    http.expectOne('/mock/projects/3.json').flush({ id: 3, longDescription: 'Longue', zipUrl: '/p.zip' });\n\n    expect(result?.name).toBe('Projet');\n    expect(result?.description).toBe('Courte');\n    expect(result?.longDescription).toBe('Longue');\n    expect(result?.zipUrl).toBe('/p.zip');\n    expect(result?.files).toEqual([]);\n  });\n\n  it('reprend la carte si le détail n\\'est pas disponible', () => {\n    let result: ProjectDetails | undefined;\n    service.getProjectDetails(card).subscribe((d) => (result = d));\n\n    http.expectOne('/mock/projects/3.json').flush('', { status: 404, statusText: 'Not Found' });\n\n    expect(result).toEqual(ProjectsService.fromProject(card));\n    expect(result?.longDescription).toBe('Courte');\n    expect(result?.zipUrl).toBeNull();\n  });\n});\n"
+          },
+          {
+           "name": "projects.service.ts",
+           "path": "portfolio-web/src/app/services/projects.service.ts",
+           "type": "file",
+           "size": 1603,
+           "content": "import { Injectable } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable, catchError, map, of } from 'rxjs';\nimport { Project, ProjectDetails } from '../models/project';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class ProjectsService {\n  private apiUrl = 'https://api.julesrotilio.fr/api/projects';\n\n  /**\n   * En attendant que l'API renvoie le détail des projets (GET /api/projects/{id}),\n   * le détail est lu depuis des données fictives servies par le front (public/mock/projects/{id}.json).\n   * Passer à false une fois l'API prête.\n   */\n  static readonly useMockDetails = true;\n\n  constructor(private http: HttpClient) {}\n\n  getProjects(): Observable<Project[]> {\n    return this.http.get<Project[]>(this.apiUrl);\n  }\n\n  /**\n   * Détail d'un projet. Si le détail n'existe pas (encore), la fenêtre affiche les informations de la carte.\n   */\n  getProjectDetails(project: Project): Observable<ProjectDetails> {\n    const url = ProjectsService.useMockDetails ? `/mock/projects/${project.id}.json` : `${this.apiUrl}/${project.id}`;\n    return this.http.get<ProjectDetails>(url).pipe(\n      map((details) => ({ ...ProjectsService.fromProject(project), ...details })),\n      catchError(() => of(ProjectsService.fromProject(project)))\n    );\n  }\n\n  /** Détail minimal construit à partir de la carte : description longue = description courte, ni fichiers ni images. */\n  static fromProject(project: Project): ProjectDetails {\n    return { ...project, longDescription: project.description, images: [], files: [], zipUrl: null, repoUrl: null };\n  }\n}\n"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "name": "index.html",
+       "path": "portfolio-web/src/index.html",
+       "type": "file",
+       "size": 791,
+       "content": "<!doctype html>\n<html lang=\"fr-FR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Portfolio Jules ROTILIO</title>\n  <base href=\"/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n</head>\n<body>\n  <!-- Applique le thème avant le premier affichage (évite le flash blanc). Même logique que FooterComponent. -->\n  <script>\n    (function () {\n      var dark = false;\n      try {\n        var saved = localStorage.getItem('theme');\n        dark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);\n      } catch (e) {}\n      document.body.classList.add(dark ? 'dark-theme' : 'white-theme');\n    })();\n  </script>\n  <app-root></app-root>\n</body>\n</html>\n"
+      },
+      {
+       "name": "main.server.ts",
+       "path": "portfolio-web/src/main.server.ts",
+       "type": "file",
+       "size": 271,
+       "content": "import { bootstrapApplication } from '@angular/platform-browser';\nimport { AppComponent } from './app/app.component';\nimport { config } from './app/app.config.server';\n\nconst bootstrap = () => bootstrapApplication(AppComponent, config);\n\nexport default bootstrap;\n"
+      },
+      {
+       "name": "main.ts",
+       "path": "portfolio-web/src/main.ts",
+       "type": "file",
+       "size": 301,
+       "content": "/// <reference types=\"@angular/localize\" />\n\nimport { bootstrapApplication } from '@angular/platform-browser';\nimport { appConfig } from './app/app.config';\nimport { AppComponent } from './app/app.component';\n\nbootstrapApplication(AppComponent, appConfig)\n  .catch((err) => console.error(err));\n"
+      },
+      {
+       "name": "server.ts",
+       "path": "portfolio-web/src/server.ts",
+       "type": "file",
+       "size": 2504,
+       "content": "import * as fs from 'node:fs';\nimport * as https from 'node:https';\nimport { APP_BASE_HREF } from '@angular/common';\nimport { CommonEngine, isMainModule } from '@angular/ssr/node';\nimport express from 'express';\nimport { dirname, join, resolve } from 'node:path';\nimport { fileURLToPath } from 'node:url';\nimport bootstrap from './main.server';\n\nconst serverDistFolder = dirname(fileURLToPath(import.meta.url));\nconst browserDistFolder = resolve(serverDistFolder, '../browser');\nconst indexHtml = join(serverDistFolder, 'index.server.html');\n\nconst app = express();\nconst commonEngine = new CommonEngine();\n\n/**\n * Example Express Rest API endpoints can be defined here.\n * Uncomment and define endpoints as necessary.\n *\n * Example:\n * ```ts\n * app.get('/api/**', (req, res) => {\n *   // Handle API request\n * });\n * ```\n */\n\n/**\n * Serve static files from /browser\n * Les JS/CSS ont un hash dans leur nom : on peut les garder 1 an en cache.\n * Les pages HTML (prérendues) doivent être revalidées à chaque visite pour voir les mises à jour.\n */\napp.get(\n  '**',\n  express.static(browserDistFolder, {\n    maxAge: '1y',\n    index: 'index.html',\n    setHeaders: (res, path) => {\n      if (path.endsWith('.html')) {\n        res.setHeader('Cache-Control', 'no-cache');\n      }\n    },\n  }),\n);\n\n/**\n * Handle all other requests by rendering the Angular application.\n */\napp.get('**', (req, res, next) => {\n  const { protocol, originalUrl, baseUrl, headers } = req;\n\n  commonEngine\n    .render({\n      bootstrap,\n      documentFilePath: indexHtml,\n      url: `${protocol}://${headers.host}${originalUrl}`,\n      publicPath: browserDistFolder,\n      providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],\n    })\n    .then((html) => res.send(html))\n    .catch((err) => next(err));\n});\n\n/**\n * Start the server if this module is the main entry point.\n * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.\n */\nif (isMainModule(import.meta.url)) {\n  const port = process.env['PORT'] || 4443;\n\n  const httpsOptions = {\n    key: fs.readFileSync('./certs/julesrotilio.fr-key.pem'),\n    cert: fs.readFileSync('./certs/julesrotilio.fr-crt.pem'),\n    ca: fs.readFileSync('./certs/julesrotilio.fr-chain.pem')\n  };\n\n  https.createServer(httpsOptions, app).listen(port, () => {\n    console.log(`Node Express server listening on https://localhost:${port}`);\n  });\n}\n\nexport default app;\n"
+      },
+      {
+       "name": "styles.scss",
+       "path": "portfolio-web/src/styles.scss",
+       "type": "file",
+       "size": 2774,
+       "content": "/* Importing Bootstrap SCSS file. */\n@use 'bootstrap/scss/bootstrap';\n\nhtml,\nbody {\n  margin: 0;\n  padding: 0;\n}\n\n/* Sur :root pour être utilisables par les thèmes définis sur <body> */\n:root {\n  --gray-900: oklch(19.37% 0.006 300.98);\n  --gray-700: oklch(36.98% 0.014 302.71);\n  --gray-400: oklch(70.9% 0.015 304.04);\n}\n\n/* La page défile normalement : l'en-tête reste collé en haut, le pied de page suit le contenu */\napp-root {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  min-height: 100dvh;\n\n  font-family: \"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto,\n    Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\",\n    \"Segoe UI Symbol\";\n  box-sizing: border-box;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.main {\n  flex: 1 0 auto;\n  width: 100%;\n}\n\n/* Cadre commun à toutes les pages : largeur maximale et marges latérales (16 px minimum sur mobile) */\n.content {\n  width: 100%;\n  max-width: 1140px;\n  margin: 0 auto;\n  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem);\n}\n\n/* Le cadre gère déjà largeur et marges : les .container des pages n'en ajoutent pas une deuxième couche */\n.content .container {\n  max-width: none;\n  padding-left: 0;\n  padding-right: 0;\n}\n\n/* Thèmes */\nbody.white-theme {\n  --background-color: #fff;\n  background: var(--background-color);\n  color: #222;\n\n  --mynameiscolor: #30135f;\n  --on-accent: #fff; /* texte posé sur la couleur d'accent (boutons) */\n  --cardcolor: var(--background-color);\n  --cardcardcolor: #faf9fc;\n  --maincolor: var(--gray-900);\n  --heading-color: var(--gray-900);\n  --subheading-color: var(--gray-700);\n}\n\nbody.dark-theme {\n  --background-color: #18122B;\n  background: var(--background-color);\n  color: #fff;\n\n  /* Assez clair pour rester lisible sur le fond sombre (contraste > 7:1) */\n  --mynameiscolor: #4fb8a0;\n  --on-accent: #10201c;\n  --cardcolor: #1d192c;\n  --cardcardcolor: #231f33;\n  --maincolor: rgb(226, 232, 240);\n  --heading-color: var(--maincolor);\n  --subheading-color: var(--gray-400);\n\n  --bs-link-color-rgb: 110, 168, 254;\n  --bs-link-hover-color-rgb: 158, 197, 254;\n  --bs-border-color: #3a3550;\n}\n\n/* Typo et couleurs */\nh1 {\n  color: var(--heading-color);\n  font-weight: 500;\n  line-height: 1.05;\n  letter-spacing: -0.05em;\n  margin: 0;\n  font-family: \"Inter Tight\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto,\n    Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\",\n    \"Segoe UI Symbol\";\n}\n\n/* Titres de section des pages (CV, projets, contact) */\n.section-title {\n  color: var(--mynameiscolor);\n  font-weight: 600;\n  font-size: clamp(1.4rem, 1rem + 1.5vw, 2rem);\n  line-height: 1.2;\n  margin-bottom: 1rem;\n}\n\np {\n  margin: 0;\n  color: var(--maincolor);\n}\n"
+      }
+     ]
+    },
+    {
+     "name": "tsconfig.app.json",
+     "path": "portfolio-web/tsconfig.app.json",
+     "type": "file",
+     "size": 536
+    },
+    {
+     "name": "tsconfig.json",
+     "path": "portfolio-web/tsconfig.json",
+     "type": "file",
+     "size": 967
+    },
+    {
+     "name": "tsconfig.spec.json",
+     "path": "portfolio-web/tsconfig.spec.json",
+     "type": "file",
+     "size": 477
+    }
+   ]
+  }
+ ]
+}
