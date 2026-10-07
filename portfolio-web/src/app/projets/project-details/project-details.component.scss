@@ -149,6 +149,15 @@
 		overflow: hidden;
 		background: var(--gh-subtle);
 
+		.zoom {
+			display: block;
+			width: 100%;
+			padding: 0;
+			border: 0;
+			background: none;
+			cursor: zoom-in;
+		}
+
 		img {
 			display: block;
 			width: 100%;
@@ -184,7 +193,10 @@
 }
 
 .thumbnails {
+	/* Référence des offsetLeft des miniatures, pour centrer celle de l'image affichée */
+	position: relative;
 	display: flex;
+	scroll-behavior: smooth;
 	gap: 0.5rem;
 	margin-top: 0.75rem;
 	overflow-x: auto;
@@ -246,7 +258,8 @@
 
 @media (max-width: 991.98px) {
 	.repo-body {
-		grid-template-columns: 1fr;
+		/* minmax(0, …) : la bande de miniatures défile au lieu d'élargir la fiche */
+		grid-template-columns: minmax(0, 1fr);
 	}
 
 	/* Sur mobile, « À propos » passe au-dessus, comme sur GitHub */

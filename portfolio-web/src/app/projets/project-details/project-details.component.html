@@ -23,7 +23,7 @@
 				</div>
 
 				<div class="box">
-					<app-file-browser [files]="details.files"></app-file-browser>
+					<app-file-browser #fileBrowser [files]="details.files"></app-file-browser>
 				</div>
 
 				<div class="box readme">
@@ -45,7 +45,9 @@
 							<h4>Aperçus</h4>
 							<figure class="gallery">
 								<div class="stage">
-									<img [src]="details.images[imageIndex].url" [alt]="details.images[imageIndex].alt" />
+									<button type="button" class="zoom" (click)="openLightbox()" aria-label="Agrandir l'image" title="Agrandir">
+										<img [src]="details.images[imageIndex].url" [alt]="details.images[imageIndex].alt" />
+									</button>
 									@if (details.images.length > 1) {
 										<button type="button" class="nav prev" aria-label="Image précédente" (click)="showImage(imageIndex - 1)">
 											<i class="bi bi-chevron-left" aria-hidden="true"></i>
@@ -59,7 +61,7 @@
 									<figcaption>{{ details.images[imageIndex].caption }}</figcaption>
 								}
 								@if (details.images.length > 1) {
-									<div class="thumbnails">
+									<div #thumbnails class="thumbnails">
 										@for (image of details.images; track image.url) {
 											<button type="button" [class.active]="$index === imageIndex" [attr.aria-label]="image.alt"
 												[attr.aria-current]="$index === imageIndex" (click)="showImage($index)">
@@ -73,6 +75,10 @@
 					</div>
 				</div>
 			</div>
+
+			@if (lightboxOpen) {
+				<app-image-lightbox [images]="details.images" [index]="imageIndex" (indexChange)="showImage($event)" (closed)="closeLightbox()"></app-image-lightbox>
+			}
 
 			<aside class="about">
 				<h3>À propos</h3>
