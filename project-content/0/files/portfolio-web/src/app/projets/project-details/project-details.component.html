@@ -1,0 +1,98 @@
+<div class="backdrop" (click)="close()"></div>
+<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="project-details-title">
+	<header class="repo-header">
+		<h2 id="project-details-title" class="repo-title">
+			<i class="bi bi-journal-code" aria-hidden="true"></i>
+			<span class="owner">jules-rotilio</span><span class="sep">/</span><strong>{{ project.name }}</strong>
+		</h2>
+		<button #closeButton type="button" class="btn-close-gh" aria-label="Fermer" (click)="close()">
+			<i class="bi bi-x-lg" aria-hidden="true"></i>
+		</button>
+	</header>
+
+	<div class="repo-body">
+		@if (details) {
+			<div class="main">
+				<div class="toolbar">
+					<span class="file-count"><i class="bi bi-files" aria-hidden="true"></i> Fichiers sources</span>
+					@if (details.zipUrl) {
+						<a class="btn btn-code" [href]="details.zipUrl" download>
+							<i class="bi bi-file-earmark-zip" aria-hidden="true"></i> Télécharger le .zip
+						</a>
+					}
+				</div>
+
+				<div class="box">
+					<app-file-browser [files]="details.files"></app-file-browser>
+				</div>
+
+				<div class="box readme">
+					<h3 class="box-title"><i class="bi bi-book" aria-hidden="true"></i> README</h3>
+					<div class="box-content">
+						@for (block of description; track $index) {
+							@if (block.type === 'paragraph') {
+								<p>{{ block.text }}</p>
+							} @else {
+								<ul>
+									@for (item of block.items; track $index) {
+										<li>{{ item }}</li>
+									}
+								</ul>
+							}
+						}
+
+						@if (details.images.length) {
+							<h4>Aperçus</h4>
+							<figure class="gallery">
+								<div class="stage">
+									<img [src]="details.images[imageIndex].url" [alt]="details.images[imageIndex].alt" />
+									@if (details.images.length > 1) {
+										<button type="button" class="nav prev" aria-label="Image précédente" (click)="showImage(imageIndex - 1)">
+											<i class="bi bi-chevron-left" aria-hidden="true"></i>
+										</button>
+										<button type="button" class="nav next" aria-label="Image suivante" (click)="showImage(imageIndex + 1)">
+											<i class="bi bi-chevron-right" aria-hidden="true"></i>
+										</button>
+									}
+								</div>
+								@if (details.images[imageIndex].caption) {
+									<figcaption>{{ details.images[imageIndex].caption }}</figcaption>
+								}
+								@if (details.images.length > 1) {
+									<div class="thumbnails">
+										@for (image of details.images; track image.url) {
+											<button type="button" [class.active]="$index === imageIndex" [attr.aria-label]="image.alt"
+												[attr.aria-current]="$index === imageIndex" (click)="showImage($index)">
+												<img [src]="image.url" alt="" loading="lazy" />
+											</button>
+										}
+									</div>
+								}
+							</figure>
+						}
+					</div>
+				</div>
+			</div>
+
+			<aside class="about">
+				<h3>À propos</h3>
+				<!-- Sans description longue, le texte est déjà dans le README : on ne le répète pas -->
+				@if (details.longDescription !== details.description) {
+					<p>{{ details.description }}</p>
+				}
+				@if (details.repoUrl) {
+					<p><a [href]="details.repoUrl" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> Voir le dépôt</a></p>
+				}
+				<ul class="topics">
+					@for (tech of details.technologies; track tech) {
+						<li>{{ tech }}</li>
+					}
+				</ul>
+			</aside>
+		} @else {
+			<div class="loading" role="status">
+				<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> Chargement du projet…
+			</div>
+		}
+	</div>
+</div>

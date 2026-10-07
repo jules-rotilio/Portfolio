@@ -1,0 +1,15 @@
+{
+  "allowZipDownload": false,
+  "images": [
+    {
+      "file": "01-sudoku-fr.webp",
+      "alt": "Grille générée aléatoirement, interface en français (ressources RESX)",
+      "caption": "Grille générée aléatoirement, interface en français (ressources RESX)"
+    },
+    {
+      "file": "02-sudoku-en-solved.webp",
+      "alt": "Même grille résolue automatiquement, interface en anglais",
+      "caption": "Même grille résolue automatiquement, interface en anglais"
+    }
+  ]
+}

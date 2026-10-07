@@ -1,0 +1,110 @@
+/* Importing Bootstrap SCSS file. */
+@use 'bootstrap/scss/bootstrap';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Sur :root pour être utilisables par les thèmes définis sur <body> */
+:root {
+  --gray-900: oklch(19.37% 0.006 300.98);
+  --gray-700: oklch(36.98% 0.014 302.71);
+  --gray-400: oklch(70.9% 0.015 304.04);
+}
+
+/* La page défile normalement : l'en-tête reste collé en haut, le pied de page suit le contenu */
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+/* Cadre commun à toutes les pages : largeur maximale et marges latérales (16 px minimum sur mobile) */
+.content {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem);
+}
+
+/* Le cadre gère déjà largeur et marges : les .container des pages n'en ajoutent pas une deuxième couche */
+.content .container {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Thèmes */
+body.white-theme {
+  --background-color: #fff;
+  background: var(--background-color);
+  color: #222;
+
+  --mynameiscolor: #30135f;
+  --on-accent: #fff; /* texte posé sur la couleur d'accent (boutons) */
+  --cardcolor: var(--background-color);
+  --cardcardcolor: #faf9fc;
+  --maincolor: var(--gray-900);
+  --heading-color: var(--gray-900);
+  --subheading-color: var(--gray-700);
+}
+
+body.dark-theme {
+  --background-color: #18122B;
+  background: var(--background-color);
+  color: #fff;
+
+  /* Assez clair pour rester lisible sur le fond sombre (contraste > 7:1) */
+  --mynameiscolor: #4fb8a0;
+  --on-accent: #10201c;
+  --cardcolor: #1d192c;
+  --cardcardcolor: #231f33;
+  --maincolor: rgb(226, 232, 240);
+  --heading-color: var(--maincolor);
+  --subheading-color: var(--gray-400);
+
+  --bs-link-color-rgb: 110, 168, 254;
+  --bs-link-hover-color-rgb: 158, 197, 254;
+  --bs-border-color: #3a3550;
+}
+
+/* Typo et couleurs */
+h1 {
+  color: var(--heading-color);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  margin: 0;
+  font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+/* Titres de section des pages (CV, projets, contact) */
+.section-title {
+  color: var(--mynameiscolor);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 1rem + 1.5vw, 2rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin: 0;
+  color: var(--maincolor);
+}

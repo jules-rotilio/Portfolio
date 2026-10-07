@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": false,
+  "images": [
+    {
+      "file": "01-blacklist-whitelist.webp",
+      "alt": "RDPBlacklist surveille le journal de sécurité et bloque les IP ; RDPWhitelist autorise une IP de confiance",
+      "caption": "RDPBlacklist surveille le journal de sécurité et bloque les IP ; RDPWhitelist autorise une IP de confiance"
+    }
+  ]
+}

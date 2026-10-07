@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": false,
+  "images": [
+    {
+      "file": "01-sender-receiver.webp",
+      "alt": "Le récepteur choisit sa sortie audio et attend la connexion ; l'émetteur capture le micro et l'envoie en TCP",
+      "caption": "Le récepteur choisit sa sortie audio et attend la connexion ; l'émetteur capture le micro et l'envoie en TCP"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": false,
+  "images": [
+    {
+      "file": "01-labels.webp",
+      "alt": "Génération des étiquettes : une requête SOAP par ligne du CSV, puis une image PNG par colis (A001-1, A001-2…)",
+      "caption": "Génération des étiquettes : une requête SOAP par ligne du CSV, puis une image PNG par colis (A001-1, A001-2…)"
+    }
+  ]
+}
