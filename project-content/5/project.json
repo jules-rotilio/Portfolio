@@ -1,5 +1,116 @@
 {
   "longDescription": "MediaToolkit est un explorateur de médias pour le bureau, écrit en Python avec PySide6 (Qt). Il sert à parcourir, prévisualiser, étiqueter, dédoublonner et traiter une bibliothèque d'images, de vidéos et de fichiers audio.\n\n- Explorateur : arborescence, liste détaillée ou grille de miniatures générées en arrière-plan, navigation au clavier, filtre par nom et par type de média, actions sur les fichiers (renommer, copier, déplacer, envoyer à la corbeille)\n- Tags : taxonomie chargée depuis un fichier tags.json, recherche par tags (tous / au moins un / sauf) sur un dossier ou tout le catalogue, synchronisation avec les attributs étendus user.xdg.tags de Linux\n- Index : catalogue SQLite partagé (taille, date, SHA-256, empreintes perceptuelles des images et de plusieurs images clés des vidéos, métadonnées ffprobe), indexation parallèle et réutilisation du cache pour les fichiers inchangés\n- Doublons : doublons exacts, images visuellement proches et vidéos ou GIF dont les images clés correspondent, avec aperçu et possibilité de marquer les faux positifs\n- Aperçu : images fixes, GIF et WebP animés, vidéo et audio, avec les détails techniques (format, durée, codecs, résolution, débit)\n- Traitements FFmpeg : workflows enregistrables (découper, redimensionner, convertir, extraire l'audio) et onglet de traitement rapide qui suit le fichier sélectionné ; les fichiers existants ne sont jamais écrasés et les traitements sont annulables\n- Confort : thème clair ou sombre accessible (contraste WCAG AA), préférences, journal horodaté par lancement\n\nLe projet succède au module MediaTools de mon PowerShell Toolkit. Il est couvert par une vingtaine de fichiers de tests unitaires.",
-  "allowZipDownload": false,
-  "images": []
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-explorer-list-clair.webp",
+      "alt": "MediaToolkit : explorateur en liste, avec aperçu et couleurs d'état (thème clair)",
+      "caption": "Explorateur en vue liste (thème clair)"
+    },
+    {
+      "file": "02-explorer-grid-clair.webp",
+      "alt": "MediaToolkit : explorateur en grille de miniatures (thème clair)",
+      "caption": "Grille de miniatures (thème clair)"
+    },
+    {
+      "file": "03-explorer-grid-videos-clair.webp",
+      "alt": "MediaToolkit : miniatures de vidéos et de GIF animés (thème clair)",
+      "caption": "Miniatures des vidéos (thème clair)"
+    },
+    {
+      "file": "04-tag-search-panel-clair.webp",
+      "alt": "MediaToolkit : recherche par tags (Has / Not, ET / OU) sur tout le catalogue (thème clair)",
+      "caption": "Recherche par tags (thème clair)"
+    },
+    {
+      "file": "05-catalog-results-clair.webp",
+      "alt": "MediaToolkit : résultats de recherche dans tout le catalogue (thème clair)",
+      "caption": "Résultats du catalogue (thème clair)"
+    },
+    {
+      "file": "06-disk-usage-clair.webp",
+      "alt": "MediaToolkit : onglet d'utilisation du disque : tailles et nombres de fichiers par dossier (thème clair)",
+      "caption": "Utilisation du disque (thème clair)"
+    },
+    {
+      "file": "07-duplicates-clair.webp",
+      "alt": "MediaToolkit : groupes de doublons exacts et visuellement similaires (thème clair)",
+      "caption": "Détection des doublons (thème clair)"
+    },
+    {
+      "file": "08-process-clair.webp",
+      "alt": "MediaToolkit : workflow FFmpeg enregistré (découper, redimensionner, convertir) (thème clair)",
+      "caption": "Workflows FFmpeg (thème clair)"
+    },
+    {
+      "file": "09-quick-process-clair.webp",
+      "alt": "MediaToolkit : traitement rapide : conversion d'une vidéo en GIF (thème clair)",
+      "caption": "Traitement rapide (thème clair)"
+    },
+    {
+      "file": "10-database-clair.webp",
+      "alt": "MediaToolkit : navigateur en lecture seule de la base SQLite (thème clair)",
+      "caption": "Base de données (thème clair)"
+    },
+    {
+      "file": "11-preferences-clair.webp",
+      "alt": "MediaToolkit : fenêtre des préférences (thème clair)",
+      "caption": "Préférences (thème clair)"
+    },
+    {
+      "file": "01-explorer-list-sombre.webp",
+      "alt": "MediaToolkit : explorateur en liste, avec aperçu et couleurs d'état (thème sombre)",
+      "caption": "Explorateur en vue liste (thème sombre)"
+    },
+    {
+      "file": "02-explorer-grid-sombre.webp",
+      "alt": "MediaToolkit : explorateur en grille de miniatures (thème sombre)",
+      "caption": "Grille de miniatures (thème sombre)"
+    },
+    {
+      "file": "03-explorer-grid-videos-sombre.webp",
+      "alt": "MediaToolkit : miniatures de vidéos et de GIF animés (thème sombre)",
+      "caption": "Miniatures des vidéos (thème sombre)"
+    },
+    {
+      "file": "04-tag-search-panel-sombre.webp",
+      "alt": "MediaToolkit : recherche par tags (Has / Not, ET / OU) sur tout le catalogue (thème sombre)",
+      "caption": "Recherche par tags (thème sombre)"
+    },
+    {
+      "file": "05-catalog-results-sombre.webp",
+      "alt": "MediaToolkit : résultats de recherche dans tout le catalogue (thème sombre)",
+      "caption": "Résultats du catalogue (thème sombre)"
+    },
+    {
+      "file": "06-disk-usage-sombre.webp",
+      "alt": "MediaToolkit : onglet d'utilisation du disque : tailles et nombres de fichiers par dossier (thème sombre)",
+      "caption": "Utilisation du disque (thème sombre)"
+    },
+    {
+      "file": "07-duplicates-sombre.webp",
+      "alt": "MediaToolkit : groupes de doublons exacts et visuellement similaires (thème sombre)",
+      "caption": "Détection des doublons (thème sombre)"
+    },
+    {
+      "file": "08-process-sombre.webp",
+      "alt": "MediaToolkit : workflow FFmpeg enregistré (découper, redimensionner, convertir) (thème sombre)",
+      "caption": "Workflows FFmpeg (thème sombre)"
+    },
+    {
+      "file": "09-quick-process-sombre.webp",
+      "alt": "MediaToolkit : traitement rapide : conversion d'une vidéo en GIF (thème sombre)",
+      "caption": "Traitement rapide (thème sombre)"
+    },
+    {
+      "file": "10-database-sombre.webp",
+      "alt": "MediaToolkit : navigateur en lecture seule de la base SQLite (thème sombre)",
+      "caption": "Base de données (thème sombre)"
+    },
+    {
+      "file": "11-preferences-sombre.webp",
+      "alt": "MediaToolkit : fenêtre des préférences (thème sombre)",
+      "caption": "Préférences (thème sombre)"
+    }
+  ]
 }
