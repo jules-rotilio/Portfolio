@@ -33,6 +33,7 @@ nginx sert aussi de point d'entrée au serveur mail (`mail.rotilio.fr`, autoconf
 |---|---|---|
 | `GET` | `/api/projects` | Liste des projets, lue depuis `Portfolio.Api/Projects.json` |
 | `POST` | `/api/send-email` | Envoie un message du formulaire de contact (`from`, `subject`, `body`) |
+| `GET` | `/api/projects/{id}` | *Prévu* : détail d'un projet (description longue, aperçus, fichiers, lien .zip), voir [docs/api-project-details.md](docs/api-project-details.md) |
 
 Pour ajouter un projet, éditer `Portfolio.Api/Projects.json` (`ID` unique, `Name`, `Description`, `Technologies`) puis reconstruire l'API (`docker compose up -d --build api`). Les tests vérifient qu'aucun champ ne manque et que les ID sont uniques.
 

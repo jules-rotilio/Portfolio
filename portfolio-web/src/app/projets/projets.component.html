@@ -5,7 +5,9 @@
 			<div class="col-lg-6 mb-4" *ngFor="let project of row">
 				<div class="card h-100">
 					<div class="card-body">
-						<h3 class="card-title">{{ project.name }}</h3>
+						<h3 class="card-title">
+							<a class="stretched-link" [href]="'/projets?projet=' + project.id" (click)="$event.preventDefault(); open(project)">{{ project.name }}</a>
+						</h3>
 						<p class="card-text">{{ project.description }}</p>
 					</div>
 					<div class="card-footer">
@@ -14,9 +16,17 @@
 								{{ tech }}
 							</li>
 						</ul>
+						<span class="see-more">Voir le projet <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+@if (openProject; as project) {
+	<!-- Chargée à la demande : la fenêtre ne pèse pas sur le premier affichage de la page -->
+	@defer (on immediate) {
+		<app-project-details [project]="project" (closed)="close()"></app-project-details>
+	}
+}
