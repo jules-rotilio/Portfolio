@@ -1,5 +1,5 @@
 {
-  "allowZipDownload": false,
+  "allowZipDownload": true,
   "images": [
     {
       "file": "01-levels.webp",

@@ -22,7 +22,7 @@ namespace Portfolio.Api.Tests
         {
             var project = Path.Combine(_root, Id.ToString());
             Write(project, "project.json", """
-                { "longDescription": "Longue description.\n\n- Point A", "allowZipDownload": false,
+                { "longDescription": "Longue description.\n\n- Point A", "allowZipDownload": true,
                   "images": [ { "file": "ecran.png", "alt": "Écran", "caption": "Accueil" }, { "file": "absente.png", "alt": "?" } ] }
                 """);
             Write(project, "images/ecran.png", Png);
@@ -54,8 +54,8 @@ namespace Portfolio.Api.Tests
             else File.WriteAllText(path, (string)content);
         }
 
-        private void AllowZip() =>
-            File.WriteAllText(Path.Combine(_root, Id.ToString(), "project.json"), """{ "allowZipDownload": true }""");
+        private void DisallowZip() =>
+            File.WriteAllText(Path.Combine(_root, Id.ToString(), "project.json"), """{ "allowZipDownload": false, "images": [ { "file": "ecran.png", "alt": "Écran" } ] }""");
 
         private async Task<JsonElement> Details() =>
             await _client.GetFromJsonAsync<JsonElement>($"/api/projects/{Id}");
@@ -80,7 +80,7 @@ namespace Portfolio.Api.Tests
             Assert.Equal("MediaToolkit", details.GetProperty("name").GetString());
             Assert.NotEqual(0, details.GetProperty("technologies").GetArrayLength());
             Assert.Equal("Longue description.\n\n- Point A", details.GetProperty("longDescription").GetString());
-            Assert.Equal(JsonValueKind.Null, details.GetProperty("zipUrl").ValueKind);
+            Assert.Equal($"/api/projects/{Id}/zip", details.GetProperty("zipUrl").GetString());
 
             // Les images absentes du dossier sont ignorées
             var image = Assert.Single(details.GetProperty("images").EnumerateArray());
@@ -138,19 +138,33 @@ namespace Portfolio.Api.Tests
         }
 
         [Fact]
-        public async Task Zip_IsOnlyAvailableWhenExplicitlyAllowed()
+        public async Task Zip_ContainsTheVisibleFiles()
         {
-            Assert.Equal(HttpStatusCode.NotFound, (await _client.GetAsync($"/api/projects/{Id}/zip")).StatusCode);
-
-            AllowZip();
-            Assert.Equal($"/api/projects/{Id}/zip", (await Details()).GetProperty("zipUrl").GetString());
-
             var response = await _client.GetAsync($"/api/projects/{Id}/zip");
             Assert.Equal("application/zip", response.Content.Headers.ContentType?.MediaType);
             Assert.Equal("MediaToolkit.zip", response.Content.Headers.ContentDisposition?.FileName?.Trim('"'));
 
             using var zip = new ZipArchive(await response.Content.ReadAsStreamAsync());
             Assert.Equal(["gros.txt", "latin1.txt", "README.md", "src/icone.png", "src/main.py"], zip.Entries.Select(e => e.FullName).OrderBy(n => n, StringComparer.OrdinalIgnoreCase));
+        }
+
+        [Fact]
+        public async Task WithoutZip_TheTreeStays_ButNoFileCanBeRead()
+        {
+            DisallowZip();
+            var details = await Details();
+            Assert.Equal(JsonValueKind.Null, details.GetProperty("zipUrl").ValueKind);
+
+            var main = Node(Node(details.GetProperty("files"), "src").GetProperty("children"), "main.py");
+            Assert.Equal(JsonValueKind.Null, main.GetProperty("content").ValueKind);
+            Assert.Equal(JsonValueKind.Null, main.GetProperty("url").ValueKind);
+            Assert.Equal(JsonValueKind.Null, Node(details.GetProperty("files"), "README.md").GetProperty("content").ValueKind);
+
+            Assert.Equal(HttpStatusCode.NotFound, (await _client.GetAsync($"/api/projects/{Id}/zip")).StatusCode);
+            Assert.Equal(HttpStatusCode.NotFound, (await _client.GetAsync($"/api/projects/{Id}/files/src/main.py")).StatusCode);
+            Assert.Equal(HttpStatusCode.NotFound, (await _client.GetAsync($"/api/projects/{Id}/files/src/icone.png")).StatusCode);
+            // Les aperçus de l'application restent visibles
+            Assert.Equal(HttpStatusCode.OK, (await _client.GetAsync($"/api/projects/{Id}/images/ecran.png")).StatusCode);
         }
 
         [Fact]
