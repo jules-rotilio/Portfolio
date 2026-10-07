@@ -4,13 +4,14 @@ import { Subscription } from 'rxjs';
 import { Project, ProjectDetails } from '../../models/project';
 import { ProjectsService } from '../../services/projects.service';
 import { FileBrowserComponent } from '../file-browser/file-browser.component';
+import { ImageLightboxComponent } from '../image-lightbox/image-lightbox.component';
 
 export type DescriptionBlock = { type: 'paragraph'; text: string } | { type: 'list'; items: string[] };
 
 /** Fenêtre de détail d'un projet, présentée comme une page de dépôt GitHub. */
 @Component({
   selector: 'app-project-details',
-  imports: [FileBrowserComponent],
+  imports: [FileBrowserComponent, ImageLightboxComponent],
   templateUrl: './project-details.component.html',
   styleUrl: './project-details.component.scss'
 })
@@ -20,7 +21,6 @@ export class ProjectDetailsComponent implements OnChanges, AfterViewInit, OnDest
   @ViewChild('closeButton') closeButton?: ElementRef<HTMLButtonElement>;
   @ViewChild('fileBrowser') fileBrowser?: FileBrowserComponent;
   @ViewChild('thumbnails') thumbnails?: ElementRef<HTMLElement>;
-  @ViewChild('lightboxClose') lightboxClose?: ElementRef<HTMLButtonElement>;
 
   details: ProjectDetails | null = null;
   description: DescriptionBlock[] = [];
@@ -90,7 +90,6 @@ export class ProjectDetailsComponent implements OnChanges, AfterViewInit, OnDest
 
   openLightbox(): void {
     this.lightboxOpen = true;
-    setTimeout(() => this.lightboxClose?.nativeElement.focus());
   }
 
   closeLightbox(): void {
