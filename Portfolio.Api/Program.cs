@@ -11,6 +11,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddSingleton<IContactMailer, SmtpContactMailer>();
 
+// Contenu détaillé des projets (fichiers sources, aperçus), lu depuis ProjectContent:Path
+builder.Services.AddSingleton<ProjectContentStore>();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
