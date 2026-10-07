@@ -1,0 +1,10 @@
+{
+  "Type": ["Photo", "Video", "Animated", "Screenshot", "Scan"],
+  "Subject": ["People", "Animals", "Nature", "City", "Food", "Art"],
+  "Event": ["Holiday", "Birthday", "Wedding", "Concert", "Trip"],
+  "Season": ["Spring", "Summer", "Autumn", "Winter"],
+  "Quality": ["Favorite", "To review", "Blurry", "Duplicate"],
+  "Source": ["Camera", "Phone", "Download", "Social media"],
+  "Jobs": ["To convert", "To compress", "To rename"],
+  "Misc": ["Archive", "Shared", "Private"]
+}

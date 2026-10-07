@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "scp_sl": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

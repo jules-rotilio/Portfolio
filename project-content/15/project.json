@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-messages.webp",
+      "alt": "Messages Web dans une fenêtre dédiée (CefSharp, mode sombre forcé), avec icône et menu dans la zone de notification",
+      "caption": "Messages Web dans une fenêtre dédiée (CefSharp, mode sombre forcé), avec icône et menu dans la zone de notification"
+    }
+  ]
+}

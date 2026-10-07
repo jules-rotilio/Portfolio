@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-game-helper.webp",
+      "alt": "Fenêtre principale : soundboard sur le pavé numérique, niveaux audio et serveur Whisper local",
+      "caption": "Fenêtre principale : soundboard sur le pavé numérique, niveaux audio et serveur Whisper local"
+    }
+  ]
+}

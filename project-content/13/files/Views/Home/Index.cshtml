@@ -1,0 +1,243 @@
+﻿@model IReadOnlyList<string>
+
+@{
+    ViewData["Title"] = "Ask Ollama";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Ask an Ollama Model</h2>
+
+    <div class="row">
+        <!-- LEFT COLUMN: INPUT FORM -->
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm">
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Prompt *</label>
+                    <textarea id="prompt" class="form-control" rows="3" placeholder="Ask something..."></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Select Model</label>
+                    <select id="model" class="form-select">
+                        @foreach (var m in Model)
+                        {
+                            <option value="@m">@m</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Attach Documents (optional)</label>
+                    <input id="files" type="file" class="form-control" multiple />
+
+                    <button id="clearFilesBtn" class="btn btn-sm btn-outline-danger mt-2">
+                        Clear Attached Documents
+                    </button>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Context</label>
+                    <textarea id="context" class="form-control" rows="4"
+                              placeholder="Conversation history..."></textarea>
+
+                    <button id="clearContextBtn" class="btn btn-sm btn-outline-danger mt-2">
+                        Clear Context
+                    </button>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="enablePlan">
+                    <label class="form-check-label fw-bold" for="enablePlan">
+                        Generate a plan before execution
+                    </label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="cavemanMode">
+                    <label class="form-check-label fw-bold" for="cavemanMode">
+                        Caveman Mode (very short answers)
+                    </label>
+                </div>
+
+
+
+                <button id="askBtn" class="btn btn-primary w-100">Ask Model</button>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: PLAN + OUTPUT -->
+        <div class="col-md-6">
+
+            <!-- PLAN BLOCK -->
+            <div class="mt-2">
+                <h4>Plan</h4>
+                <div id="planOutput" class="p-3 bg-light border rounded" style="min-height:120px;">
+                    <em>No plan yet.</em>
+                </div>
+
+                <button id="executePlanBtn" class="btn btn-success mt-2 w-100" disabled>
+                    Execute Plan
+                </button>
+            </div>
+
+            <!-- OUTPUT BLOCK -->
+            <div class="mt-4">
+                <h4>Output</h4>
+
+                <div class="d-flex align-items-center mb-2">
+                    <span class="me-2 fw-bold">Elapsed time:</span>
+                    <span id="elapsedTime" class="text-muted">—</span>
+                </div>
+
+                <div id="output" class="p-3 bg-light border rounded" style="min-height:150px;"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+    document.getElementById("clearFilesBtn").addEventListener("click", () => {
+        document.getElementById("files").value = "";
+    });
+
+    document.getElementById("clearContextBtn").addEventListener("click", () => {
+        document.getElementById("context").value = "";
+        document.getElementById("elapsedTime").textContent = "—";
+    });
+
+    // --- PLAN STORAGE ---
+    let lastPlanJson = null;
+
+    // --- ASK MODEL ---
+    document.getElementById("askBtn").addEventListener("click", async () => {
+
+        const prompt = document.getElementById("prompt").value.trim();
+        if (!prompt) {
+            alert("Prompt cannot be empty.");
+            return;
+        }
+
+        const model = document.getElementById("model").value;
+        const context = document.getElementById("context").value;
+        const files = document.getElementById("files").files;
+        const enablePlan = document.getElementById("enablePlan").checked;
+        const caveman = document.getElementById("cavemanMode").checked;
+
+        const formData = new FormData();
+        formData.append("prompt", prompt);
+        formData.append("model", model);
+        formData.append("context", context);
+        formData.append("caveman", caveman);
+
+        if (enablePlan) {
+            formData.append("mode", "plan");
+        } else {
+            formData.append("mode", "normal");
+        }
+
+        for (let i = 0; i < files.length; i++) {
+            formData.append("files", files[i]);
+        }
+
+        const planOutput = document.getElementById("planOutput");
+        const output = document.getElementById("output");
+        const elapsedTimeField = document.getElementById("elapsedTime");
+
+        if (enablePlan) {
+            planOutput.innerHTML = "Generating plan...";
+            output.innerHTML = "";
+        } else {
+            output.innerHTML = "Processing...";
+            planOutput.innerHTML = "<em>No plan.</em>";
+        }
+
+        elapsedTimeField.textContent = "…";
+
+        try {
+            const response = await fetch("/Home/AskModel", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (enablePlan) {
+                // --- PLAN MODE ---
+                lastPlanJson = data.answer;
+                document.getElementById("executePlanBtn").disabled = false;
+
+                planOutput.innerHTML = marked.parse("```json\n" + data.answer + "\n```");
+            } else {
+                // --- NORMAL MODE ---
+                output.innerHTML = marked.parse(data.answer);
+
+                const ctxBox = document.getElementById("context");
+                ctxBox.value += `\nUser: ${prompt}\nModel: ${data.answer}\n(Time: ${data.durationMs} ms)\n`;
+            }
+
+            elapsedTimeField.textContent = `${data.durationMs} ms`;
+
+        } catch (error) {
+            console.error(error);
+            if (enablePlan) {
+                planOutput.innerHTML = `<div class="alert alert-danger">Error generating plan.</div>`;
+            } else {
+                output.innerHTML = `<div class="alert alert-danger">Error.</div>`;
+            }
+        }
+    });
+
+    // --- EXECUTE PLAN ---
+    document.getElementById("executePlanBtn").addEventListener("click", async () => {
+
+        if (!lastPlanJson) return;
+
+        const promptBox = document.getElementById("prompt");
+        const prompt = promptBox.value.trim();
+        const model = document.getElementById("model").value;
+        const context = document.getElementById("context").value;
+        const caveman = document.getElementById("cavemanMode").checked;
+
+        const output = document.getElementById("output");
+        const elapsedTimeField = document.getElementById("elapsedTime");
+
+        const formData = new FormData();
+        formData.append("caveman", caveman);
+        formData.append("prompt", prompt);
+        formData.append("model", model);
+        formData.append("context", context);
+        formData.append("mode", "execute");
+        formData.append("planJson", lastPlanJson);
+
+        output.innerHTML = "Executing plan...";
+        elapsedTimeField.textContent = "…";
+
+        try {
+            const response = await fetch("/Home/AskModel", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            output.innerHTML = marked.parse(data.answer);
+            elapsedTimeField.textContent = `${data.durationMs} ms`;
+
+            // Append to context AFTER execution
+            const ctxBox = document.getElementById("context");
+            ctxBox.value += `\nUser: ${prompt}\nModel: ${data.answer}\n(Time: ${data.durationMs} ms)\n`;
+
+            promptBox.value = "";
+
+        } catch (error) {
+            console.error(error);
+            output.innerHTML = `<div class="alert alert-danger">Error executing plan.</div>`;
+        }
+    });
+</script>
+}

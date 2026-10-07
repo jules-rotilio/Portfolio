@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-pong.webp",
+      "alt": "Partie de Pong à deux joueurs sur le même clavier (W/S et flèches)",
+      "caption": "Partie de Pong à deux joueurs sur le même clavier (W/S et flèches)"
+    }
+  ]
+}

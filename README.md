@@ -33,7 +33,7 @@ nginx sert aussi de point d'entrée au serveur mail (`mail.rotilio.fr`, autoconf
 |---|---|---|
 | `GET` | `/api/projects` | Liste des projets, lue depuis `Portfolio.Api/Projects.json` |
 | `POST` | `/api/send-email` | Envoie un message du formulaire de contact (`from`, `subject`, `body`) |
-| `GET` | `/api/projects/{id}` | *Prévu* : détail d'un projet (description longue, aperçus, fichiers, lien .zip), voir [docs/api-project-details.md](docs/api-project-details.md) |
+| `GET` | `/api/projects/{id}` | Détail d'un projet (description longue, aperçus, fichiers, lien .zip), lu depuis `project-content/{id}/`. Voir [docs/api-project-details.md](docs/api-project-details.md) |
 
 Pour ajouter un projet, éditer `Portfolio.Api/Projects.json` (`ID` unique, `Name`, `Description`, `Technologies`) puis reconstruire l'API (`docker compose up -d --build api`). Les tests vérifient qu'aucun champ ne manque et que les ID sont uniques.
 
@@ -45,6 +45,7 @@ Pour ajouter un projet, éditer `Portfolio.Api/Projects.json` (`ID` unique, `Nam
 ├── Portfolio.Api.Tests/   Tests d'intégration xUnit de l'API
 ├── portfolio-web/         Front Angular 19 (SSR)
 ├── nginx/                 Configuration du reverse proxy
+├── project-content/       Fichiers sources et aperçus des projets, servis par l'API
 ├── certs/                 Certificats TLS (hors Git, à fournir)
 ├── docker-compose.yml
 └── PortfolioSolution.sln  Solution .NET (API + tests)

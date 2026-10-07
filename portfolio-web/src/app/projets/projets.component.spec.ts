@@ -77,7 +77,8 @@ describe('ProjetsComponent', () => {
     http.expectOne(API_URL).flush([project(0), project(1)]);
     await settle();
 
-    // Pas encore de détail côté API : la fenêtre reprend les informations de la carte
+    // Ni contenu côté API ni données fictives : la fenêtre reprend les informations de la carte
+    http.expectOne(`${API_URL}/1`).flush('', { status: 404, statusText: 'Not Found' });
     http.expectOne('/mock/projects/1.json').flush('', { status: 404, statusText: 'Not Found' });
     await settle();
 
@@ -93,6 +94,7 @@ describe('ProjetsComponent', () => {
     (element.querySelectorAll('.card-title a')[1] as HTMLElement).click();
     await settle();
     expect(router.url).toBe('/?projet=4');
+    http.expectOne(`${API_URL}/4`).flush('', { status: 404, statusText: 'Not Found' });
     http.expectOne('/mock/projects/4.json').flush('', { status: 404, statusText: 'Not Found' });
     await settle();
 

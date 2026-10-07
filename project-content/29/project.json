@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-server.webp",
+      "alt": "Serveur TCP recevant les commandes de lecture, de volume et de micro",
+      "caption": "Serveur TCP recevant les commandes de lecture, de volume et de micro"
+    }
+  ]
+}

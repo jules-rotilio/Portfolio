@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-help-send.webp",
+      "alt": "Aide de la commande et envoi d'un e-mail HTML avec pièces jointes",
+      "caption": "Aide de la commande et envoi d'un e-mail HTML avec pièces jointes"
+    }
+  ]
+}

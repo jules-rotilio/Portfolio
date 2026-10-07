@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-discord.webp",
+      "alt": "Ajout d'un flux avec /add-rss, puis publication automatique des nouveaux articles en embeds",
+      "caption": "Ajout d'un flux avec /add-rss, puis publication automatique des nouveaux articles en embeds"
+    }
+  ]
+}

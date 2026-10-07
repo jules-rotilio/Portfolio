@@ -2,13 +2,15 @@
 
 La page « Mes projets » ouvre une fenêtre de détail, présentée comme une page de dépôt GitHub, quand on clique sur une carte. L'URL porte l'ID du projet (`/projets?projet=5`), on peut donc partager le lien direct vers un projet.
 
-L'API ne renvoie pas encore ce détail. En attendant, le front lit des données fictives dans `portfolio-web/public/mock/projects/{id}.json` (seul le projet 0, ce portfolio, en a pour l'instant). Pour les autres projets, la fenêtre reprend les informations de la carte.
+Le front lit le détail dans cet ordre :
 
-**Pour brancher l'API :** implémenter la route ci-dessous, puis passer `ProjectsService.useMockDetails` à `false` dans `portfolio-web/src/app/services/projects.service.ts`. Les types TypeScript correspondants sont dans `portfolio-web/src/app/models/project.ts`.
+1. l'API (`GET /api/projects/{id}`), qui le construit à partir du dossier `project-content/{id}/` (voir [project-content/README.md](../project-content/README.md)) ;
+2. à défaut, les données fictives `portfolio-web/public/mock/projects/{id}.json` (seul le projet 0, ce portfolio, en a) ;
+3. à défaut, les informations de la carte.
 
 ## `GET /api/projects/{id}`
 
-Renvoie le détail du projet, ou `404` s'il n'existe pas. Tous les champs du détail sont facultatifs : un champ absent reprend la valeur de la carte (ou une liste vide).
+Renvoie le détail du projet, ou `404` s'il n'existe pas ou n'a pas de dossier de contenu. Les URL renvoyées (`images`, `files[].url`, `zipUrl`) sont relatives au domaine de l'API (`/api/projects/...`) : le front les complète avec `https://api.julesrotilio.fr`. Tous les champs du détail sont facultatifs : un champ absent reprend la valeur de la carte (ou une liste vide).
 
 | Champ | Type | Description |
 |---|---|---|
@@ -62,4 +64,12 @@ Le front trie lui-même les fichiers (dossiers d'abord, puis ordre alphabétique
 }
 ```
 
-Le contenu des fichiers peut peser lourd : si besoin, l'API pourra plus tard ne renvoyer que l'arborescence et servir chaque fichier à part (`url`), le front affichant déjà `content` ou l'image `url` selon ce qui est présent.
+## Fichiers associés
+
+| Méthode | Route | Description |
+|---|---|---|
+| `GET` | `/api/projects/{id}/files/{chemin}` | Fichier source brut, seulement si `allowZipDownload` vaut `true` (sinon `404`). Les images sont affichées, les autres fichiers sont proposés en téléchargement |
+| `GET` | `/api/projects/{id}/images/{nom}` | Aperçu de l'application |
+| `GET` | `/api/projects/{id}/zip` | Archive .zip de `files/`, seulement si `allowZipDownload` vaut `true` dans `project.json` (sinon `404`) |
+
+Le contenu des fichiers texte (UTF-8, 64 Ko au plus) est inclus dans `files[].content` ; les autres n'ont que leur `url`. Pour un projet sans `allowZipDownload`, l'arborescence est renvoyée sans `content` ni `url` : le site indique alors que le code n'est pas partagé.

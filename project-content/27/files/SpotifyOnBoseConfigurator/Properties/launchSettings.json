@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SpotifyOnBoseConfigurator": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

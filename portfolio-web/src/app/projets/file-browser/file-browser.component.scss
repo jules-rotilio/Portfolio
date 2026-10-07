@@ -4,9 +4,9 @@
 
 .file-browser {
 	display: grid;
-	grid-template-columns: minmax(180px, 260px) 1fr;
+	grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
 	min-height: 320px;
-	max-height: 520px;
+	height: 520px;
 }
 
 .tree {
@@ -92,8 +92,10 @@
 }
 
 .code {
+	/* Défilement vertical et horizontal : min-height: 0 empêche le bloc de grandir avec le fichier */
 	overflow: auto;
 	flex: 1;
+	min-height: 0;
 	font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
 	font-size: 0.8rem;
 
@@ -101,11 +103,17 @@
 		border-collapse: collapse;
 	}
 
+	/* Les numéros de ligne restent visibles pendant le défilement horizontal */
 	.line-number {
+		position: sticky;
+		left: 0;
+		z-index: 1;
+		background: var(--background-color);
 		padding: 0 0.75rem;
 		text-align: right;
 		user-select: none;
-		opacity: 0.5;
+		/* Couleur atténuée plutôt qu'opacity : le fond doit rester opaque pour masquer le code qui défile dessous */
+		color: color-mix(in srgb, currentColor 50%, transparent);
 		vertical-align: top;
 	}
 
@@ -138,8 +146,9 @@
 
 @media (max-width: 767.98px) {
 	.file-browser {
-		grid-template-columns: 1fr;
-		max-height: none;
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: auto minmax(0, 1fr);
+		height: auto;
 	}
 
 	.tree {

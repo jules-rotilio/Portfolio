@@ -1,0 +1,10 @@
+{
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-cmdlet.webp",
+      "alt": "Cmdlet Send-MailKitMail : syntaxe des trois jeux de paramètres et envoi via SMTPS",
+      "caption": "Cmdlet Send-MailKitMail : syntaxe des trois jeux de paramètres et envoi via SMTPS"
+    }
+  ]
+}

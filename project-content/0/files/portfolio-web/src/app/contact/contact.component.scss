@@ -1,0 +1,45 @@
+:host {
+	display: block;
+}
+
+.card {
+	background-color: var(--cardcolor) !important;
+}
+
+label,
+p {
+	color: var(--maincolor);
+}
+
+.input-group-text,
+.form-control {
+	background-color: var(--bs-card-cap-bg);
+	color: var(--maincolor);
+}
+
+.form-control::placeholder {
+	color: var(--maincolor);
+	opacity: 0.6;
+}
+
+.btn-primary {
+	--bs-btn-color: var(--on-accent);
+	--bs-btn-disabled-color: var(--on-accent);
+	--bs-btn-hover-color: #fff;
+	--bs-btn-active-color: #fff;
+	--bs-btn-bg: var(--mynameiscolor);
+	--bs-btn-border-color: var(--mynameiscolor);
+	--bs-btn-hover-bg: #792a53;
+	--bs-btn-hover-border-color: #792a53;
+	--bs-btn-active-bg: #792a53;
+	--bs-btn-active-border-color: #792a53;
+	--bs-btn-disabled-bg: var(--mynameiscolor);
+	--bs-btn-disabled-border-color: var(--mynameiscolor);
+}
+
+.list-group-item {
+	background-color: var(--background-color);
+	color: var(--maincolor) !important;
+	padding-left: 0;
+	padding-right: 0;
+}

@@ -1,0 +1,13 @@
+# Secrets : ne doivent jamais entrer dans une image
+**/.env
+certs/
+
+# Dépendances et sorties de build (réinstallées / régénérées dans le conteneur)
+**/node_modules/
+**/bin/
+**/obj/
+**/dist/
+**/.angular/
+**/.git/
+**/.vs/
+**/.vscode/

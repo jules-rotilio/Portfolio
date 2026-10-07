@@ -1,0 +1,55 @@
+:host {
+	display: block;
+}
+
+section {
+	margin-bottom: 2.5rem;
+}
+
+.lead {
+	max-width: 75ch;
+	font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+	line-height: 1.7;
+	color: var(--maincolor);
+}
+
+.list-group-item {
+	background-color: transparent;
+	color: var(--maincolor);
+	line-height: 1.6;
+}
+
+/* Expériences : la liste à puces garde une marge lisible sur mobile */
+.list-group-item ul {
+	padding-left: 1.25rem;
+	margin: 0.5rem 0 0;
+}
+
+.list-group-item ul li + li {
+	margin-top: 0.25rem;
+}
+
+.card {
+	background-color: var(--cardcolor) !important;
+}
+
+.card-title {
+	color: var(--mynameiscolor);
+	font-size: 1.15rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+.card .list-group-item {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* Précisions sous une compétence (frameworks, SGBD...) : texte discret plutôt que des badges */
+.skill-detail {
+	display: block;
+	font-size: 0.875rem;
+	color: var(--subheading-color);
+	line-height: 1.4;
+	margin-top: 0.15rem;
+}
