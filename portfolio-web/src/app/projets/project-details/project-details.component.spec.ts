@@ -90,6 +90,44 @@ describe('ProjectDetailsComponent', () => {
     expect(current()).toBe('/b.jpg');
   });
 
+  it('agrandit l\'aperçu au clic, navigue au clavier et se referme avec Échap sans fermer la fiche', () => {
+    open({ id: 2, images: [{ url: '/a.jpg', alt: 'A', caption: 'Écran A' }, { url: '/b.jpg', alt: 'B' }] });
+    const closed = spyOn(fixture.componentInstance.closed, 'emit');
+
+    (element.querySelector('.stage .zoom') as HTMLElement).click();
+    fixture.detectChanges();
+    expect(element.querySelector('.lightbox img')?.getAttribute('src')).toBe('/a.jpg');
+    expect(element.querySelector('.lightbox figcaption')?.textContent).toContain('1 / 2');
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+    fixture.detectChanges();
+    expect(element.querySelector('.lightbox img')?.getAttribute('src')).toBe('/b.jpg');
+    // La miniature active suit l'image affichée
+    expect(element.querySelector('.thumbnails button.active img')?.getAttribute('src')).toBe('/b.jpg');
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    fixture.detectChanges();
+    expect(element.querySelector('.lightbox')).toBeNull();
+    expect(closed).not.toHaveBeenCalled();
+  });
+
+  it('agrandit le code dans une grande fenêtre, refermée par Échap avant la fiche', () => {
+    open({ id: 2, files: [{ name: 'a.ts', path: 'a.ts', type: 'file', size: 1, content: 'x' }] });
+    const closed = spyOn(fixture.componentInstance.closed, 'emit');
+
+    (element.querySelector('.btn-expand') as HTMLElement).click();
+    fixture.detectChanges();
+    expect(element.querySelector('.file-browser.expanded')).not.toBeNull();
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    fixture.detectChanges();
+    expect(element.querySelector('.file-browser.expanded')).toBeNull();
+    expect(closed).not.toHaveBeenCalled();
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    expect(closed).toHaveBeenCalledTimes(1);
+  });
+
   it('se ferme avec Échap, le bouton ou un clic à côté, et libère le défilement de la page', () => {
     open(null);
     const closed = spyOn(fixture.componentInstance.closed, 'emit');
