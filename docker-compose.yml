@@ -32,6 +32,8 @@ services:
       - Portfolio.Api/.env
     volumes:
       - ./certs:/https:ro
+      # Fichiers sources et aperçus des projets, servis par GET /api/projects/{id}
+      - ./project-content:/app/project-content:ro
     networks:
       mynet:
         ipv4_address: 172.28.0.10

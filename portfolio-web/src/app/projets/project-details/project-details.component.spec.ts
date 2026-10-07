@@ -13,11 +13,12 @@ describe('ProjectDetailsComponent', () => {
   function open(details: object | null) {
     fixture.componentRef.setInput('project', CARD);
     fixture.detectChanges();
-    const req = http.expectOne('/mock/projects/2.json');
+    const req = http.expectOne('https://api.julesrotilio.fr/api/projects/2');
     if (details) {
       req.flush(details);
     } else {
       req.flush('', { status: 404, statusText: 'Not Found' });
+      http.expectOne('/mock/projects/2.json').flush('', { status: 404, statusText: 'Not Found' });
     }
     fixture.detectChanges();
   }
@@ -49,8 +50,8 @@ describe('ProjectDetailsComponent', () => {
   });
 
   it('n\'affiche le bouton .zip que si le projet l\'autorise', () => {
-    open({ id: 2, zipUrl: '/downloads/mon-projet.zip' });
-    expect(element.querySelector('a[download]')?.getAttribute('href')).toBe('/downloads/mon-projet.zip');
+    open({ id: 2, zipUrl: '/api/projects/2/zip' });
+    expect(element.querySelector('a[download]')?.getAttribute('href')).toBe('https://api.julesrotilio.fr/api/projects/2/zip');
   });
 
   it('sans détail, reprend la carte sans bouton .zip ni aperçus', () => {
