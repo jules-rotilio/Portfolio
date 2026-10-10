@@ -1,6 +1,8 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ProjectFileNode } from '../../models/project';
+import { highlightLines, languageFor, renderMarkdown } from './code-highlight';
 
 const IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'ico'];
 
@@ -14,12 +16,34 @@ const IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'ico'];
 export class FileBrowserComponent {
   tree: ProjectFileNode[] = [];
   expandedDirs = new Set<string>();
-  selected: ProjectFileNode | null = null;
+  /** Lignes colorées du fichier affiché (HTML produit par highlight.js, déjà échappé). */
+  lines: SafeHtml[] = [];
+  /** Rendu du fichier Markdown affiché, ou null pour les autres fichiers. */
+  markdownHtml: string | null = null;
+  /** Pour un fichier Markdown : vrai pour voir le source plutôt que le rendu, comme sur GitHub. */
+  showSource = false;
+  private _selected: ProjectFileNode | null = null;
   /** Vrai quand le code est affiché dans une grande fenêtre, au-dessus de la fiche du projet. */
   expanded = false;
   @ViewChild('expandButton') expandButton?: ElementRef<HTMLButtonElement>;
   /** Faux quand l'API ne partage que l'arborescence (projet sans .zip autorisé). */
   codeShared = true;
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  get selected(): ProjectFileNode | null {
+    return this._selected;
+  }
+
+  set selected(node: ProjectFileNode | null) {
+    this._selected = node;
+    this.showSource = false;
+    const content = node?.content;
+    const language = node ? languageFor(node.name) : null;
+    // Calculé une seule fois par fichier : la coloration est trop coûteuse pour un getter appelé à chaque détection
+    this.lines = content ? highlightLines(content, language).map((line) => this.sanitizer.bypassSecurityTrustHtml(line)) : [];
+    this.markdownHtml = content && language === 'markdown' ? renderMarkdown(content) : null;
+  }
 
   @Input() set files(files: ProjectFileNode[]) {
     this.tree = sortNodes(files ?? []);
@@ -50,10 +74,6 @@ export class FileBrowserComponent {
 
   get breadcrumb(): string[] {
     return this.selected ? this.selected.path.split('/') : [];
-  }
-
-  get lines(): string[] {
-    return this.selected?.content?.replace(/\n$/, '').split('\n') ?? [];
   }
 
   isImage(node: ProjectFileNode): boolean {

@@ -28,20 +28,28 @@
 						}
 					</span>
 					<span class="meta">
+						@if (markdownHtml !== null) {
+							<span class="view-toggle" role="group" aria-label="Affichage du fichier">
+								<button type="button" [class.active]="!showSource" [attr.aria-pressed]="!showSource" (click)="showSource = false">Aperçu</button>
+								<button type="button" [class.active]="showSource" [attr.aria-pressed]="showSource" (click)="showSource = true">Code</button>
+							</span>
+						}
 						@if (selected.content) {
 							{{ lines.length }} lignes ·
 						}
 						{{ formatSize(selected.size) }}
 					</span>
 				</header>
-				@if (selected.content) {
-					<div class="code">
+				@if (markdownHtml !== null && !showSource) {
+					<div class="markdown-body" [innerHTML]="markdownHtml"></div>
+				} @else if (selected.content) {
+					<div class="code hljs">
 						<table>
 							<tbody>
 								@for (line of lines; track $index) {
 									<tr>
 										<td class="line-number">{{ $index + 1 }}</td>
-										<td class="line"><pre>{{ line }}</pre></td>
+										<td class="line"><pre [innerHTML]="line"></pre></td>
 									</tr>
 								}
 							</tbody>
