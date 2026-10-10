@@ -15,7 +15,7 @@ body {
   --gray-400: oklch(70.9% 0.015 304.04);
 }
 
-/* La page défile normalement : l'en-tête reste collé en haut, le pied de page suit le contenu */
+/* La page défile normalement : l'en-tête reste collé en haut, le pied de page reste collé en bas */
 app-root {
   display: flex;
   flex-direction: column;

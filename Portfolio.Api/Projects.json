@@ -414,7 +414,7 @@
 		"Name": "Game Assistant Alpha",
 		"Description": "J'ai écrit ce script Python pour simuler des pressions de touches clavier et jouer des sons comme une Soundboard, principalement pour interagir avec des jeux ou applications de chat vocal. Il permet de transformer la fonction push-to-talk en open-microphone, de répéter une touche ou de jouer des sons via le pavé numérique.",
 		"Technologies": [
-			"Python",
+			"Python 3",
 			"VLC",
 			"subprocess",
 			"ctypes",
