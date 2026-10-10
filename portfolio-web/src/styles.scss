@@ -1,5 +1,6 @@
 /* Importing Bootstrap SCSS file. */
 @use 'bootstrap/scss/bootstrap';
+@use 'app/projets/file-browser/file-content';
 
 html,
 body {
