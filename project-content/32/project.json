@@ -1,4 +1,15 @@
 {
   "allowZipDownload": true,
-  "images": []
+  "images": [
+    {
+      "file": "01-console.webp",
+      "alt": "Console du script au lancement, avec la liste des répliques du pavé numérique et les raccourcis globaux",
+      "caption": "Console du script au lancement, avec la liste des répliques du pavé numérique et les raccourcis globaux"
+    },
+    {
+      "file": "02-etats.webp",
+      "alt": "États affichés par le script : push-to-talk, F spammé avec micro ouvert, radio maintenue",
+      "caption": "États affichés par le script : push-to-talk, F spammé avec micro ouvert, radio maintenue"
+    }
+  ]
 }
