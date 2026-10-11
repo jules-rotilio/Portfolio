@@ -6,6 +6,7 @@ services:
       - "9443:443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/bad_user_agents.conf:/etc/nginx/bad_user_agents.conf:ro
       - ./certs:/etc/nginx/certs:ro
     depends_on:
       - api
