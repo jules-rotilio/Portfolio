@@ -22,8 +22,6 @@ services:
     build:
       context: .
       dockerfile: Portfolio.Api/Dockerfile
-    ports:
-      - "8443:443"
     environment:
       - ASPNETCORE_URLS=https://+:443
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/julesrotilio.fr-crt.pem
@@ -44,8 +42,6 @@ services:
     build:
       context: .
       dockerfile: portfolio-web/Dockerfile
-    ports:
-      - "4443:4443"
     depends_on:
       - api
     volumes:
