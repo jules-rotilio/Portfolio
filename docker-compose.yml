@@ -36,6 +36,9 @@ services:
     networks:
       mynet:
         ipv4_address: 172.28.0.10
+      mailcowdockerized_mailcow-network:
+    extra_hosts:
+      - "mail.rotilio.fr:172.22.1.253" # mailcowdockerized-postfix-mailcow-1
     restart: unless-stopped
 
   web:
