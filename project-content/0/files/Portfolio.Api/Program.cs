@@ -23,10 +23,6 @@ builder.Services.AddCors(options =>
         "AllowAngular",
         policy => policy.WithOrigins("https://julesrotilio.fr").AllowAnyHeader().AllowAnyMethod()
     );
-    options.AddPolicy(
-        "AllowAngular2",
-        policy => policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()
-    );
 });
 
 // L'API est derrière nginx : on ne fait confiance à X-Forwarded-For que s'il vient du conteneur nginx,
@@ -69,7 +65,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseCors("AllowAngular2");
+app.UseCors("AllowAngular");
 
 app.UseRateLimiter();
 

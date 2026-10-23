@@ -66,10 +66,61 @@
 }
 
 .viewer {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	min-width: 0;
 	overflow: hidden;
+}
+
+.btn-expand {
+	position: absolute;
+	top: 0.35rem;
+	right: 0.5rem;
+	z-index: 2;
+	border: 1px solid var(--gh-border);
+	border-radius: 6px;
+	background: var(--background-color);
+	color: inherit;
+	padding: 0.1rem 0.45rem;
+	font-size: 0.85rem;
+
+	&:hover {
+		background: var(--gh-hover);
+	}
+}
+
+/* Grande fenêtre du code, au-dessus de la fiche du projet */
+.expanded-backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: 10;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.file-browser.expanded {
+	position: fixed;
+	inset: clamp(0.5rem, 3vw, 2rem);
+	z-index: 11;
+	height: auto;
+	background: var(--background-color);
+	border: 1px solid var(--gh-border);
+	border-radius: 8px;
+	box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+	overflow: hidden;
+
+	.tree {
+		max-height: none;
+	}
+
+	.code {
+		max-height: none;
+		font-size: 0.875rem;
+	}
+
+	.markdown-body {
+		max-height: none;
+	}
 }
 
 .viewer-header {
@@ -77,7 +128,8 @@
 	justify-content: space-between;
 	gap: 1rem;
 	flex-wrap: wrap;
-	padding: 0.5rem 1rem;
+	/* Place à droite pour le bouton « Agrandir » */
+	padding: 0.5rem 3rem 0.5rem 1rem;
 	border-bottom: 1px solid var(--gh-border);
 	font-size: 0.875rem;
 
@@ -87,7 +139,41 @@
 	}
 
 	.meta {
-		opacity: 0.7;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		opacity: 0.85;
+	}
+}
+
+/* Bascule Aperçu / Code des fichiers Markdown */
+.view-toggle {
+	display: inline-flex;
+	border: 1px solid var(--gh-border);
+	border-radius: 6px;
+	overflow: hidden;
+
+	button {
+		border: 0;
+		background: none;
+		color: inherit;
+		padding: 0 0.6rem;
+		font-size: 0.8rem;
+		line-height: 1.6;
+
+		& + button {
+			border-left: 1px solid var(--gh-border);
+		}
+
+		&.active {
+			background: var(--gh-hover);
+			font-weight: 600;
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--mynameiscolor);
+			outline-offset: -2px;
+		}
 	}
 }
 
@@ -145,6 +231,10 @@
 }
 
 @media (max-width: 767.98px) {
+	.file-browser.expanded .tree {
+		max-height: 30vh;
+	}
+
 	.file-browser {
 		grid-template-columns: minmax(0, 1fr);
 		grid-template-rows: auto minmax(0, 1fr);
@@ -157,7 +247,8 @@
 		border-bottom: 1px solid var(--gh-border);
 	}
 
-	.code {
+	.code,
+	.markdown-body {
 		max-height: 360px;
 	}
 }

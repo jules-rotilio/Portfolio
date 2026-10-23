@@ -1,32 +1,43 @@
 <div class="container">
 	<h2 class="section-title">Mes projets</h2>
-	<div>
-		<div class="row" *ngFor="let row of projectRows">
-			<div class="col-lg-6 mb-4" *ngFor="let project of row">
-				<div class="card h-100">
-					<div class="card-body">
-						<h3 class="card-title">
-							<a class="stretched-link" [href]="'/projets?projet=' + project.id" (click)="$event.preventDefault(); open(project)">{{ project.name }}</a>
-						</h3>
-						<p class="card-text">{{ project.description }}</p>
-					</div>
-					<div class="card-footer">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item badge bg-secondary" *ngFor="let tech of project.technologies">
-								{{ tech }}
-							</li>
-						</ul>
-						<span class="see-more">Voir le projet <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
-					</div>
+	<div class="project-tiles">
+		@for (project of projects; track project.id) {
+			<article class="tile project">
+				<h3 class="project-title">
+					<a class="stretched-link" [href]="'/projets?projet=' + project.id" (click)="$event.preventDefault(); open(project)">{{ project.name }}</a>
+				</h3>
+				<p>{{ project.description }}</p>
+				<div class="tile-footer">
+					<ul class="chips chips-pill" aria-label="Technologies">
+						@for (tech of project.technologies; track $index) {
+							<li>{{ tech }}</li>
+						}
+					</ul>
+					<span class="see-more">Voir le projet <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
 				</div>
-			</div>
-		</div>
+			</article>
+		}
 	</div>
 </div>
 
 @if (openProject; as project) {
-	<!-- Chargée à la demande : la fenêtre ne pèse pas sur le premier affichage de la page -->
-	@defer (on immediate) {
-		<app-project-details [project]="project" (closed)="close()"></app-project-details>
+	@if (isMobile) {
+		<!-- Sur téléphone, la fiche détaillée n'est pas lisible : petit message à la place -->
+		<div class="mobile-notice">
+			<div class="mobile-notice-backdrop" (click)="close()"></div>
+			<div class="mobile-notice-box" role="alertdialog" aria-modal="true" aria-labelledby="mobile-notice-title" aria-describedby="mobile-notice-text">
+				<h2 id="mobile-notice-title"><i class="bi bi-display" aria-hidden="true"></i> {{ project.name }}</h2>
+				<p id="mobile-notice-text">
+					La fiche détaillée (code source, aperçus de l'application) est conçue pour un grand écran.
+					Ouvrez cette page depuis un navigateur d'ordinateur pour la consulter.
+				</p>
+				<button #noticeClose type="button" class="btn btn-primary" (click)="close()">J'ai compris</button>
+			</div>
+		</div>
+	} @else {
+		<!-- Chargée à la demande : la fenêtre ne pèse pas sur le premier affichage de la page -->
+		@defer (on immediate) {
+			<app-project-details [project]="project" (closed)="close()"></app-project-details>
+		}
 	}
 }

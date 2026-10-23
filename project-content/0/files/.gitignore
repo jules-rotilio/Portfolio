@@ -17,3 +17,7 @@ certs/
 **/.vs/
 **/.vscode/
 *.user
+
+# Fichiers de conf pour tests
+proxy.conf.json
+rundev.sh

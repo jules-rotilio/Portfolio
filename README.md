@@ -105,7 +105,13 @@ npm install
 npm start   # http://localhost:4200
 ```
 
-Les services `projects.service.ts` et `contact.service.ts` appellent directement `https://api.julesrotilio.fr`. Depuis `ng serve`, ces appels sont refusés par la politique CORS de l'API (seule l'origine `https://julesrotilio.fr` est autorisée) : pour travailler contre une API locale, il faut adapter ces deux URLs et l'origine autorisée dans `Program.cs`.
+En production, les services `projects.service.ts` et `contact.service.ts` appellent `https://api.julesrotilio.fr`. En développement (`ng serve`), ils appellent des URL relatives (`/api/...`, voir `src/environments/environment.development.ts`) que le serveur de développement transmet à l'API locale : le navigateur ne parle qu'à `localhost:4200`, la politique CORS de l'API ne s'applique donc pas. Le fichier de proxy n'est pas versionné ; le créer dans `portfolio-web/proxy.conf.json` :
+
+```json
+{ "/api": { "target": "http://localhost:20080", "secure": false, "changeOrigin": true } }
+```
+
+Puis lancer l'API (`dotnet run --project Portfolio.Api --launch-profile http`, depuis la racine) et le front avec `npm start -- --proxy-config proxy.conf.json`.
 
 ## Tests
 

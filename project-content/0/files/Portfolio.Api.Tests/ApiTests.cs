@@ -182,6 +182,7 @@ namespace Portfolio.Api.Tests
 
         [Theory]
         [InlineData("https://julesrotilio.fr", true)]
+        [InlineData("https://example.synology.me", false)]
         [InlineData("https://evil.example", false)]
         public async Task Cors_OnlyAllowsTheWebsiteOrigin(string origin, bool allowed)
         {

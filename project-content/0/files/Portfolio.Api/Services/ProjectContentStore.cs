@@ -9,7 +9,7 @@ namespace Portfolio.Api.Services
     /// Lit le contenu détaillé des projets depuis un dossier (ProjectContent:Path), un sous-dossier par ID :
     /// <code>
     /// {id}/project.json   description longue, images, autorisation du .zip
-    /// {id}/files/         fichiers sources affichés dans l'arborescence
+    /// {id}/files/         fichiers sources affichés dans l'arborescence (contenu lisible seulement si le .zip est autorisé)
     /// {id}/images/        aperçus de l'application
     /// </code>
     /// </summary>
@@ -58,7 +58,7 @@ namespace Portfolio.Api.Services
                     .Where(i => GetFilePath(project.ID, "images", i.File) is not null)
                     .Select(i => new ProjectImage { Url = $"{baseUrl}/images/{Uri.EscapeDataString(i.File)}", Alt = i.Alt, Caption = i.Caption })
                     .ToArray(),
-                Files = Directory.Exists(filesDirectory) ? ReadTree(new DirectoryInfo(filesDirectory), "", baseUrl).ToArray() : [],
+                Files = Directory.Exists(filesDirectory) ? ReadTree(new DirectoryInfo(filesDirectory), "", baseUrl, manifest.AllowZipDownload).ToArray() : [],
                 ZipUrl = manifest.AllowZipDownload && Directory.Exists(filesDirectory) ? $"{baseUrl}/zip" : null,
                 RepoUrl = manifest.RepoUrl,
             };
@@ -68,6 +68,11 @@ namespace Portfolio.Api.Services
         public string? GetFilePath(int id, string area, string relativePath)
         {
             if (area is not ("files" or "images"))
+            {
+                return null;
+            }
+            // Sans .zip autorisé, le code n'est pas partagé : l'arborescence reste visible, pas le contenu des fichiers
+            if (area == "files" && !ReadManifest(ProjectDirectory(id)).AllowZipDownload)
             {
                 return null;
             }
@@ -108,7 +113,7 @@ namespace Portfolio.Api.Services
                 : new();
         }
 
-        private static IEnumerable<ProjectFileNode> ReadTree(DirectoryInfo directory, string prefix, string baseUrl)
+        private static IEnumerable<ProjectFileNode> ReadTree(DirectoryInfo directory, string prefix, string baseUrl, bool shareContent)
         {
             foreach (var child in VisibleDirectories(directory))
             {
@@ -118,7 +123,7 @@ namespace Portfolio.Api.Services
                     Name = child.Name,
                     Path = path,
                     Type = "directory",
-                    Children = ReadTree(child, path + "/", baseUrl).ToList(),
+                    Children = ReadTree(child, path + "/", baseUrl, shareContent).ToList(),
                 };
             }
             foreach (var file in VisibleFiles(directory))
@@ -130,8 +135,8 @@ namespace Portfolio.Api.Services
                     Path = path,
                     Type = "file",
                     Size = file.Length,
-                    Content = ReadText(file),
-                    Url = $"{baseUrl}/files/{string.Join('/', path.Split('/').Select(Uri.EscapeDataString))}",
+                    Content = shareContent ? ReadText(file) : null,
+                    Url = shareContent ? $"{baseUrl}/files/{string.Join('/', path.Split('/').Select(Uri.EscapeDataString))}" : null,
                 };
             }
         }

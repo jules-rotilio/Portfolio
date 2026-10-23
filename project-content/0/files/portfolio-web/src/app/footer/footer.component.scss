@@ -1,9 +1,16 @@
+:host {
+  display: block;
+  position: sticky;
+  bottom: 0;
+  z-index: 1000;
+}
+
 .main-footer {
   background: #30135f;
   color: white;
   padding: 1rem clamp(1rem, 4vw, 2rem);
   text-align: center;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
 
   .footer-container {
     display: flex;
