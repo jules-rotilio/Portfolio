@@ -1,4 +1,20 @@
 {
   "allowZipDownload": true,
-  "images": []
+  "images": [
+    {
+      "file": "01-boutons.webp",
+      "alt": "Fenêtre de configuration : action de chacun des 14 boutons, sur les images de la souris issues de VCFG",
+      "caption": "Fenêtre de configuration : action de chacun des 14 boutons, sur les images de la souris issues de VCFG"
+    },
+    {
+      "file": "02-dpi-macros.webp",
+      "alt": "Onglets DPI et fréquence d'interrogation, et éditeur de macros",
+      "caption": "Onglets DPI et fréquence d'interrogation, et éditeur de macros"
+    },
+    {
+      "file": "03-ligne-de-commande.webp",
+      "alt": "Ligne de commande : profil actif, puis modification en --dry-run avec les trames USB qui seraient envoyées",
+      "caption": "Ligne de commande : profil actif, puis modification en --dry-run avec les trames USB qui seraient envoyées"
+    }
+  ]
 }

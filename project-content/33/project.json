@@ -1,4 +1,15 @@
 {
   "allowZipDownload": true,
-  "images": []
+  "images": [
+    {
+      "file": "01-discord.webp",
+      "alt": "Salon Discord #offres : une carte par offre (LinkedIn, Indeed, HelloWork) et la notification sur le téléphone",
+      "caption": "Salon Discord #offres : une carte par offre (LinkedIn, Indeed, HelloWork) et la notification sur le téléphone"
+    },
+    {
+      "file": "02-service.webp",
+      "alt": "Service Docker sur le serveur : un passage toutes les 10 minutes, et les quatre étapes de la veille",
+      "caption": "Service Docker sur le serveur : un passage toutes les 10 minutes, et les quatre étapes de la veille"
+    }
+  ]
 }
