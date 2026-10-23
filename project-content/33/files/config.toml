@@ -1,0 +1,48 @@
+# Configuration de la veille emploi. Les secrets vont dans .env, pas ici.
+
+[general]
+interval_minutes = 10
+db_path = "data/jobs.db"
+first_run_limit = 15      # au 1er lancement, n'envoie que les N offres les plus récentes
+notify_errors = true      # prévient sur Discord si une source tombe en panne
+
+[discord]
+username = "Veille emploi"
+mention = ""              # ex. "<@123456789012345678>" pour être mentionné (push même si le salon est en sourdine)
+
+[filters]
+# Catégories recherchées : csharp, python, devops
+categories = ["csharp", "python", "devops"]
+# Intitulés exclus (expressions régulières, texte en minuscules sans accents)
+exclude_title = [
+  "\\bsenior\\b", "\\blead\\b", "\\bprincipal\\b", "\\bhead of\\b", "\\bdirect(eur|or)\\b", "\\bmanager\\b",
+  "\\bstage\\b", "\\bstagiaire\\b", "\\binternship\\b", "\\balternan", "\\bapprenti", "\\bformateur\\b",
+]
+# Exclusions dans la description, ex. "10 ans d.experience"
+exclude_description = []
+# Les offres des alertes e-mail sont déjà filtrées par le site : on les garde même si l'intitulé est vague
+trust_email_alerts = true
+
+[email]
+enabled = true
+#host = "imap.gmail.com"
+#port = 993
+#folder = "INBOX"          # ou le libellé Gmail où tu ranges les alertes, ex. "Alertes emploi"
+#lookback_days = 2
+host = "mail.example.com"
+port = 993
+lookback_days = 2
+
+[email.folders]
+linkedin = "INBOX/Jobs/Linkedin"
+indeed = "INBOX/Jobs/Indeed/Alertes"
+hellowork = "INBOX/Jobs/HelloWork"
+# Un nom ou une liste : les confirmations d'alerte arrivent dans INBOX, les anciennes alertes étaient rangées à part
+francetravail = ["INBOX/Jobs/France Travail", "INBOX"]
+
+[email.senders]
+# Domaines d'expéditeur des alertes de chaque site
+linkedin = ["linkedin.com"]
+indeed = ["indeed.com"]
+hellowork = ["hellowork.com"]
+francetravail = ["offre.francetravail.fr"]

@@ -420,5 +420,36 @@
 			"ctypes",
 			"Windows API"
 		]
+	},
+	{
+		"ID": 33,
+		"Name": "JobWatch : veille d'offres d'emploi",
+		"Description": "J'ai développé ce service Python pour suivre les nouvelles offres d'emploi C#/.NET, Python et DevOps sans avoir à les chercher. À intervalle régulier, il lit en IMAP (lecture seule) les alertes e-mail de LinkedIn, Indeed, HelloWork et France Travail et en extrait les offres. Il écarte celles déjà vues, même publiées sur deux sites (SQLite), et les intitulés hors sujet, puis publie chaque nouvelle offre sur un salon Discord via un webhook, pour recevoir une notification sur mon téléphone. Il n'utilise que la bibliothèque standard, tourne dans un conteneur Docker et est couvert par des tests unitaires.",
+		"Technologies": [
+			"Python 3",
+			"IMAP",
+			"SQLite",
+			"Discord Webhook",
+			"TOML",
+			"Docker Compose",
+			"unittest"
+		]
+	},
+	{
+		"ID": 34,
+		"Name": "Drakkar Valkyrie Configurator",
+		"Description": "J'ai développé ce remplaçant du logiciel officiel de la souris Konix Drakkar Valkyrie (VCFG), pour la configurer sous Linux comme sous Windows. J'ai retrouvé son protocole USB par rétro-ingénierie, en enregistrant le logiciel d'origine avec usbmon et en analysant ses exécutables, afin de gérer les 5 profils, les DPI, la fréquence d'interrogation, l'éclairage, les boutons et les macros, et d'importer ou exporter les fichiers .pfd de VCFG. Il propose une ligne de commande, une interface PyQt6, un moniteur qui affiche les changements faits avec les boutons de la souris et un auto-clicker. Chaque écriture est précédée d'une sauvegarde et vérifiée par relecture, et les tests rejouent octet par octet les trames USB enregistrées.",
+		"Technologies": [
+			"Python 3",
+			"PyQt6",
+			"USB HID",
+			"hidraw",
+			"ctypes",
+			"Windows API",
+			"evdev / uinput",
+			"usbmon",
+			"Rétro-ingénierie",
+			"unittest"
+		]
 	}
 ]

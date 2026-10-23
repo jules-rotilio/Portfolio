@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
-  private apiUrl = 'https://api.julesrotilio.fr/api/send-email';
+  private apiUrl = `${environment.apiOrigin}/api/send-email`;
 
   constructor(private http: HttpClient) {}
 

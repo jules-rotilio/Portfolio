@@ -1,0 +1,4 @@
+# Python 3.11 or newer (tomllib).
+# The command line, valkyrie-monitor and valkyrie-autoclick need only the standard library;
+# the window (bin/valkyrie-gui) needs PyQt6.
+PyQt6>=6.2

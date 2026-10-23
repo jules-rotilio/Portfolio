@@ -1,0 +1,6 @@
+# Let the logged-in user configure the Konix Drakkar Valkyrie mouse (hidraw access).
+# Install: sudo cp 70-drakkar-valkyrie.rules /etc/udev/rules.d/
+#          sudo udevadm control --reload && sudo udevadm trigger
+KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="fc06", TAG+="uaccess"
+# Let valkyrie-autoclick and valkyrie-monitor read the mouse's input event nodes.
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="fc06", TAG+="uaccess"

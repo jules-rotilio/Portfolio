@@ -1,0 +1,17 @@
+# Notifications and exact DPI for the mouse's own buttons (like VMON on Windows). Install:
+#   sed "s|@DIR@|$PWD|" valkyrie-monitor.service > ~/.config/systemd/user/valkyrie-monitor.service
+#   systemctl --user daemon-reload && systemctl --user enable --now valkyrie-monitor
+# Reload the settings: systemctl --user reload valkyrie-monitor
+[Unit]
+Description=Notifications and exact DPI for the Drakkar Valkyrie mouse
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=@DIR@/bin/valkyrie-monitor
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=graphical-session.target

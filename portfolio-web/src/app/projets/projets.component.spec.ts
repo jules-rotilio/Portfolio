@@ -33,33 +33,23 @@ describe('ProjetsComponent', () => {
 
   afterEach(() => http.verify());
 
-  it('affiche une carte par projet, avec ses technologies', () => {
+  it('affiche une tuile par projet, avec ses technologies', () => {
     http.expectOne(API_URL).flush([project(0, ['C#', '.NET 10', 'Angular']), project(1)]);
     fixture.detectChanges();
 
-    const titles = Array.from(element.querySelectorAll('.card-title')).map((t) => t.textContent?.trim());
+    const titles = Array.from(element.querySelectorAll('.project-title')).map((t) => t.textContent?.trim());
     expect(titles).toEqual(['Projet 0', 'Projet 1']);
 
-    const badges = Array.from(element.querySelectorAll('.card')[0].querySelectorAll('.badge')).map((b) => b.textContent?.trim());
-    expect(badges).toEqual(['C#', '.NET 10', 'Angular']);
+    const chips = Array.from(element.querySelectorAll('.project')[0].querySelectorAll('.chips li')).map((c) => c.textContent?.trim());
+    expect(chips).toEqual(['C#', '.NET 10', 'Angular']);
   });
 
-  it('range les projets par lignes de deux (dernière ligne incomplète)', () => {
-    http.expectOne(API_URL).flush([project(0), project(1), project(2)]);
-    fixture.detectChanges();
-
-    const rows = element.querySelectorAll('.row');
-    expect(rows.length).toBe(2);
-    expect(rows[0].querySelectorAll('.card').length).toBe(2);
-    expect(rows[1].querySelectorAll('.card').length).toBe(1);
-  });
-
-  it('n\'affiche aucune carte si l\'API est en erreur', () => {
+  it('n\'affiche aucune tuile si l\'API est en erreur', () => {
     spyOn(console, 'error'); // l'erreur est journalisée, on évite le bruit dans la sortie des tests
     http.expectOne(API_URL).flush('KO', { status: 500, statusText: 'Server Error' });
     fixture.detectChanges();
 
-    expect(element.querySelectorAll('.card').length).toBe(0);
+    expect(element.querySelectorAll('.project').length).toBe(0);
   });
 
   // ---------- Fenêtre de détail ----------
@@ -93,7 +83,7 @@ describe('ProjetsComponent', () => {
     http.expectOne(API_URL).flush([project(0), project(4)]);
     fixture.detectChanges();
 
-    (element.querySelectorAll('.card-title a')[1] as HTMLElement).click();
+    (element.querySelectorAll('.project-title a')[1] as HTMLElement).click();
     await settle();
     expect(router.url).toBe('/?projet=4');
     http.expectOne(`${API_URL}/4`).flush('', { status: 404, statusText: 'Not Found' });
@@ -112,7 +102,7 @@ describe('ProjetsComponent', () => {
     http.expectOne(API_URL).flush([project(0), project(4)]);
     fixture.detectChanges();
 
-    (element.querySelectorAll('.card-title a')[1] as HTMLElement).click();
+    (element.querySelectorAll('.project-title a')[1] as HTMLElement).click();
     await settle();
     expect(router.url).toBe('/?projet=4');
     expect(element.querySelector('app-project-details')).toBeNull();

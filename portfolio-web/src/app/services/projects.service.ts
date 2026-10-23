@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
 import { Project, ProjectDetails, ProjectFileNode } from '../models/project';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
-  private apiOrigin = 'https://api.julesrotilio.fr';
+  private apiOrigin = environment.apiOrigin;
   private apiUrl = `${this.apiOrigin}/api/projects`;
 
   constructor(private http: HttpClient) {}

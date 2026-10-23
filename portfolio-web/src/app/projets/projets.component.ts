@@ -1,5 +1,5 @@
 import { Component, DestroyRef, ElementRef, HostListener, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
-import { isPlatformBrowser, NgFor } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from '../services/projects.service';
@@ -11,13 +11,12 @@ const MOBILE_QUERY = '(max-width: 767.98px)';
 
 @Component({
   selector: 'app-projets',
-  imports: [NgFor, ProjectDetailsComponent],
+  imports: [ProjectDetailsComponent],
   templateUrl: './projets.component.html',
   styleUrl: './projets.component.scss'
 })
 export class ProjetsComponent implements OnInit {
   projects: Project[] = [];
-  projectRows: Project[][] = [];
   /** ID du projet ouvert dans la fenêtre de détail, d'après le paramètre ?projet=ID de l'URL. */
   selectedId: number | null = null;
   /** Vrai sur un écran de téléphone : un petit message remplace la fiche détaillée. */
@@ -36,13 +35,7 @@ export class ProjetsComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectsService.getProjects().subscribe({
-      next: (data) => {
-        this.projects = data;
-        this.projectRows = [];
-        for (let i = 0; i < this.projects.length; i += 2) {
-          this.projectRows.push(this.projects.slice(i, i + 2));
-        }
-      },
+      next: (data) => (this.projects = data),
       error: (err) => console.error(err)
     });
 

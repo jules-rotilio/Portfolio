@@ -106,6 +106,55 @@ h1 {
   margin-bottom: 1rem;
 }
 
+/* Tuiles des pages (CV, projets) : fond légèrement teinté, filet fin, coins arrondis */
+.tile {
+  min-width: 0;
+  padding: 1.5rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 1rem;
+  background: var(--cardcardcolor);
+  color: var(--maincolor);
+}
+
+@media (max-width: 575.98px) {
+  .tile {
+    padding: 1.25rem;
+  }
+}
+
+/* Bas de tuile séparé par un filet ; poussé tout en bas quand la tuile est une colonne flex */
+.tile-footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--bs-border-color);
+}
+
+/* Étiquettes (compétences, technologies) teintées de la couleur d'accent */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 0.2rem 0.65rem;
+    border-radius: 0.375rem;
+    background: color-mix(in srgb, var(--mynameiscolor) 10%, transparent);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  /* Variante plus petite et arrondie, pour les technologies */
+  &.chips-pill li {
+    padding: 0.125rem 0.625rem;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+}
+
 p {
   margin: 0;
   color: var(--maincolor);

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Drakkar Valkyrie monitor
+GenericName=Monitor
+Comment=Notifications and exact DPI when the Drakkar Valkyrie mouse's own buttons change profile, DPI or report rate
+Exec=sh -c "@DIR@/bin/valkyrie-monitor || read -p 'valkyrie-monitor stopped with an error. Press Enter to close.' x"
+Icon=input-mouse
+Terminal=true
+StartupNotify=true
+Categories=Utility;

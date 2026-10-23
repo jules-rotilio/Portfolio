@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=Settings;HardwareSettings;
+Comment[en_US]=Configure the Konix Drakkar Valkyrie mouse
+Comment=Configure the Konix Drakkar Valkyrie mouse
+Exec=@DIR@/bin/valkyrie-gui
+GenericName[en_US]=Mouse configuration
+GenericName=Mouse configuration
+Icon=input-mouse
+MimeType=
+Name[en_US]=Drakkar Valkyrie
+Name=Drakkar Valkyrie
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

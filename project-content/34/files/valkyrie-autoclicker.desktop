@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Drakkar Valkyrie auto-click
+GenericName=Auto-clicker
+Comment=Turn keys sent by the Drakkar Valkyrie mouse (F13...) into steady clicks
+Exec=sh -c "@DIR@/bin/valkyrie-autoclick || read -p 'valkyrie-autoclick stopped with an error. Press Enter to close.' x"
+Icon=input-mouse
+Terminal=true
+StartupNotify=true
+Categories=Utility;

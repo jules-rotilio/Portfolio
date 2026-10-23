@@ -1,0 +1,206 @@
+{
+  "format": "valkyrie-profiles-1",
+  "source": "VCFG.exe TDM_uiProfile1..5RestoreToDefault, run in an emulator (re/defaults/game1-5.pfd)",
+  "profiles": {
+    "1": {
+      "polling_hz": 500,
+      "dpi": {
+        "selected": 1,
+        "levels": [
+          400,
+          800,
+          1600,
+          3200,
+          4000
+        ]
+      },
+      "light": {
+        "color": "#FFFF00",
+        "brightness": "medium",
+        "breathing": "medium"
+      },
+      "buttons": {
+        "1": "left",
+        "2": "right",
+        "3": "middle",
+        "4": "media:mute",
+        "5": "media:volume-up",
+        "6": "media:volume-down",
+        "7": "key:Right",
+        "8": "key:Left",
+        "9": "media:next-track",
+        "10": "media:previous-track",
+        "11": "media:play-pause",
+        "12": "shortcut:Alt+F4",
+        "13": "shortcut:Win+D",
+        "14": "profile-switch"
+      },
+      "windows": {
+        "scroll_lines": 3,
+        "double_click_ms": 550,
+        "pointer_speed": 10,
+        "acceleration": 0
+      }
+    },
+    "2": {
+      "polling_hz": 500,
+      "dpi": {
+        "selected": 2,
+        "levels": [
+          400,
+          800,
+          1600,
+          3200,
+          4000
+        ]
+      },
+      "light": {
+        "color": "#00FF00",
+        "brightness": "medium",
+        "breathing": "medium"
+      },
+      "buttons": {
+        "1": "left",
+        "2": "right",
+        "3": "middle",
+        "4": "shortcut:Ctrl+W",
+        "5": "shortcut:Ctrl+NumPlus",
+        "6": "shortcut:Ctrl+NumMinus",
+        "7": "shortcut:Ctrl+Shift+Tab",
+        "8": "shortcut:Ctrl+Tab",
+        "9": "media:browser-forward",
+        "10": "media:browser-back",
+        "11": "media:browser-refresh",
+        "12": "shortcut:Alt+F4",
+        "13": "shortcut:Win+D",
+        "14": "profile-switch"
+      },
+      "windows": {
+        "scroll_lines": 3,
+        "double_click_ms": 550,
+        "pointer_speed": 10,
+        "acceleration": 0
+      }
+    },
+    "3": {
+      "polling_hz": 500,
+      "dpi": {
+        "selected": 3,
+        "levels": [
+          400,
+          800,
+          1600,
+          3200,
+          4000
+        ]
+      },
+      "light": {
+        "color": "#0000FF",
+        "brightness": "medium",
+        "breathing": "medium"
+      },
+      "buttons": {
+        "1": "left",
+        "2": "right",
+        "3": "middle",
+        "4": "fire:left,3,1",
+        "5": "rate-up",
+        "6": "rate-down",
+        "7": "dpi-up",
+        "8": "dpi-down",
+        "9": "key:LeftAlt",
+        "10": "key:LeftCtrl",
+        "11": "key:LeftShift",
+        "12": "forward",
+        "13": "back",
+        "14": "profile-switch"
+      },
+      "windows": {
+        "scroll_lines": 3,
+        "double_click_ms": 550,
+        "pointer_speed": 10,
+        "acceleration": 0
+      }
+    },
+    "4": {
+      "polling_hz": 500,
+      "dpi": {
+        "selected": 4,
+        "levels": [
+          400,
+          800,
+          1600,
+          3200,
+          4000
+        ]
+      },
+      "light": {
+        "color": "#FF00FF",
+        "brightness": "medium",
+        "breathing": "medium"
+      },
+      "buttons": {
+        "1": "left",
+        "2": "right",
+        "3": "middle",
+        "4": "fire:left,3,1",
+        "5": "rate-up",
+        "6": "rate-down",
+        "7": "dpi-up",
+        "8": "dpi-down",
+        "9": "key:LeftAlt",
+        "10": "key:LeftCtrl",
+        "11": "key:LeftShift",
+        "12": "forward",
+        "13": "back",
+        "14": "profile-switch"
+      },
+      "windows": {
+        "scroll_lines": 3,
+        "double_click_ms": 550,
+        "pointer_speed": 10,
+        "acceleration": 0
+      }
+    },
+    "5": {
+      "polling_hz": 500,
+      "dpi": {
+        "selected": 5,
+        "levels": [
+          400,
+          800,
+          1600,
+          3200,
+          4000
+        ]
+      },
+      "light": {
+        "color": "#FF0000",
+        "brightness": "medium",
+        "breathing": "medium"
+      },
+      "buttons": {
+        "1": "left",
+        "2": "right",
+        "3": "middle",
+        "4": "fire:left,3,1",
+        "5": "rate-up",
+        "6": "rate-down",
+        "7": "dpi-up",
+        "8": "dpi-down",
+        "9": "key:LeftAlt",
+        "10": "key:LeftCtrl",
+        "11": "key:LeftShift",
+        "12": "forward",
+        "13": "back",
+        "14": "profile-switch"
+      },
+      "windows": {
+        "scroll_lines": 3,
+        "double_click_ms": 550,
+        "pointer_speed": 10,
+        "acceleration": 0
+      }
+    }
+  }
+}

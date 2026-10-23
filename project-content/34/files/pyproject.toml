@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "valkyrie"
+version = "1.0"
+description = "Configure the Konix Drakkar Valkyrie mouse on Linux and Windows"
+readme = "README.md"
+requires-python = ">=3.11"
+
+[project.optional-dependencies]
+gui = ["PyQt6>=6.2"]
+
+# `pip install .` (or `pip install -e .`) creates these commands on both systems:
+# valkyrie.exe etc. on Windows, scripts in the virtualenv's bin/ on Linux.
+[project.scripts]
+valkyrie = "valkyrie.cli:main"
+valkyrie-monitor = "valkyrie.monitor:main"
+valkyrie-autoclick = "valkyrie.autoclick:main"
+
+[project.gui-scripts]
+valkyrie-gui = "valkyrie.gui:main"     # no console window on Windows
+
+[tool.setuptools]
+packages = ["valkyrie"]
+
+[tool.setuptools.package-data]
+valkyrie = ["data/*"]

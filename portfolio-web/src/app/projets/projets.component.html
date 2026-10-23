@@ -1,26 +1,22 @@
 <div class="container">
 	<h2 class="section-title">Mes projets</h2>
-	<div>
-		<div class="row" *ngFor="let row of projectRows">
-			<div class="col-lg-6 mb-4" *ngFor="let project of row">
-				<div class="card h-100">
-					<div class="card-body">
-						<h3 class="card-title">
-							<a class="stretched-link" [href]="'/projets?projet=' + project.id" (click)="$event.preventDefault(); open(project)">{{ project.name }}</a>
-						</h3>
-						<p class="card-text">{{ project.description }}</p>
-					</div>
-					<div class="card-footer">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item badge bg-secondary" *ngFor="let tech of project.technologies">
-								{{ tech }}
-							</li>
-						</ul>
-						<span class="see-more">Voir le projet <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
-					</div>
+	<div class="project-tiles">
+		@for (project of projects; track project.id) {
+			<article class="tile project">
+				<h3 class="project-title">
+					<a class="stretched-link" [href]="'/projets?projet=' + project.id" (click)="$event.preventDefault(); open(project)">{{ project.name }}</a>
+				</h3>
+				<p>{{ project.description }}</p>
+				<div class="tile-footer">
+					<ul class="chips chips-pill" aria-label="Technologies">
+						@for (tech of project.technologies; track $index) {
+							<li>{{ tech }}</li>
+						}
+					</ul>
+					<span class="see-more">Voir le projet <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
 				</div>
-			</div>
-		</div>
+			</article>
+		}
 	</div>
 </div>
 
