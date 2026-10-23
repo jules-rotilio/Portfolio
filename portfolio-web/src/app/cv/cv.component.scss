@@ -2,54 +2,280 @@
 	display: block;
 }
 
-section {
+/* Rangée de tuiles : elles passent les unes sous les autres quand la place manque */
+.tiles {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
 	margin-bottom: 2.5rem;
 }
 
-.lead {
-	max-width: 75ch;
-	font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
-	line-height: 1.7;
+/* Compétences : 2 × 2 dès la tablette, assez large pour que chaque compétence tienne sur une ligne */
+.skill-tiles {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 1rem;
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+.tile {
+	flex: 1 1 18rem;
+	min-width: 0;
+	padding: 1.5rem;
+	border: 1px solid var(--bs-border-color);
+	border-radius: 1rem;
+	background: var(--cardcardcolor);
 	color: var(--maincolor);
 }
 
-.list-group-item {
-	background-color: transparent;
-	color: var(--maincolor);
-	line-height: 1.6;
-}
-
-/* Expériences : la liste à puces garde une marge lisible sur mobile */
-.list-group-item ul {
-	padding-left: 1.25rem;
-	margin: 0.5rem 0 0;
-}
-
-.list-group-item ul li + li {
-	margin-top: 0.25rem;
-}
-
-.card {
-	background-color: var(--cardcolor) !important;
-}
-
-.card-title {
-	color: var(--mynameiscolor);
-	font-size: 1.15rem;
-	font-weight: 600;
-	margin-bottom: 0.5rem;
-}
-
-.card .list-group-item {
-	padding-left: 0;
-	padding-right: 0;
-}
-
-/* Précisions sous une compétence (frameworks, SGBD...) : texte discret plutôt que des badges */
-.skill-detail {
-	display: block;
-	font-size: 0.875rem;
+.muted {
 	color: var(--subheading-color);
-	line-height: 1.4;
-	margin-top: 0.15rem;
+}
+
+/* Titre de tuile précédé de son icône */
+.tile-title {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	margin: 0 0 1rem;
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: var(--mynameiscolor);
+}
+
+h3.tile-title {
+	font-size: 1.0625rem;
+}
+
+/* Présentation : la tuile principale, sur la couleur d'accent du thème */
+.intro {
+	flex: 2 1 32rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: clamp(1.5rem, 4vw, 2.5rem);
+	border: 0;
+	background: var(--mynameiscolor);
+	color: var(--on-accent);
+
+	h1,
+	p {
+		color: inherit;
+	}
+
+	h1 {
+		font-size: clamp(2.5rem, 1.9rem + 2.4vw, 3.5rem);
+		letter-spacing: -0.04em;
+	}
+
+	p {
+		max-width: 75ch;
+		line-height: 1.65;
+	}
+}
+
+.eyebrow {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.intro-lead {
+	font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+}
+
+/* Formation : l'année à gauche, toujours sur une seule ligne */
+.schools {
+	flex: 1 1 22rem;
+
+	ol {
+		display: flex;
+		flex-direction: column;
+		gap: 0.875rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		display: flex;
+		gap: 0.75rem;
+	}
+
+	strong {
+		display: block;
+		font-weight: 600;
+		line-height: 1.4;
+	}
+
+	.muted {
+		font-size: 0.875rem;
+	}
+}
+
+.school-years {
+	flex: 0 0 4.25rem;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--subheading-color);
+}
+
+/* Expériences : les technologies restent alignées en bas des cartes d'une même rangée */
+.experience {
+	flex: 1 1 28rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+
+	h3 {
+		margin: 0;
+		font-size: 1.3rem;
+		font-weight: 600;
+		line-height: 1.3;
+		color: var(--heading-color);
+	}
+}
+
+.experience-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+}
+
+/* Alternance : badge plein ; stage : badge au contour */
+.experience-kind {
+	padding: 0.125rem 0.625rem;
+	border: 1px solid var(--mynameiscolor);
+	border-radius: 0.375rem;
+	font-size: 0.8125rem;
+	color: var(--mynameiscolor);
+
+	&.is-alternance {
+		background: var(--mynameiscolor);
+		color: var(--on-accent);
+	}
+}
+
+.missions ul {
+	margin: 0;
+	padding-left: 1.25rem;
+	font-size: 0.9375rem;
+	line-height: 1.55;
+
+	li + li {
+		margin-top: 0.25rem;
+	}
+}
+
+/* Le bouton qui replie les missions ne sert que sur téléphone */
+.missions-toggle {
+	display: none;
+}
+
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.375rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		padding: 0.2rem 0.65rem;
+		border-radius: 0.375rem;
+		background: color-mix(in srgb, var(--mynameiscolor) 10%, transparent);
+		font-size: 0.875rem;
+		line-height: 1.5;
+	}
+}
+
+.technologies {
+	margin-top: auto;
+	padding-top: 0.75rem;
+	border-top: 1px solid var(--bs-border-color);
+
+	li {
+		padding: 0.125rem 0.625rem;
+		border-radius: 999px;
+		font-size: 0.8125rem;
+		font-weight: 500;
+	}
+}
+
+.languages {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin: 0;
+
+	dt {
+		font-weight: 600;
+	}
+
+	dd {
+		margin: 0;
+	}
+}
+
+/* Téléphone : les technologies passent avant les missions, qui deviennent repliables */
+@media (max-width: 575.98px) {
+	.tile {
+		padding: 1.25rem;
+	}
+
+	.experience {
+		padding-bottom: 0.5rem;
+	}
+
+	.technologies {
+		order: 1;
+		margin-top: 0;
+		padding-top: 0;
+		border-top: 0;
+	}
+
+	.missions {
+		order: 2;
+		border-top: 1px solid var(--bs-border-color);
+
+		ul {
+			margin-bottom: 0.75rem;
+		}
+
+		.is-closed {
+			display: none;
+		}
+	}
+
+	.missions-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		min-height: 44px;
+		padding: 0;
+		border: 0;
+		background: none;
+		font: inherit;
+		font-weight: 600;
+		color: var(--mynameiscolor);
+
+		i {
+			transition: transform 0.2s ease;
+		}
+
+		&[aria-expanded='true'] i {
+			transform: rotate(180deg);
+		}
+	}
 }

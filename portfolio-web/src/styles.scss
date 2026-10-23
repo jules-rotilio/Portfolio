@@ -13,6 +13,11 @@ body {
   --gray-900: oklch(19.37% 0.006 300.98);
   --gray-700: oklch(36.98% 0.014 302.71);
   --gray-400: oklch(70.9% 0.015 304.04);
+
+  /* Polices hébergées par le site (paquets @fontsource-variable déclarés dans angular.json) */
+  --font-sans: "Inter Variable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-display: "Inter Tight Variable", var(--font-sans);
 }
 
 /* La page défile normalement : l'en-tête reste collé en haut, le pied de page reste collé en bas */
@@ -22,9 +27,7 @@ app-root {
   min-height: 100vh;
   min-height: 100dvh;
 
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  font-family: var(--font-sans);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -91,9 +94,7 @@ h1 {
   line-height: 1.05;
   letter-spacing: -0.05em;
   margin: 0;
-  font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  font-family: var(--font-display);
 }
 
 /* Titres de section des pages (CV, projets, contact) */

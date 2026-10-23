@@ -1,185 +1,91 @@
 <div class="container">
-	<section class="mb-5 border-bottom pb-4">
-		<h2 class="section-title">Introduction</h2>
-		<p class="lead">
-			Jeune diplomé, et professionnel à en devenir, je suis passionné par la programmation, j'ai acquis une solide
-			expérience en développement, cybersécurité et réseaux à travers mes études, mes stages, mes alternances et
-			mes nombreux projets personnels.
-			<br /> <br />
-			Curieux et polyvalent, je maîtrise des technologies Web, Backend, Bureau, et DevOps ainsi que des outils
-			modernes de développement. Je suis aussi capable d'utiliser des outils de pentesting et de sécurité pour
-			assurer la sécurité des applications crées et des systèmes utilisés.
-		</p>
-	</section>
+	<div class="tiles">
+		<section class="tile intro">
+			<p class="eyebrow">Curriculum vitæ</p>
+			<h1>Jules ROTILIO</h1>
+			<p class="intro-lead">
+				Jeune diplômé et professionnel en devenir, je suis passionné par la programmation. J'ai acquis une solide
+				expérience en développement, cybersécurité et réseaux à travers mes études, mes stages, mes alternances et
+				mes nombreux projets personnels.
+			</p>
+			<p>
+				Curieux et polyvalent, je maîtrise des technologies Web, Backend, Bureau et DevOps ainsi que des outils
+				modernes de développement. Je sais aussi utiliser des outils de pentesting et de sécurité pour garantir la
+				sécurité des applications créées et des systèmes utilisés.
+			</p>
+		</section>
 
-	<section class="mb-5 border-bottom">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="section-title">Écoles</h2>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item">2024 & 2025 : Renforcement de compétences de développement, <b>ORT</b> à <b>Lyon</b>.</li>
-					<li class="list-group-item">2023 : Renforcement de compétences de développement, <b>SUPINFO</b>, <b>Lyon</b>.</li>
-					<li class="list-group-item">2022 : Licence Professionnelle - ASSR <b>Cybersécurité</b>,
-						<b>Auxerre</b>.
+		<section class="tile schools" aria-labelledby="schools-title">
+			<h2 id="schools-title" class="tile-title"><i class="bi bi-mortarboard" aria-hidden="true"></i>Formation</h2>
+			<ol>
+				@for (school of schools; track $index) {
+					<li>
+						<span class="school-years">{{ school.years }}</span>
+						<span>
+							<strong>{{ school.title }}</strong>
+							<span class="muted">{{ school.place }}</span>
+						</span>
 					</li>
-					<li class="list-group-item">2020 & 2021 : DUT - <b>Réseaux et Télécommunications</b>,
-						<b>Auxerre</b>.
-					</li>
-					<li class="list-group-item">2019 : Bac Scientifique - Sciences de l'ingénieur, <b>Joigny</b>.</li>
+				}
+			</ol>
+		</section>
+	</div>
+
+	<h2 class="section-title">Expériences professionnelles</h2>
+	<div class="tiles">
+		@for (experience of experiences; track experience.company; let i = $index) {
+			<article class="tile experience">
+				<div class="experience-meta">
+					<span class="experience-kind" [class.is-alternance]="experience.kind === 'Alternance'">{{ experience.kind }}</span>
+					<span class="muted">{{ experience.period }}</span>
+				</div>
+				<div>
+					<h3>{{ experience.company }}</h3>
+					<p class="muted">{{ experience.place }}</p>
+				</div>
+				<div class="missions">
+					<button type="button" class="missions-toggle" [attr.aria-expanded]="isOpen(i)"
+						[attr.aria-controls]="'missions-' + i" (click)="toggleMissions(i)">
+						Missions · {{ experience.missions.length }}
+						<i class="bi bi-chevron-down" aria-hidden="true"></i>
+					</button>
+					<ul [id]="'missions-' + i" [class.is-closed]="!isOpen(i)">
+						@for (mission of experience.missions; track $index) {
+							<li>{{ mission }}</li>
+						}
+					</ul>
+				</div>
+				<ul class="chips technologies" aria-label="Technologies">
+					@for (technology of experience.technologies; track technology) {
+						<li>{{ technology }}</li>
+					}
 				</ul>
-			</div>
-		</div>
-	</section>
+			</article>
+		}
+	</div>
 
-	<section class="mb-5 border-bottom pb-4">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="section-title">Expériences professionnelles</h2>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item my-2">
-						<strong>2024 - 2025 : Habitat et Humanisme</strong> – <em>Alternance, Caluire-et-Cuire</em>
-						<ul>
-							<li>Projet de fusion de deux applications : développement d'un script <b>Python</b> pour la
-								récupération des données.</li>
-							<li>Mise en place d'une base de données <b>PostgreSQL</b> pour le stockage des données.</li>
-							<li>Développement d'une interface web <b>PHP</b> pour la vérification manuelle de la fusion
-								des
-								données.</li>
-							<li>Création de formulaires <b>PowerApps</b> et automatisations <b>PowerAutomate</b>.</li>
-							<li>Développement d'un script <b>C#</b> puis <b>PowerShell</b> : <b>compression</b>,
-								création de fichiers <b>zip</b>,
-								envoi par <b>email</b>, upload via l'<b>API SharePoint</b>.</li>
-						</ul>
-					</li>
-					<li class="list-group-item my-2">
-						<strong>2023 : Winciel</strong> – <em>Stage, Lyon</em>
-						<ul>
-							<li>Développement d'un script <b>Bash</b> de déploiement de l'ERP sur les serveurs Linux
-								clients.
-							</li>
-							<li>Développement d'une interface en <b>C#</b> pour générer des étiquettes de transport sur
-								une
-								plateforme de logistique.</li>
-							<li>Développement d'une solution de <b>protection</b> des serveurs en <b>PowerShell</b> et
-								<b>SQL</b> pour
-								<b>bloquer les adresses IP des potentiels hackers.</b>
-							</li>
-						</ul>
-					</li>
-					<li class="list-group-item my-2">
-						<strong>2021 - 2022 : Conseil Départemental de l'Yonne</strong> – <em>Alternance, Perrigny</em>
-						<ul>
-							<li><b>Veille des vulnérabilités</b> via les publications de l'<b>ANSSI</b> et <b>journaux
-									américains</b> sur la
-								sécurité informatique.</li>
-							<li>Redécouverte d'un environnement informatique utilisant <b>Active Directory</b> :
-								consultation et
-								modification des informations des ordinateurs et utilisateurs.</li>
-							<li>Développement d'un programme pour <b>changer de réseau</b> entre le réseau du Conseil
-								Départemental et le réseau des
-								collèges, facilitant le développement et le support téléphonique.</li>
-							<li>Développement d'un script <b>PowerShell</b> pour <b>prévenir via mail</b> les
-								utilisateurs AD de l'<b>expiration</b>
-								de leur <b>mot de passe</b>.</li>
-							<li>Gestion d'une <b>solution d'emailing</b> de <b>prévention de phishing</b>.</li>
-							<li><b>Pentesting</b> avec des <b>outils de découverte de vulnérabilités</b> et <b>patch de
-									serveurs vulnérables</b>.</li>
-						</ul>
-					</li>
-					<li class="list-group-item">
-						<strong>2021 : Centre hospitalier d'Auxerre</strong> – <em>Stage, avril-juin, Auxerre</em>
-						<ul>
-							<li>Support téléphonique.</li>
-							<li>Préparation de PC puis ajout automatique dans un domaine AD via SCCM.</li>
-							<li>Écriture d'un script <b>PowerShell</b> de vérification des différents points de
-								l'installation.
-							</li>
-							<li>Découverte du logiciel GLPI de gestion de tickets.</li>
-						</ul>
-					</li>
+	<h2 class="section-title">Compétences</h2>
+	<div class="skill-tiles">
+		@for (group of skillGroups; track group.title) {
+			<section class="tile skills">
+				<h3 class="tile-title"><i [class]="'bi bi-' + group.icon" aria-hidden="true"></i>{{ group.title }}</h3>
+				<ul class="chips">
+					@for (item of group.items; track item) {
+						<li>{{ item }}</li>
+					}
 				</ul>
-			</div>
-		</div>
-	</section>
-
-	<section>
-		<h2 class="section-title">Compétences</h2>
-		<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
-			<div class="col">
-				<div class="card h-100 shadow-sm">
-					<div class="card-body">
-						<h3 class="card-title">Langages de programmation</h3>
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">
-								C#
-								<span class="skill-detail">.NET Core, ASP.NET Core</span>
-							</li>
-							<li class="list-group-item">PHP</li>
-							<li class="list-group-item">HTML, CSS</li>
-							<li class="list-group-item">JavaScript, TypeScript</li>
-							<li class="list-group-item">
-								SQL
-								<span class="skill-detail">PostgreSQL, MySQL, MariaDB</span>
-							</li>
-							<li class="list-group-item">Python</li>
-							<li class="list-group-item">PowerShell</li>
-							<li class="list-group-item">Bash</li>
-							<li class="list-group-item">Dockerfile</li>
-							<li class="list-group-item">C++</li>
-						</ul>
+			</section>
+		}
+		<section class="tile skills">
+			<h3 class="tile-title"><i class="bi bi-translate" aria-hidden="true"></i>Langues</h3>
+			<dl class="languages">
+				@for (language of languages; track language.name) {
+					<div>
+						<dt>{{ language.name }}</dt>
+						<dd class="muted">{{ language.level }}</dd>
 					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card h-100 shadow-sm">
-					<div class="card-body">
-						<h3 class="card-title">Autres compétences et connaissances</h3>
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">Entity Framework</li>
-							<li class="list-group-item">REST APIs</li>
-							<li class="list-group-item">Angular</li>
-							<li class="list-group-item">.NET WinForms</li>
-							<li class="list-group-item">ASP.NET MVC</li>
-							<li class="list-group-item">ASP.NET Web API</li>
-							<li class="list-group-item">Zend Framework MVC</li>
-							<li class="list-group-item">Flux RSS</li>
-							<li class="list-group-item">Certificats</li>
-							<li class="list-group-item">DNS</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card h-100 shadow-sm">
-					<div class="card-body">
-						<h3 class="card-title">Outils utilisés</h3>
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">Visual Studio, Visual Studio Code</li>
-							<li class="list-group-item">Git, GitHub, GitLab</li>
-							<li class="list-group-item">MS Copilot, Github Copilot, Claude</li>
-							<li class="list-group-item">Docker</li>
-							<li class="list-group-item">Postman</li>
-							<li class="list-group-item">Jira, Trello</li>
-							<li class="list-group-item">Figma</li>
-							<li class="list-group-item">Burp Suite, Nmap</li>
-							<li class="list-group-item">Suite Microsoft Office + MS Visio</li>
-							<li class="list-group-item">Linux (Ubuntu, Debian, Kali)</li>
-							<li class="list-group-item">Windows (Desktop, et Server)</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card h-100 shadow-sm">
-					<div class="card-body">
-						<h3 class="card-title">Langues parlées</h3>
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">Français (natif)</li>
-							<li class="list-group-item">Anglais (courant et technique)</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+				}
+			</dl>
+		</section>
+	</div>
 </div>

@@ -20,10 +20,13 @@
 	font-size: clamp(1rem, 0.8rem + 1vw, 1.5rem);
 }
 
+/* Même police et même espacement pour les deux lignes (h1 et h2) */
 .big-heading {
 	margin: 0;
+	font-family: var(--font-display);
 	font-weight: 600;
 	line-height: 1.1;
+	letter-spacing: -0.03em;
 	font-size: clamp(2.5rem, 1.5rem + 5vw, 5rem);
 }
 

@@ -20,4 +20,22 @@ describe('CVComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should only open the first experience missions by default', () => {
+    expect(component.isOpen(0)).toBeTrue();
+    expect(component.isOpen(1)).toBeFalse();
+  });
+
+  it('should toggle the missions of an experience', () => {
+    const toggle: HTMLButtonElement = fixture.nativeElement.querySelectorAll('.missions-toggle')[1];
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+
+    toggle.click();
+    fixture.detectChanges();
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+
+    toggle.click();
+    fixture.detectChanges();
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+  });
 });
