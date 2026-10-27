@@ -2,9 +2,9 @@
   "allowZipDownload": true,
   "images": [
     {
-      "file": "01-keylog.webp",
-      "alt": "Fichier keylog.txt produit : une touche par ligne et contenu du presse-papiers enregistré à chaque Ctrl+C",
-      "caption": "Fichier keylog.txt produit : une touche par ligne et contenu du presse-papiers enregistré à chaque Ctrl+C"
+      "file": "01-hooklog.webp",
+      "alt": "Fichier hook-content.txt produit : une touche par ligne et contenu du presse-papiers enregistré à chaque Ctrl+C",
+      "caption": "Fichier hook-content.txt produit : une touche par ligne et contenu du presse-papiers enregistré à chaque Ctrl+C"
     }
   ]
 }

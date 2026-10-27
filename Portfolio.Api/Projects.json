@@ -246,7 +246,7 @@
 	},
 	{
 		"ID": 18,
-		"Name": "KeyCapture Monitor",
+		"Name": "Global keyboard hook (démo Windows API)",
 		"Description": "J'ai développé cette application console pour capturer globalement les frappes clavier sur Windows, enregistrer les touches dans un fichier texte et sauvegarder le contenu du presse-papiers lors d'un copier (Ctrl+C). Ce projet me sert de base pour d'autres applications écoutant les frappes.",
 		"Technologies": [
 			"C#",
