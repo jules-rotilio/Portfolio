@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="900" viewBox="0 0 1260 900" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif">
+<defs><marker id="head2e9d6a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e9d6a"/></marker></defs>
+<defs><marker id="head3b7dd8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3b7dd8"/></marker></defs>
+<defs><marker id="headd98e0b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d98e0b"/></marker></defs>
+<rect x="0" y="0" width="1260" height="900" rx="14" fill="#ffffff"/>
+<text x="24" y="40" font-size="22" font-weight="700" fill="#1d2330" text-anchor="start">The audio engine (audio.rs)</text>
+<polyline points="1010,26 1036,26" fill="none" stroke="#d98e0b" stroke-width="3" stroke-linejoin="round"/>
+<text x="1044" y="30" font-size="12" font-weight="400" fill="#5b6270" text-anchor="start">your voice</text>
+<polyline points="1010,46 1036,46" fill="none" stroke="#3b7dd8" stroke-width="3" stroke-linejoin="round"/>
+<text x="1044" y="50" font-size="12" font-weight="400" fill="#5b6270" text-anchor="start">captured program</text>
+<polyline points="1010,66 1036,66" fill="none" stroke="#2e9d6a" stroke-width="3" stroke-linejoin="round"/>
+<text x="1044" y="70" font-size="12" font-weight="400" fill="#5b6270" text-anchor="start">sounds, chimes</text>
+<text x="24" y="80" font-size="12" font-weight="700" fill="#5b6270" text-anchor="start">INPUTS</text>
+<rect x="20" y="95" width="220" height="100" rx="10" fill="#e8f1fd" stroke="#3b7dd8" stroke-width="1.6"/>
+<text x="32" y="119" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Physical mic</text>
+<text x="32" y="141" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">cpal input stream</text>
+<text x="32" y="160" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">its sample rate is the</text>
+<text x="32" y="179" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">engine's rate</text>
+<rect x="20" y="360" width="220" height="110" rx="10" fill="#e8f1fd" stroke="#3b7dd8" stroke-width="1.6"/>
+<text x="32" y="384" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Captured program</text>
+<text x="32" y="406" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">programs.rs</text>
+<text x="32" y="425" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">Linux: PipeWire links</text>
+<text x="32" y="444" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">Windows: process loopback</text>
+<rect x="20" y="510" width="220" height="90" rx="10" fill="#e8f1fd" stroke="#3b7dd8" stroke-width="1.6"/>
+<text x="32" y="534" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Sound files</text>
+<text x="32" y="556" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">decoded once, resampled</text>
+<text x="32" y="575" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">to each device's rate</text>
+<rect x="20" y="640" width="220" height="90" rx="10" fill="#e8f1fd" stroke="#3b7dd8" stroke-width="1.6"/>
+<text x="32" y="664" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Chimes, announcements</text>
+<text x="32" y="686" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">auto-click beeps,</text>
+<text x="32" y="705" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">“voice changer on / off”</text>
+<rect x="265" y="60" width="705" height="160" rx="10" fill="#fbfbfc" stroke="#c3c7cf" stroke-width="1.6"/>
+<text x="277" y="80" font-size="12" font-weight="700" fill="#5b6270" text-anchor="start">MIC INPUT CALLBACK (AUDIO THREAD)</text>
+<rect x="280" y="100" width="140" height="100" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="292" y="124" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Offset removed</text>
+<text x="292" y="146" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">DcBlock, 20 Hz</text>
+<text x="292" y="165" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">gate.rs</text>
+<rect x="440" y="100" width="100" height="100" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="452" y="124" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Mic meter</text>
+<text x="452" y="146" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">peak</text>
+<text x="452" y="165" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">“Mic in”</text>
+<rect x="560" y="100" width="175" height="100" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="572" y="124" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Noise gate</text>
+<text x="572" y="146" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">floor = quietest</text>
+<text x="572" y="165" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">moment of 4 s;</text>
+<text x="572" y="184" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">opens at floor + margin</text>
+<rect x="755" y="100" width="200" height="100" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="767" y="124" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Voice effect</text>
+<text x="767" y="146" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">pitch · robot · 4/8/16-bit</text>
+<text x="767" y="165" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">only while Voice ON</text>
+<text x="767" y="184" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">or Test is on</text>
+<polyline points="240,145 280,145" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<polyline points="420,150 440,150" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<polyline points="540,150 560,150" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<polyline points="735,150 755,150" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<text x="762" y="628" font-size="12" font-weight="700" fill="#5b6270" text-anchor="start">LOCK-FREE QUEUES</text>
+<rect x="760" y="265" width="190" height="85" rx="10" fill="#f1edfd" stroke="#7c5cd6" stroke-width="1.6"/>
+<text x="772" y="289" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Voice queues</text>
+<text x="772" y="311" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">one per output that</text>
+<text x="772" y="330" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">wants the voice</text>
+<rect x="760" y="380" width="190" height="85" rx="10" fill="#f1edfd" stroke="#7c5cd6" stroke-width="1.6"/>
+<text x="772" y="404" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Program queues</text>
+<text x="772" y="426" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">ProgramTap: one per</text>
+<text x="772" y="445" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">output others hear</text>
+<rect x="760" y="520" width="190" height="85" rx="10" fill="#f1edfd" stroke="#7c5cd6" stroke-width="1.6"/>
+<text x="772" y="544" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Command queues</text>
+<text x="772" y="566" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">Play · Stop · Cue</text>
+<text x="772" y="585" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">one per output</text>
+<polyline points="855,200 855,265" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<text x="862" y="238" font-size="12" font-weight="600" fill="#d98e0b" text-anchor="start">a copy to each</text>
+<polyline points="240,415 760,415" fill="none" stroke="#3b7dd8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head3b7dd8)"/>
+<text x="560" y="405" font-size="12" font-weight="600" fill="#3b7dd8" text-anchor="start">ProgramTap.push</text>
+<rect x="280" y="505" width="250" height="120" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="292" y="529" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Player</text>
+<text x="292" y="551" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">picks one of a key's files,</text>
+<text x="292" y="570" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">the clip cache keeps it</text>
+<text x="292" y="589" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">decoded at each rate</text>
+<text x="292" y="608" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">Play(key), Stop, Cue</text>
+<polyline points="240,555 280,555" fill="none" stroke="#2e9d6a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head2e9d6a)"/>
+<polyline points="240,685 405,685 405,625" fill="none" stroke="#2e9d6a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head2e9d6a)"/>
+<polyline points="530,562 760,562" fill="none" stroke="#2e9d6a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head2e9d6a)"/>
+<text x="560" y="552" font-size="12" font-weight="600" fill="#2e9d6a" text-anchor="start">one command per output</text>
+<text x="282" y="495" font-size="12" font-weight="400" fill="#5b6270" text-anchor="start" font-style="italic">from the hotkeys thread or a click</text>
+<text x="992" y="252" font-size="12" font-weight="700" fill="#5b6270" text-anchor="start">OUTPUTS · one stream per device</text>
+<rect x="990" y="265" width="250" height="200" rx="10" fill="#e6f6ef" stroke="#2e9d6a" stroke-width="1.6"/>
+<text x="1002" y="289" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Virtual output</text>
+<text x="1002" y="311" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">others hear it</text>
+<text x="1002" y="330" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">your voice (while ON)</text>
+<text x="1002" y="349" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">+ sounds × sound volume</text>
+<text x="1002" y="368" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">+ program × program volume</text>
+<text x="1002" y="387" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">→ “Virtual mic” meter</text>
+<text x="1002" y="406" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">Linux: Intercom Output → Mic</text>
+<text x="1002" y="425" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">Windows: CABLE Input → Output</text>
+<rect x="990" y="485" width="250" height="175" rx="10" fill="#e6f6ef" stroke="#2e9d6a" stroke-width="1.6"/>
+<text x="1002" y="509" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Headset</text>
+<text x="1002" y="531" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">you hear it</text>
+<text x="1002" y="550" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">sounds × sound × headset vol.</text>
+<text x="1002" y="569" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">+ chimes × headset volume</text>
+<text x="1002" y="588" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">+ your voice while Test is on</text>
+<text x="1002" y="607" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">a captured program plays</text>
+<text x="1002" y="626" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">here by itself, not twice</text>
+<rect x="990" y="680" width="250" height="65" rx="10" fill="#e6f6ef" stroke="#2e9d6a" stroke-width="1.6"/>
+<text x="1002" y="704" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Voice test device</text>
+<text x="1002" y="726" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">optional: your voice in Test</text>
+<polyline points="950,300 990,300" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<polyline points="950,325 968,325 968,712" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round"/>
+<polyline points="968,590 990,590" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<polyline points="968,712 990,712" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<polyline points="950,415 990,415" fill="none" stroke="#3b7dd8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head3b7dd8)"/>
+<polyline points="950,562 978,562" fill="none" stroke="#2e9d6a" stroke-width="2.2" stroke-linejoin="round"/>
+<polyline points="978,360 978,562" fill="none" stroke="#2e9d6a" stroke-width="2.2" stroke-linejoin="round"/>
+<polyline points="978,360 990,360" fill="none" stroke="#2e9d6a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head2e9d6a)"/>
+<polyline points="978,545 990,545" fill="none" stroke="#2e9d6a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head2e9d6a)"/>
+<rect x="20" y="775" width="1220" height="105" rx="10" fill="#ffffff" stroke="#c3c7cf" stroke-width="1.6"/>
+<text x="32" y="799" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Control, without waiting</text>
+<text x="32" y="821" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">The window and the hotkeys thread change plain atomic numbers: voice ON, Test, the volumes, the gate's switch and margin. They read back</text>
+<text x="32" y="840" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">the meters' peaks, the noise floor and the underruns. A new effect travels to the mic thread through a queue, and the old one comes back</text>
+<text x="32" y="859" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">through another to be freed there: the audio threads never wait for a lock and never allocate, so the sound has no cracks.</text>
+</svg>

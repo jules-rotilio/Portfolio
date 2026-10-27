@@ -451,5 +451,23 @@
 			"Rétro-ingénierie",
 			"unittest"
 		]
+	},
+	{
+		"ID": 35,
+		"Name": "Intercom",
+		"Description": "J'ai développé en Rust cette application de bureau pour des joueurs, sous Linux comme sous Windows, qui réunit trois outils en une seule fenêtre : une soundboard sur le pavé numérique, un changeur de voix en direct et un auto-clicker avec dérive du pointeur de la souris. Le micro passe par un effet (pitch modifié, voix de robot par FFT, voix qui sortirait d'une console 8 ou 16 bits) puis par un micro virtuel que le jeu ou plateforme de discussion (Discord) entend, mélangé aux sons et, au besoin, au son d'un autre programme (firefox, spotify). Le moteur audio n'attend aucun verrou et n'alloue aucune mémoire dans ses threads temps réel, avec un noise gate qui mesure seul le bruit de fond. Les effets viennent d'une seconde crate, voice-changer, utilisable aussi en ligne de commande, qui mesure la latence et la charge CPU de chaque effet.",
+		"Technologies": [
+			"Rust",
+			"egui / eframe",
+			"cpal",
+			"Traitement du signal",
+			"FFT",
+			"PipeWire / PulseAudio",
+			"evdev / uinput",
+			"Windows API",
+			"WASAPI",
+			"MPRIS / D-Bus",
+			"Multithreading lock-free"
+		]
 	}
 ]

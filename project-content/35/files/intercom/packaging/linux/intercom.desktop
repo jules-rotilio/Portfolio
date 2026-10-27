@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Intercom
+GenericName=Soundboard and voice changer
+Comment=Numpad soundboard, live voice changer, auto-click and mouse drift
+Exec=intercom
+Icon=intercom
+Terminal=false
+Categories=AudioVideo;Audio;
+Keywords=soundboard;voice;changer;microphone;autoclick;
+StartupWMClass=intercom

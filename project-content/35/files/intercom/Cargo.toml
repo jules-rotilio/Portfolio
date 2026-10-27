@@ -1,0 +1,36 @@
+[package]
+name = "intercom"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cpal = { version = "0.18.2", features = ["pulseaudio"] }
+directories = "6.0.0"
+eframe = { version = "0.37.0", features = ["persistence"] }
+hound = "3.5.1"
+rfd = "0.17.2"
+ringbuf = "0.5.3"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+toml = "1.1.8"
+voice-changer = { version = "0.1.0", path = "../voice-changer" }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+evdev = "0.13.2"
+x11rb = "0.13.2"
+# Already used by egui (accessibility); here for the media players (MPRIS).
+zbus = { version = "5.19.0", default-features = false, features = ["async-io", "blocking-api"] }
+
+[target."cfg(windows)".dependencies]
+windows = { version = "0.62.2", features = ["Win32_UI_WindowsAndMessaging", "Win32_Foundation", "Win32_System_LibraryLoader", "Win32_System_Threading", "Win32_UI_Input_KeyboardAndMouse", "Win32_Security", "Win32_UI_Shell", "Win32_Media", "Win32_System_Registry", "Foundation", "Foundation_Collections", "Media_Control", "Win32_Media_Audio", "Win32_System_Com", "Win32_System_Com_StructuredStorage", "Win32_System_Variant", "Win32_System_Diagnostics_ToolHelp"] }
+# The COM macros (`interface`, `implement`) expand to paths in this crate:
+# for capturing a program's sound, and for the default mic.
+windows-core = "0.62.2"
+
+[build-dependencies]
+winresource = "0.1.34"
+
+[profile.release]
+# A smaller, slightly faster program: optimize across crates, drop debug symbols.
+lto = "thin"
+strip = true

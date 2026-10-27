@@ -1,0 +1,127 @@
+{
+  "schema": "speech-bench/1",
+  "app": "voice-changer",
+  "implementation": "rust",
+  "engine": "pitch-shift:delay-line",
+  "mode": "live",
+  "created": "2026-10-12T18:24:43+00:00",
+  "machine": {
+    "os": "Linux (Debian GNU/Linux 13)",
+    "cpu": "AMD Ryzen 7 5700U with Radeon Graphics",
+    "cores": 16,
+    "arch": "x86_64",
+    "ram_gb": 15.0
+  },
+  "load_ms": 258.478,
+  "cpu_time_s": 0.19,
+  "peak_rss_mb": 169.7,
+  "summary": {
+    "algorithmic_latency_ms": {
+      "mean": 15.0,
+      "p50": 15.0,
+      "p95": 15.0,
+      "min": 15.0,
+      "max": 15.0
+    },
+    "block_process_us": {
+      "mean": 25.406,
+      "p50": 27.743,
+      "p95": 37.24,
+      "min": 11.722,
+      "max": 75.133
+    },
+    "cpu_s_per_audio_s": {
+      "mean": 0.034,
+      "p50": 0.034,
+      "p95": 0.034,
+      "min": 0.034,
+      "max": 0.034
+    },
+    "e2e_latency_ms": {
+      "mean": 149.326,
+      "p50": 141.479,
+      "p95": 203.208,
+      "min": 101.375,
+      "max": 204.125
+    },
+    "first_audio_ms": {
+      "mean": 149.326,
+      "p50": 141.479,
+      "p95": 203.208,
+      "min": 101.375,
+      "max": 204.125
+    },
+    "input_latency_ms": {
+      "mean": 30.782,
+      "p50": 31.833,
+      "p95": 47.604,
+      "min": 12.479,
+      "max": 48.229
+    },
+    "output_latency_ms": {
+      "mean": 92.877,
+      "p50": 83.979,
+      "p95": 129.312,
+      "min": 63.229,
+      "max": 130.854
+    },
+    "queue_latency_ms": {
+      "mean": 10.667,
+      "p50": 10.667,
+      "p95": 10.667,
+      "min": 10.667,
+      "max": 10.667
+    },
+    "rtf": {
+      "mean": 0.002,
+      "p50": 0.003,
+      "p95": 0.003,
+      "min": 0.001,
+      "max": 0.007
+    }
+  },
+  "samples": [
+    {
+      "block_process_us_mean": 23.643,
+      "e2e_latency_ms": 203.208,
+      "input_latency_ms": 48.229,
+      "output_latency_ms": 129.312,
+      "queue_latency_ms": 10.667,
+      "t_s": 1.001,
+      "underruns_total": 6
+    },
+    {
+      "block_process_us_mean": 23.674,
+      "e2e_latency_ms": 141.479,
+      "input_latency_ms": 31.833,
+      "output_latency_ms": 83.979,
+      "queue_latency_ms": 10.667,
+      "t_s": 2.002,
+      "underruns_total": 6
+    },
+    {
+      "block_process_us_mean": 28.994,
+      "e2e_latency_ms": 101.375,
+      "input_latency_ms": 12.479,
+      "output_latency_ms": 63.229,
+      "queue_latency_ms": 10.667,
+      "t_s": 3.004,
+      "underruns_total": 6
+    }
+  ],
+  "settings": {
+    "audio_host": "ALSA",
+    "block": null,
+    "buffer_ms": 10.0,
+    "duration_s": 3.107,
+    "input_device": "PulseAudio Sound Server",
+    "output_device": "PulseAudio Sound Server",
+    "pitch_semitones": 5.0,
+    "sample_rate": 48000,
+    "window_ms": 30.0
+  },
+  "counters": {
+    "overflows": 0,
+    "underruns": 6
+  }
+}

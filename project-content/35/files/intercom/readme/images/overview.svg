@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="720" viewBox="0 0 1260 720" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif">
+<defs><marker id="headd98e0b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d98e0b"/></marker></defs>
+<defs><marker id="head5b6270" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6270"/></marker></defs>
+<rect x="0" y="0" width="1260" height="720" rx="14" fill="#ffffff"/>
+<text x="24" y="40" font-size="22" font-weight="700" fill="#1d2330" text-anchor="start">How Intercom is put together: one thread per job</text>
+<polyline points="1040,26 1066,26" fill="none" stroke="#5b6270" stroke-width="3" stroke-linejoin="round"/>
+<text x="1074" y="30" font-size="12" font-weight="400" fill="#5b6270" text-anchor="start">messages, shared state</text>
+<polyline points="1040,46 1066,46" fill="none" stroke="#d98e0b" stroke-width="3" stroke-linejoin="round"/>
+<text x="1074" y="50" font-size="12" font-weight="400" fill="#5b6270" text-anchor="start">sound</text>
+<text x="24" y="80" font-size="12" font-weight="700" fill="#5b6270" text-anchor="start">YOUR COMPUTER</text>
+<rect x="20" y="95" width="210" height="75" rx="10" fill="#f0f1f3" stroke="#8a8f98" stroke-width="1.6"/>
+<text x="32" y="119" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Keyboard</text>
+<text x="32" y="141" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">and mouse buttons</text>
+<text x="32" y="160" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">that send keys</text>
+<rect x="20" y="330" width="210" height="60" rx="10" fill="#f0f1f3" stroke="#8a8f98" stroke-width="1.6"/>
+<text x="32" y="354" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Your mic</text>
+<rect x="20" y="420" width="210" height="75" rx="10" fill="#f0f1f3" stroke="#8a8f98" stroke-width="1.6"/>
+<text x="32" y="444" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Programs playing</text>
+<text x="32" y="466" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">Spotify, a browser…</text>
+<rect x="300" y="70" width="310" height="130" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="312" y="94" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Window thread</text>
+<text x="312" y="116" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">app.rs, settings.rs (egui)</text>
+<text x="312" y="135" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">draws both windows, edits the</text>
+<text x="312" y="154" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">config; Save / Undo (undo.rs)</text>
+<text x="312" y="173" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">config.toml, state.toml</text>
+<rect x="300" y="240" width="310" height="75" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="312" y="264" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Hotkeys</text>
+<text x="312" y="286" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">/dev/input, or a keyboard hook</text>
+<text x="312" y="305" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">(hotkeys/): only listens</text>
+<rect x="300" y="350" width="310" height="110" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="312" y="374" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Controller</text>
+<text x="312" y="396" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">controller.rs: key → action</text>
+<text x="312" y="415" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">play, stop, pages, volume,</text>
+<text x="312" y="434" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">voice ON/OFF, announcements</text>
+<text x="312" y="453" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">+ focus: the program in front</text>
+<rect x="300" y="500" width="310" height="80" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="312" y="524" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Mouse</text>
+<text x="312" y="546" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">auto-click and drift (mouse/),</text>
+<text x="312" y="565" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">one thread, sleeps until due</text>
+<rect x="680" y="70" width="270" height="80" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="692" y="94" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Media</text>
+<text x="692" y="116" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">media.rs: “Now playing”,</text>
+<text x="692" y="135" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">asks every second</text>
+<rect x="680" y="180" width="270" height="100" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="692" y="204" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Programs</text>
+<text x="692" y="226" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">programs.rs: lists who plays</text>
+<text x="692" y="245" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">sound, keeps the capture of</text>
+<text x="692" y="264" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">the chosen one going</text>
+<rect x="680" y="320" width="270" height="170" rx="10" fill="#f1edfd" stroke="#7c5cd6" stroke-width="1.6"/>
+<text x="692" y="344" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Audio engine</text>
+<text x="692" y="366" font-size="13" font-weight="400" fill="#1d2330" text-anchor="start">audio.rs (+ gate.rs)</text>
+<text x="692" y="385" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">the mic stream: offset, gate,</text>
+<text x="692" y="404" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">effect; one output stream</text>
+<text x="692" y="423" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">per device; the Player for</text>
+<text x="692" y="442" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">sound clips</text>
+<text x="692" y="461" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">(next diagram)</text>
+<rect x="680" y="530" width="270" height="90" rx="10" fill="#fff4e0" stroke="#d98e0b" stroke-width="1.6"/>
+<text x="692" y="554" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Virtual mic</text>
+<text x="692" y="576" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">virtual_mic.rs: creates it (Linux)</text>
+<text x="692" y="595" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">or finds VB-Cable (Windows);</text>
+<text x="692" y="614" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">default_mic.rs</text>
+<text x="1012" y="80" font-size="12" font-weight="700" fill="#5b6270" text-anchor="start">OTHER PROGRAMS, DEVICES</text>
+<rect x="1010" y="95" width="230" height="75" rx="10" fill="#f0f1f3" stroke="#8a8f98" stroke-width="1.6"/>
+<text x="1022" y="119" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Media players</text>
+<text x="1022" y="141" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">MPRIS (Linux),</text>
+<text x="1022" y="160" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">media sessions (Windows)</text>
+<rect x="1010" y="320" width="230" height="90" rx="10" fill="#f0f1f3" stroke="#8a8f98" stroke-width="1.6"/>
+<text x="1022" y="344" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Discord, the game</text>
+<text x="1022" y="366" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">listen to the virtual mic:</text>
+<text x="1022" y="385" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">your voice, sounds, program</text>
+<rect x="1010" y="440" width="230" height="70" rx="10" fill="#f0f1f3" stroke="#8a8f98" stroke-width="1.6"/>
+<text x="1022" y="464" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">Your headset</text>
+<text x="1022" y="486" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">sounds, chimes, voice test</text>
+<rect x="1010" y="540" width="230" height="75" rx="10" fill="#f0f1f3" stroke="#8a8f98" stroke-width="1.6"/>
+<text x="1022" y="564" font-size="15" font-weight="700" fill="#1d2330" text-anchor="start">The game window</text>
+<text x="1022" y="586" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">gets the clicks and the</text>
+<text x="1022" y="605" font-size="13" font-weight="400" fill="#5b6270" text-anchor="start">mouse moves</text>
+<polyline points="230,132 265,132 265,277 300,277" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head5b6270)"/>
+<polyline points="455,315 455,350" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head5b6270)"/>
+<text x="462" y="347" font-size="12" font-weight="600" fill="#5b6270" text-anchor="start">key events</text>
+<polyline points="610,405 680,405" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head5b6270)"/>
+<text x="622" y="397" font-size="12" font-weight="600" fill="#5b6270" text-anchor="start">Player</text>
+<polyline points="455,460 455,500" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head5b6270)"/>
+<text x="462" y="485" font-size="12" font-weight="600" fill="#5b6270" text-anchor="start">every key</text>
+<polyline points="610,560 650,560 650,650 985,650 985,590 1010,590" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head5b6270)"/>
+<polyline points="610,110 680,110" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head5b6270)"/>
+<polyline points="560,200 560,240 560,350" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#head5b6270)"/>
+<text x="568" y="230" font-size="12" font-weight="600" fill="#5b6270" text-anchor="start">bindings</text>
+<polyline points="610,170 645,170 645,360 680,360" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#head5b6270)"/>
+<text x="616" y="190" font-size="12" font-weight="600" fill="#5b6270" text-anchor="start">settings</text>
+<polyline points="610,140 630,140 630,230 680,230" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#head5b6270)"/>
+<polyline points="230,360 260,360 260,470 640,470 680,470" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<polyline points="230,457 250,457 250,330 662,330 662,250 680,250" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<polyline points="815,280 815,320" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<text x="822" y="305" font-size="12" font-weight="600" fill="#d98e0b" text-anchor="start">ProgramTap</text>
+<polyline points="1010,132 950,132" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#head5b6270)"/>
+<text x="958" y="124" font-size="12" font-weight="600" fill="#5b6270" text-anchor="start">tracks</text>
+<polyline points="950,365 1010,365" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<polyline points="950,470 1010,470" fill="none" stroke="#d98e0b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#headd98e0b)"/>
+<polyline points="815,490 815,530" fill="none" stroke="#5b6270" stroke-width="2.2" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#head5b6270)"/>
+</svg>

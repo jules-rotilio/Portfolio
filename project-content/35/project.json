@@ -1,0 +1,21 @@
+{
+  "longDescription": "Intercom est une application de bureau en Rust qui remplace les trois programmes qu'un joueur fait d'habitude tourner en même temps : une soundboard, un changeur de voix et un auto-clicker. Elle fonctionne sous Linux et sous Windows, et l'interface est faite avec egui.\n\n- Soundboard : chaque touche du pavé numérique joue un son, entendu par les autres joueurs et dans le casque, avec plusieurs pages, un volume par touche et un tirage au hasard entre plusieurs fichiers\n- Changeur de voix en direct : hauteur, robot (FFT écrite à la main, phases mises à zéro) ou voix de console 4, 8 et 16 bits, activé par une touche et confirmé par une voix dans le casque\n- Micro virtuel : créé avec PulseAudio/PipeWire sous Linux, VB-Cable sous Windows, et pouvant devenir le micro par défaut du système\n- Capture du son d'un autre programme (liens PipeWire, process loopback WASAPI) et lecteur « En cours de lecture » via MPRIS ou les sessions média de Windows\n- Auto-clic jusqu'à 100 clics par seconde et dérive de la souris, via uinput sous Linux et SendInput sous Windows\n- Raccourcis globaux qui se contentent d'écouter le clavier (evdev, hook clavier), éventuellement seulement quand le jeu est au premier plan\n\nLe moteur audio ouvre un flux par périphérique de sortie et mélange les rôles qui le partagent. Ses threads temps réel n'attendent jamais de verrou et n'allouent pas de mémoire : ils reçoivent leurs ordres par des files sans verrou et des atomiques. Un noise gate mesure en continu le bruit de fond du micro et retire le décalage continu de certains micros.\n\nLes effets viennent de la crate voice-changer, utilisée comme bibliothèque. Elle est aussi un programme en ligne de commande qui transforme la voix en direct ou un fichier (WAV, MP3...), et qui enregistre en JSON la latence et la charge CPU de chaque effet. Les deux projets sont couverts par des tests unitaires.",
+  "allowZipDownload": true,
+  "images": [
+    {
+      "file": "01-fenetre-principale.webp",
+      "alt": "Fenêtre principale : changeur de voix, pavé numérique des sons avec un son en cours, capture d'un lecteur de musique, auto-clic et dérive de la souris",
+      "caption": "Fenêtre principale : changeur de voix, pavé numérique des sons avec un son en cours, capture d'un lecteur de musique, auto-clic et dérive de la souris"
+    },
+    {
+      "file": "02-changeur-de-voix.webp",
+      "alt": "Réglages du changeur de voix : choix de l'effet, note du robot et confirmation vocale",
+      "caption": "Réglages du changeur de voix : choix de l'effet, note du robot et confirmation vocale"
+    },
+    {
+      "file": "03-audio.webp",
+      "alt": "Réglages audio : micro, noise gate avec le bruit de fond mesuré, casque et micro virtuel",
+      "caption": "Réglages audio : micro, noise gate avec le bruit de fond mesuré, casque et micro virtuel"
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "schema": "speech-bench/1",
+  "app": "voice-changer",
+  "implementation": "rust",
+  "engine": "robot:zero-phase-fft",
+  "mode": "live",
+  "created": "2026-10-12T18:38:27+00:00",
+  "machine": {
+    "os": "Linux (Debian GNU/Linux 13)",
+    "cpu": "AMD Ryzen 7 5700U with Radeon Graphics",
+    "cores": 16,
+    "arch": "x86_64",
+    "ram_gb": 15.0
+  },
+  "load_ms": 249.968,
+  "cpu_time_s": 0.749,
+  "peak_rss_mb": 187.7,
+  "summary": {
+    "algorithmic_latency_ms": {
+      "mean": 21.333,
+      "p50": 21.333,
+      "p95": 21.333,
+      "min": 21.333,
+      "max": 21.333
+    },
+    "block_process_us": {
+      "mean": 115.996,
+      "p50": 135.207,
+      "p95": 147.52,
+      "min": 29.396,
+      "max": 1073.305
+    },
+    "cpu_s_per_audio_s": {
+      "mean": 0.043,
+      "p50": 0.043,
+      "p95": 0.043,
+      "min": 0.043,
+      "max": 0.043
+    },
+    "e2e_latency_ms": {
+      "mean": 119.841,
+      "p50": 103.146,
+      "p95": 194.957,
+      "min": 87.104,
+      "max": 199.833
+    },
+    "first_audio_ms": {
+      "mean": 119.841,
+      "p50": 103.146,
+      "p95": 194.957,
+      "min": 87.104,
+      "max": 199.833
+    },
+    "input_latency_ms": {
+      "mean": 8.59,
+      "p50": 1.937,
+      "p95": 37.354,
+      "min": 0.0,
+      "max": 51.916
+    },
+    "output_latency_ms": {
+      "mean": 69.405,
+      "p50": 49.708,
+      "p95": 126.854,
+      "min": 42.604,
+      "max": 139.604
+    },
+    "queue_latency_ms": {
+      "mean": 20.513,
+      "p50": 21.333,
+      "p95": 21.333,
+      "min": 10.667,
+      "max": 21.333
+    },
+    "rtf": {
+      "mean": 0.011,
+      "p50": 0.013,
+      "p95": 0.014,
+      "min": 0.003,
+      "max": 0.101
+    }
+  },
+  "samples": [
+    {
+      "block_process_us_mean": 119.834,
+      "e2e_latency_ms": 191.374,
+      "input_latency_ms": 51.916,
+      "output_latency_ms": 107.458,
+      "queue_latency_ms": 10.667,
+      "t_s": 1.002,
+      "underruns_total": 5
+    },
+    {
+      "block_process_us_mean": 112.26,
+      "e2e_latency_ms": 184.082,
+      "input_latency_ms": 33.916,
+      "output_latency_ms": 118.166,
+      "queue_latency_ms": 10.667,
+      "t_s": 2.003,
+      "underruns_total": 5
+    },
+    {
+      "block_process_us_mean": 123.64,
+      "e2e_latency_ms": 192.062,
+      "input_latency_ms": 9.791,
+      "output_latency_ms": 139.604,
+      "queue_latency_ms": 21.333,
+      "t_s": 3.005,
+      "underruns_total": 5
+    },
+    {
+      "block_process_us_mean": 100.429,
+      "e2e_latency_ms": 152.937,
+      "input_latency_ms": 0.0,
+      "output_latency_ms": 110.27,
+      "queue_latency_ms": 21.333,
+      "t_s": 4.006,
+      "underruns_total": 5
+    },
+    {
+      "block_process_us_mean": 117.948,
+      "e2e_latency_ms": 125.417,
+      "input_latency_ms": 0.0,
+      "output_latency_ms": 82.75,
+      "queue_latency_ms": 21.333,
+      "t_s": 5.008,
+      "underruns_total": 5
+    },
+    {
+      "block_process_us_mean": 107.921,
+      "e2e_latency_ms": 125.333,
+      "input_latency_ms": 0.0,
+      "output_latency_ms": 82.666,
+      "queue_latency_ms": 21.333,
+      "t_s": 6.01,
+      "underruns_total": 5
+    },
+    {
+      "block_process_us_mean": 118.863,
+      "e2e_latency_ms": 102.854,
+      "input_latency_ms": 0.0,
+      "output_latency_ms": 60.187,
+      "queue_latency_ms": 21.333,
+      "t_s": 7.013,
+      "underruns_total": 7
+    },
+    {
+      "block_process_us_mean": 119.347,
+      "e2e_latency_ms": 92.729,
+      "input_latency_ms": 0.0,
+      "output_latency_ms": 50.062,
+      "queue_latency_ms": 21.333,
+      "t_s": 8.015,
+      "underruns_total": 7
+    },
+    {
+      "block_process_us_mean": 109.638,
+      "e2e_latency_ms": 89.229,
+      "input_latency_ms": 0.0,
+      "output_latency_ms": 46.562,
+      "queue_latency_ms": 21.333,
+      "t_s": 9.016,
+      "underruns_total": 7
+    },
+    {
+      "block_process_us_mean": 107.006,
+      "e2e_latency_ms": 87.104,
+      "input_latency_ms": 0.0,
+      "output_latency_ms": 44.437,
+      "queue_latency_ms": 21.333,
+      "t_s": 10.018,
+      "underruns_total": 7
+    },
+    {
+      "block_process_us_mean": 118.243,
+      "e2e_latency_ms": 91.145,
+      "input_latency_ms": 1.937,
+      "output_latency_ms": 46.541,
+      "queue_latency_ms": 21.333,
+      "t_s": 11.02,
+      "underruns_total": 7
+    },
+    {
+      "block_process_us_mean": 120.949,
+      "e2e_latency_ms": 96.0,
+      "input_latency_ms": 10.458,
+      "output_latency_ms": 42.875,
+      "queue_latency_ms": 21.333,
+      "t_s": 12.022,
+      "underruns_total": 7
+    },
+    {
+      "block_process_us_mean": 116.489,
+      "e2e_latency_ms": 94.499,
+      "input_latency_ms": 7.291,
+      "output_latency_ms": 44.541,
+      "queue_latency_ms": 21.333,
+      "t_s": 13.024,
+      "underruns_total": 7
+    },
+    {
+      "block_process_us_mean": 118.299,
+      "e2e_latency_ms": 104.187,
+      "input_latency_ms": 15.0,
+      "output_latency_ms": 46.52,
+      "queue_latency_ms": 21.333,
+      "t_s": 14.026,
+      "underruns_total": 7
+    },
+    {
+      "block_process_us_mean": 126.761,
+      "e2e_latency_ms": 103.104,
+      "input_latency_ms": 15.875,
+      "output_latency_ms": 44.562,
+      "queue_latency_ms": 21.333,
+      "t_s": 15.028,
+      "underruns_total": 7
+    }
+  ],
+  "settings": {
+    "audio_host": "ALSA",
+    "block": null,
+    "buffer_ms": 10.0,
+    "duration_s": 15.331,
+    "effect": "robot",
+    "input_device": "PulseAudio Sound Server",
+    "output_device": "PulseAudio Sound Server",
+    "robot_freq_hz": 180.0,
+    "sample_rate": 48000
+  },
+  "counters": {
+    "overflows": 0,
+    "underruns": 7
+  }
+}
