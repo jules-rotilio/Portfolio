@@ -79,6 +79,26 @@ h3.tile-title {
 	text-transform: uppercase;
 }
 
+/* Bouton de téléchargement : couleurs inversées pour ressortir sur la tuile d'accent */
+.btn-download {
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-top: 0.5rem;
+	border: 0;
+	background: var(--on-accent);
+	color: var(--mynameiscolor);
+	font-weight: 600;
+
+	&:hover,
+	&:focus-visible {
+		background: var(--on-accent);
+		color: var(--mynameiscolor);
+		opacity: 0.9;
+	}
+}
+
 .intro-lead {
 	font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
 }
