@@ -469,5 +469,37 @@
 			"MPRIS / D-Bus",
 			"Multithreading lock-free"
 		]
+	},
+	{
+		"ID": 36,
+		"Name": "Enceinte Bose SoundTouch sans le cloud Bose",
+		"Description": "J'héberge sur mon serveur Docker AfterTouch, un remplaçant open source du cloud Bose (projet de Tobias Gesellchen, licence MIT), pour continuer à utiliser mon enceinte SoundTouch 10 après l'arrêt des services Bose en mai 2026. J'ai d'abord exploré l'enceinte en lecture seule (API HTTP/XML locale, WebSocket, console de diagnostic) et relu le code avant de le déployer. J'ai ensuite redirigé l'enceinte vers mon serveur, nettoyé ses sources et relié Spotify par OAuth.",
+		"Technologies": [
+			"AfterTouch",
+			"Docker Compose",
+			"API SoundTouch (HTTP/XML)",
+			"WebSocket",
+			"Telnet",
+			"Spotify OAuth",
+			"nmap",
+			"Revue de code",
+			"Python"
+		]
+	},
+	{
+		"ID": 37,
+		"Name": "FTP Honeypot",
+		"Description": "J'ai développé ce honeypot FTP pour Debian, qui écoute sur le port 21, se fait passer pour un serveur FTP et journalise en JSON chaque connexion et chaque identifiant essayé, sans jamais laisser entrer personne. Associé à fail2ban, il bannit toute adresse qui touche le port 21 sur tous les ports du serveur, conteneurs Docker compris, avec des bannissements de plus en plus longs pour les récidivistes. Un outil en ligne de commande liste les adresses bannies avec leur pays et leur ville, montre ce qu'elles ont tenté et permet de les débannir.",
+		"Technologies": [
+			"Python",
+			"asyncio",
+			"fail2ban",
+			"nftables",
+			"systemd",
+			"Bash",
+			"Debian",
+			"GeoIP (DB-IP)",
+			"Sécurité réseau"
+		]
 	}
 ]

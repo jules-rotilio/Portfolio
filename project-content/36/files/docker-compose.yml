@@ -1,0 +1,32 @@
+# Remplaçant local du cloud Bose (AfterTouch), construit depuis le code source relu
+# dans vendor/Bose-SoundTouch plutôt que depuis l'image publiée.
+services:
+  soundtouch-service:
+    build:
+      context: vendor/Bose-SoundTouch
+      target: soundtouch-service
+    container_name: soundtouch-service
+    # Écoute uniquement sur l'adresse LAN du serveur
+    ports:
+      - "${HOST_IP}:8000:8000"
+      - "${HOST_IP}:8443:8443"
+    environment:
+      - PORT=8000
+      - HTTPS_PORT=8443
+      - DATA_DIR=/app/data
+      - LOG_PROXY_BODY=false
+      - REDACT_PROXY_LOGS=true
+      - RECORD_INTERACTIONS=true
+      - UPDATE_CHECK_ENABLED=false
+      - DISCOVERY_SUBNETS=${LAN_SUBNET:?définir LAN_SUBNET dans .env}
+      - SERVER_URL=http://${HOST_IP:?définir HOST_IP dans .env}:8000
+      - HTTPS_SERVER_URL=https://${HOST_IP}:8443
+      - MGMT_USERNAME=admin
+      - MGMT_PASSWORD=${MGMT_PASSWORD:?définir MGMT_PASSWORD dans .env}
+      # Application créée sur developer.spotify.com ; Spotify n'accepte que des redirections https vers une IP du LAN
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID:-}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET:-}
+      - SPOTIFY_REDIRECT_URI=https://${HOST_IP}:8443/mgmt/spotify/callback
+    volumes:
+      - ./data/soundtouch-service:/app/data
+    restart: unless-stopped

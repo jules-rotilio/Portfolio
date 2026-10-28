@@ -1,5 +1,6 @@
 {
   "allowZipDownload": true,
+  "repoUrl": "https://github.com/jules-rotilio/FirefoxExtensions",
   "images": [
     {
       "file": "01-settings-light.webp",

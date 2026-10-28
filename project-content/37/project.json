@@ -1,0 +1,17 @@
+{
+  "longDescription": "FTP Honeypot est un petit honeypot FTP à faible interaction pour Debian. Personne de légitime n'utilise le port 21 de mon serveur : chaque connexion vient donc d'un scanner ou d'un bot, et sert à le bannir avant qu'il n'essaie mes vrais services.\n\n- Un seul fichier Python sans dépendance (asyncio, environ 140 lignes), en IPv4 et IPv6\n- Journal JSON d'une ligne par événement : connexion, couple utilisateur / mot de passe essayé, autres commandes, déconnexion\n- Limites contre les abus : sessions simultanées, commandes par session, délai d'inactivité, 2 secondes d'attente par mot de passe, lignes trop longues coupées\n- Bannissement automatique par fail2ban : une connexion vaut un mois de bannissement sur tous les ports, puis 2, 4, 8 mois et un an pour les récidivistes, avec un historique conservé un an\n- Bannissement dans le hook prerouting de nftables, dans sa propre table, pour couvrir aussi les ports publiés par Docker, que le hook input habituel ne voit pas\n- Outil ftp-honeypot-bans : liste des adresses bannies avec pays et ville (base DB-IP consultée hors ligne), détail de ce qu'elles ont tenté, statistiques par pays et débannissement\n- Installateur Bash idempotent, avec liste blanche explicite (boucle locale, réseau local détecté, adresses choisies) et désinstallation\n\nLe service ne tourne pas en root : un utilisateur dédié avec la seule capacité de se lier au port 21, dans une unité systemd très restreinte (ProtectSystem=strict, filtre d'appels système, limites mémoire). Les textes envoyés par les attaquants sont échappés dans le journal et à l'affichage, pour qu'ils ne puissent ni forger une ligne de log ni envoyer de séquences d'échappement au terminal. Le journal est plafonné pour ne pas remplir le disque, et la base GeoIP est téléchargée et vérifiée par un service isolé.",
+  "allowZipDownload": true,
+  "repoUrl": "https://github.com/jules-rotilio/ftp-honeypot",
+  "images": [
+    {
+      "file": "01-pays.webp",
+      "alt": "ftp-honeypot-bans countries : 333 adresses bannies dans 22 pays en un peu plus de deux semaines, surtout des États-Unis et de Belgique",
+      "caption": "ftp-honeypot-bans countries : 333 adresses bannies dans 22 pays en un peu plus de deux semaines"
+    },
+    {
+      "file": "02-adresses-bannies.webp",
+      "alt": "ftp-honeypot-bans list : dernières adresses bannies avec leur localisation, la date de bannissement, le temps restant et le nombre d'identifiants essayés. Les adresses IP affichées sont fictives, réservées à la documentation (RFC 5737).",
+      "caption": "ftp-honeypot-bans list : dernières adresses bannies, avec localisation, durée restante et identifiants essayés. Les adresses IP sont fictives (plages réservées à la documentation) pour préserver l'anonymat ; le reste est la sortie réelle."
+    }
+  ]
+}
