@@ -26,7 +26,16 @@
 						maxlength="5000"
 						placeholder="Votre message"></textarea>
 				</div>
-				<button type="submit" class="btn btn-primary w-100" [disabled]="contactForm.invalid || sending">
+				<div class="form-check mb-3">
+					<input id="captcha" type="checkbox" class="form-check-input" [checked]="captcha || verifying"
+						[disabled]="captcha || verifying || sending" (change)="verify()">
+					<label for="captcha" class="form-check-label">Je ne suis pas un robot</label>
+					<span class="ms-2 small" aria-live="polite">
+						<ng-container *ngIf="verifying"><span class="spinner-border spinner-border-sm me-1" aria-hidden="true"></span>Vérification…</ng-container>
+						<ng-container *ngIf="captcha"><i class="bi bi-check-circle-fill text-success me-1" aria-hidden="true"></i>Vérifié</ng-container>
+					</span>
+				</div>
+				<button type="submit" class="btn btn-primary w-100" [disabled]="contactForm.invalid || !captcha || sending">
 					<i class="bi bi-send-fill me-2"></i>{{ sending ? 'Envoi en cours…' : 'Envoyer' }}
 				</button>
 			</form>

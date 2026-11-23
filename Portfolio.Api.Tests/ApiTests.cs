@@ -68,8 +68,16 @@ namespace Portfolio.Api.Tests
             _factory.Dispose();
         }
 
-        private static object ValidMessage(string body = "Bonjour !") =>
-            new { from = "visiteur@example.com", subject = "Prise de contact", body };
+        /// <summary>Fait le travail du navigateur : demande un captcha et retrouve le nombre caché.</summary>
+        private async Task<CaptchaSolution> SolveCaptcha()
+        {
+            var c = (await _client.GetFromJsonAsync<CaptchaChallenge>("/api/captcha"))!;
+            var number = Enumerable.Range(0, c.MaxNumber + 1).First(n => CaptchaService.Hash(c.Salt, n) == c.Challenge);
+            return new CaptchaSolution(c.Salt, number, c.Signature);
+        }
+
+        private async Task<object> ValidMessage(string body = "Bonjour !") =>
+            new { from = "visiteur@example.com", subject = "Prise de contact", body, captcha = await SolveCaptcha() };
 
         private Task<HttpResponseMessage> PostEmail(object payload) =>
             _client.PostAsJsonAsync("/api/send-email", payload);
@@ -102,7 +110,7 @@ namespace Portfolio.Api.Tests
         [Fact]
         public async Task SendEmail_ValidMessage_IsSent()
         {
-            var response = await PostEmail(ValidMessage());
+            var response = await PostEmail(await ValidMessage());
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             var sent = Assert.Single(_mailer.Sent);
@@ -117,7 +125,7 @@ namespace Portfolio.Api.Tests
         [InlineData("a@b.fr", "Sujet", "")]                       // message vide
         public async Task SendEmail_InvalidInput_IsRejected_AndNothingIsSent(string from, string subject, string body)
         {
-            var response = await PostEmail(new { from, subject, body });
+            var response = await PostEmail(new { from, subject, body, captcha = await SolveCaptcha() });
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
             Assert.Empty(_mailer.Sent);
@@ -126,10 +134,44 @@ namespace Portfolio.Api.Tests
         [Fact]
         public async Task SendEmail_TooLongMessage_IsRejected()
         {
-            var response = await PostEmail(ValidMessage(new string('a', 5001)));
+            var response = await PostEmail(await ValidMessage(new string('a', 5001)));
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
             Assert.Empty(_mailer.Sent);
+        }
+
+        // ---------- /api/send-email : captcha ----------
+
+        [Fact]
+        public async Task SendEmail_WithoutCaptcha_IsRejected()
+        {
+            var response = await PostEmail(new { from = "a@b.fr", subject = "Sujet", body = "Message" });
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            Assert.Empty(_mailer.Sent);
+        }
+
+        [Fact]
+        public async Task SendEmail_WrongCaptchaAnswer_IsRejected()
+        {
+            var solution = await SolveCaptcha();
+            var wrong = solution with { Number = (solution.Number + 1) % (CaptchaService.MaxNumber + 1) };
+
+            var response = await PostEmail(new { from = "a@b.fr", subject = "Sujet", body = "Message", captcha = wrong });
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            Assert.Equal("La vérification anti-robot a échoué. Réessayez.", await MessageOf(response));
+            Assert.Empty(_mailer.Sent);
+        }
+
+        [Fact]
+        public async Task SendEmail_ReusedCaptcha_IsRejected()
+        {
+            var message = await ValidMessage();
+
+            Assert.Equal(HttpStatusCode.OK, (await PostEmail(message)).StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, (await PostEmail(message)).StatusCode);
+            Assert.Single(_mailer.Sent);
         }
 
         // ---------- /api/send-email : erreurs et limite d'envoi ----------
@@ -139,7 +181,7 @@ namespace Portfolio.Api.Tests
         {
             _mailer.Fail = true;
 
-            var response = await PostEmail(ValidMessage());
+            var response = await PostEmail(await ValidMessage());
 
             Assert.Equal(HttpStatusCode.InternalServerError, response.StatusCode);
             var message = await MessageOf(response);
@@ -152,10 +194,10 @@ namespace Portfolio.Api.Tests
         {
             for (int i = 0; i < 5; i++)
             {
-                Assert.Equal(HttpStatusCode.OK, (await PostEmail(ValidMessage())).StatusCode);
+                Assert.Equal(HttpStatusCode.OK, (await PostEmail(await ValidMessage())).StatusCode);
             }
 
-            var response = await PostEmail(ValidMessage());
+            var response = await PostEmail(await ValidMessage());
 
             Assert.Equal(HttpStatusCode.TooManyRequests, response.StatusCode);
             Assert.Equal("Trop de messages envoyés. Réessayez dans une heure.", await MessageOf(response));
@@ -170,7 +212,7 @@ namespace Portfolio.Api.Tests
             HttpResponseMessage? last = null;
             for (int i = 1; i <= 6; i++)
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, "/api/send-email") { Content = JsonContent.Create(ValidMessage()) };
+                var request = new HttpRequestMessage(HttpMethod.Post, "/api/send-email") { Content = JsonContent.Create(await ValidMessage()) };
                 request.Headers.Add("X-Forwarded-For", $"203.0.113.{i}");
                 last = await _client.SendAsync(request);
             }

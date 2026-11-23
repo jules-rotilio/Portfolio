@@ -11,6 +11,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddSingleton<IContactMailer, SmtpContactMailer>();
 
+// Captcha par preuve de travail du formulaire de contact
+builder.Services.AddSingleton<CaptchaService>();
+
 // Contenu détaillé des projets (fichiers sources, aperçus), lu depuis ProjectContent:Path
 builder.Services.AddSingleton<ProjectContentStore>();
 

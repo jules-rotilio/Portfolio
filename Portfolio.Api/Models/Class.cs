@@ -21,5 +21,12 @@ namespace Portfolio.Api.Models
 
         [StringLength(5000, MinimumLength = 1)]
         public required string Body { get; set; }
+
+        // Non nullable : absent => 400 (validation implicite d'ASP.NET), sans imposer le champ au code serveur
+        public CaptchaSolution Captcha { get; set; } = null!;
     }
+
+    public record CaptchaChallenge(string Salt, string Challenge, int MaxNumber, string Signature);
+
+    public record CaptchaSolution(string Salt, int Number, string Signature);
 }

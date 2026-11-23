@@ -2,6 +2,8 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://julesrotilio.fr/sitemap.xml
+
 # Crawlers d'entraînement d'IA et outils de scraping SEO : refusés
 User-agent: GPTBot
 User-agent: ChatGPT-User

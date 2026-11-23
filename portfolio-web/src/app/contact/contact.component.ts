@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ContactService } from '../services/contact.service';
+import { CaptchaSolution, ContactService } from '../services/contact.service';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 
@@ -16,14 +16,35 @@ export class ContactComponent {
   success = false;
   sending = false;
   error = '';
+  verifying = false;
+  captcha: CaptchaSolution | null = null;
 
   constructor(private contactService: ContactService) {}
 
+  verify() {
+    this.verifying = true;
+    this.error = '';
+    this.contactService.verify().subscribe({
+      next: (captcha) => {
+        this.verifying = false;
+        this.captcha = captcha;
+      },
+      error: () => {
+        this.verifying = false;
+        this.error = 'La vérification anti-robot a échoué. Réessayez.';
+      }
+    });
+  }
+
   send() {
+    if (!this.captcha) return;
     this.success = false;
     this.error = '';
     this.sending = true;
-    this.contactService.sendEmail(this.form).subscribe({
+    // Une solution ne sert qu'une fois côté API : le visiteur recoche la case pour un nouvel envoi
+    const captcha = this.captcha;
+    this.captcha = null;
+    this.contactService.sendEmail(this.form, captcha).subscribe({
       next: () => {
         this.sending = false;
         this.success = true;

@@ -9,7 +9,7 @@ namespace Portfolio.Api.Controllers
 {
     [ApiController]
     [Route("api")]
-    public class ApiController(IContactMailer mailer, ProjectContentStore content, ILogger<ApiController> logger) : ControllerBase
+    public class ApiController(IContactMailer mailer, ProjectContentStore content, CaptchaService captcha, ILogger<ApiController> logger) : ControllerBase
     {
         // Seules les images sont affichées telles quelles ; tout autre fichier est proposé en téléchargement
         private static readonly string[] InlineExtensions = [".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".ico"];
@@ -75,10 +75,18 @@ namespace Portfolio.Api.Controllers
                 : null;
         }
 
+        [HttpGet("captcha")]
+        public CaptchaChallenge GetCaptcha() => captcha.Create();
+
         [HttpPost("send-email")]
         [EnableRateLimiting("contact")]
         public async Task<IActionResult> SendEmail([FromBody] SendEmailRequest request)
         {
+            if (!captcha.Verify(request.Captcha))
+            {
+                return BadRequest(new { success = false, message = "La vérification anti-robot a échoué. Réessayez." });
+            }
+
             try
             {
                 await mailer.SendAsync(request);

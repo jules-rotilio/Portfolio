@@ -2,8 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ContactComponent } from './contact.component';
+import { captchaFor, waitFor } from '../services/contact.service.spec';
 
 const API_URL = 'https://api.julesrotilio.fr/api/send-email';
+const CAPTCHA_URL = 'https://api.julesrotilio.fr/api/captcha';
 
 describe('ContactComponent', () => {
   let fixture: ComponentFixture<ContactComponent>;
@@ -36,10 +38,25 @@ describe('ContactComponent', () => {
     fixture.detectChanges();
   }
 
-  function sendAndRespond(body: object | string, status = 200) {
+  const captchaBox = () => element.querySelector('#captcha') as HTMLInputElement;
+
+  async function tickCaptcha() {
+    captchaBox().click();
+    fixture.detectChanges();
+    http.expectOne(CAPTCHA_URL).flush(await captchaFor(3));
+    await waitFor(() => !!component.captcha);
+    fixture.detectChanges();
+  }
+
+  async function send() {
+    await tickCaptcha();
     submitButton().click();
     fixture.detectChanges();
-    const req = http.expectOne(API_URL);
+    return http.expectOne(API_URL);
+  }
+
+  async function sendAndRespond(body: object | string, status = 200) {
+    const req = await send();
     if (status === 200) {
       req.flush(body);
     } else if (status === 0) {
@@ -60,6 +77,25 @@ describe('ContactComponent', () => {
     expect(submitButton().disabled).toBeTrue();
   });
 
+  it('désactive le bouton tant que la case anti-robot n\'est pas cochée', async () => {
+    await fillForm();
+    expect(submitButton().disabled).toBeTrue();
+
+    await tickCaptcha();
+    expect(element.textContent).toContain('Vérifié');
+    expect(captchaBox().disabled).toBeTrue();
+    expect(submitButton().disabled).toBeFalse();
+  });
+
+  it('demande de recocher la case après un envoi (solution à usage unique)', async () => {
+    await fillForm();
+    await sendAndRespond({ success: false, message: 'Erreur' }, 500);
+
+    expect(captchaBox().checked).toBeFalse();
+    expect(captchaBox().disabled).toBeFalse();
+    expect(submitButton().disabled).toBeTrue();
+  });
+
   it('applique les mêmes limites de longueur que l\'API', () => {
     expect(element.querySelector('#from')?.getAttribute('maxlength')).toBe('254');
     expect(element.querySelector('#subject')?.getAttribute('maxlength')).toBe('150');
@@ -68,17 +104,16 @@ describe('ContactComponent', () => {
 
   it('bloque un double envoi pendant que la requête est en cours', async () => {
     await fillForm();
-    submitButton().click();
-    fixture.detectChanges();
+    const req = await send();
 
     expect(submitButton().disabled).toBeTrue();
     expect(submitButton().textContent).toContain('Envoi en cours');
-    http.expectOne(API_URL).flush({ success: true });
+    req.flush({ success: true });
   });
 
   it('confirme l\'envoi et vide le formulaire', async () => {
     await fillForm();
-    sendAndRespond({ success: true, message: 'Email envoyé.' });
+    await sendAndRespond({ success: true, message: 'Email envoyé.' });
 
     expect(alertText('success')).toContain('Message envoyé');
     expect(component.form).toEqual({ from: '', subject: '', body: '' });
@@ -87,7 +122,7 @@ describe('ContactComponent', () => {
 
   it('affiche le message de l\'API quand la limite d\'envoi est atteinte', async () => {
     await fillForm();
-    sendAndRespond({ success: false, message: 'Trop de messages envoyés. Réessayez dans une heure.' }, 429);
+    await sendAndRespond({ success: false, message: 'Trop de messages envoyés. Réessayez dans une heure.' }, 429);
 
     expect(alertText('danger')).toBe('Trop de messages envoyés. Réessayez dans une heure.');
     expect(component.form.body).toBe('Un message'); // le visiteur ne perd pas son message
@@ -95,24 +130,24 @@ describe('ContactComponent', () => {
 
   it('affiche un message clair si l\'API refuse les données (400)', async () => {
     await fillForm();
-    sendAndRespond({ title: 'One or more validation errors occurred.' }, 400);
+    await sendAndRespond({ title: 'One or more validation errors occurred.' }, 400);
 
     expect(alertText('danger')).toBe('Vérifiez votre adresse email et le contenu du message.');
   });
 
   it('affiche un message clair si le serveur est injoignable', async () => {
     await fillForm();
-    sendAndRespond('', 0);
+    await sendAndRespond('', 0);
 
     expect(alertText('danger')).toBe('Impossible de joindre le serveur. Vérifiez votre connexion.');
   });
 
   it('efface l\'ancienne erreur lors d\'un nouvel envoi réussi', async () => {
     await fillForm();
-    sendAndRespond({ success: false, message: 'Erreur' }, 500);
+    await sendAndRespond({ success: false, message: 'Erreur' }, 500);
     expect(alertText('danger')).toBeTruthy();
 
-    sendAndRespond({ success: true });
+    await sendAndRespond({ success: true });
     expect(alertText('danger')).toBeUndefined();
     expect(alertText('success')).toContain('Message envoyé');
   });
